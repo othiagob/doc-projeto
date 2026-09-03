@@ -11,6 +11,24 @@ desde a última vez que joguei build".
 
 ## [Unreleased]
 
+### Adicionado (2026-09-03)
+- `01-Projeto/Mapa-Geral-do-Projeto.md` — mapa mental didático da estrutura,
+  com exemplos reais de código (ponto de partida de estudo)
+- `07-Git-e-Workflow/Fluxo-de-Trabalho.md` — ciclo padrão central de uma
+  tarefa (escolher -> spec -> estudar -> implementar -> testar -> registrar)
+- `README.md` reduzido a um "ponte" curto (Home.md continua sendo o índice principal)
+- `AGENTS.md` na raiz como contexto para IAs que trabalham neste vault no Linux
+
+### Alterado (2026-09-03)
+- `Home.md` reescrito como índice didático com ordem de leitura recomendada
+- `09-Guias/index.md` deduplicado (aponta para o Home)
+
+### Removido (2026-09-03)
+- Pastas `_arquivado/` e `_arquivado-equipe/` (arquivos obsoletos do tempo
+  do projeto em dupla) — decição do autor
+- Config local do Obsidian (`.obsidian/workspace*.json` e `.obsidian` de
+  subpastas) deixou de ser versionada (via `.gitignore`)
+
 ### Adicionado
 - Análise completa do código-fonte (servidor, cliente, protocolo, banco)
  e reestruturação da documentação para uso individual (Thiago)

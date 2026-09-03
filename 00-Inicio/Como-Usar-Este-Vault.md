@@ -52,16 +52,15 @@ data: 2026-08-31
 ## 5. Sincronizando com git
 
 O código do jogo tem seu próprio repositório git
-(`C:\Source Priston\Source Priston`). Este vault de documentação pode:
+(`C:\Source Priston\Source Priston`). Este vault de documentação também:
 
-**Opção A — repo separado só de docs** (recomendado): crie um repositório
-`priston-docs` para esta pasta, com `.gitignore` ignorando
-`.obsidian/workspace*.json` (config local do Obsidian, não deve ser
-compartilhada). Use o plugin Obsidian Git pra push/pull automático.
-
-**Opção B — docs dentro do repo do jogo:** simples, mas mistura o
-histórico de código (que você quer limpo — ver [[Workflow-Git]]) com o de
-notas soltas. Só vale se você não se importar com isso.
+- **Este vault já é um repositório git próprio** — `github.com/othiagob/doc-projeto`,
+  branch `main`. Foi criado em 2026-09-03. O `.gitignore` já ignora
+  `.obsidian/workspace*.json` e qualquer `.obsidian/` dentro de subpastas
+  (config local do Obsidian não é compartilhada).
+- Use o plugin **Obsidian Git** pra push/pull automático, ou o opencode
+  (Linux) / terminal pra fazer commits e pushes manualmente.
+- Convenções de commit: ver `07-Git-e-Workflow/Workflow-Git.md`.
 
 ## 6. Regra de ouro do vault
 

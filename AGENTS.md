@@ -68,18 +68,22 @@ planejamento** — **nunca** para compilar ou rodar o jogo.
 
 ## Docs que valem ser lidos antes de tarefas não-triviais
 
+- `Home.md` — índice principal e ordem de leitura recomendada (comece aqui)
+- `01-Projeto/Mapa-Geral-do-Projeto.md` — mapa mental didático da estrutura
 - `02-Arquitetura/Arquitetura.md` — planta do código
 - `02-Arquitetura/Protocolo-de-Rede.md` e `Glossario-Tecnico.md` — se tocar rede/Shared
 - `05-Specs/SDD-Source-Priston.md` — design completo
 - `08-Ideias/Backlog-de-Ideias.md` — o que fazer a seguir
 - `09-Guias/` — como compilar/rodar/configurar banco
+- `07-Git-e-Workflow/Fluxo-de-Trabalho.md` — o ciclo padrão de uma tarefa
 - `01-Projeto/Trabalhando-com-Multiplas-IAs.md` — como múltiplas IAs compartilham contexto
 
 ## Git
 
-- O código tem repo próprio (`github.com/othiagob/Source-Priston`), branch `main`.
-- Convenção de commit: Conventional Commits + tipo `net` para mudanças de protocolo
+- O **código do jogo** tem repo próprio (`github.com/othiagob/Source-Priston`),
+  branch `main` — não mexer daqui sem necessidade.
+- Este **vault de documentação** é um repo git separado
+  (`github.com/othiagob/doc-projeto`, branch `main`). Convenção de commit:
+  Conventional Commits
   (ver `07-Git-e-Workflow/Workflow-Git.md`).
 - Não commitar sem pedido explícito do usuário.
-- Este vault pode (futuramente) virar repo separado de docs (`priston-docs`);
-  hoje ainda não é um repo git.

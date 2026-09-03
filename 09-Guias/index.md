@@ -5,7 +5,7 @@ tags: [guias, inicio]
 # Guias — passo a passo
 
 Guias práticos de "como fazer". Começam simples e vão ficando mais
-avançados conforme você aprende.
+avançados conforme você aprende. O índice completo está em `Home.md`.
 
 ## Guias disponíveis
 
@@ -13,6 +13,7 @@ avançados conforme você aprende.
 - [[Como-Rodar]] — rodar o servidor e conectar o cliente localmente
 - [[Como-Configurar-Banco]] — SQL Server, bancos e o arquivo `SQL.ini`
 - [[Workflow-Git]] — (vive em `07-Git-e-Workflow/`)
+- [[Fluxo-de-Trabalho]] — (vive em `07-Git-e-Workflow/`)
 
 ## Regra dos guias
 

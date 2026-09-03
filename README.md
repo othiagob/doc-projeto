@@ -1,50 +1,46 @@
-# Priston — Base de Documentação (leia isto primeiro)
+# Priston — Documentação do Projeto
 
-Este vault do Obsidian é a **documentação viva** do projeto Source Priston:
-arquitetura, protocolo de rede, banco de dados, decisões, diário de
-trabalho, aprendizado de C++ e backlog de ideias. Ele existe pra você
-(Thiago) e pra qualquer IA que você usar (Cursor, Hermes) partirem sempre
-do mesmo entendimento do projeto.
+Este repositório guarda a **documentação viva** do projeto Source Priston
+(um servidor privado de Priston Tale em C++): arquitetura, protocolo de
+rede, banco de dados, decisões, diário, aprendizado de C++ e backlog de
+ideias. É, acima de tudo, o **caderno de estudos** do autor.
 
-> **Importante:** esta pasta (`priston-documents`) é **só a documentação**.
-> O código do jogo fica em `C:\Source Priston\Source Priston` (com `SrcGame/`,
-> `SrcServer/`, `Shared/`). As duas coisas são separadas — docs aqui, código lá.
+> **Importante:** este repositório é **só a documentação**. O código do jogo
+> fica em outro repositório (`Source-Priston`), com `SrcGame/` (cliente),
+> `SrcServer/` (servidor) e `Shared/` (código compartilhado).
 
-## Como usar
+## Começando
 
-1. Abra esta pasta no Obsidian: **Abrir cofre -> Abrir pasta como cofre**.
-2. Comece por `Home.md` — é o mapa de tudo.
-3. Se for mexer no código: leia `02-Arquitetura/Arquitetura.md` antes
- (é a planta baixa, verificada no código real em 2026-08-31).
+A forma de usar esta documentação é abri-la no **Obsidian** (como vault) e
+começar pelo índice principal:
 
-## Onde cada coisa mora
+- **`Home.md`** — o ponto de partida e a ordem de leitura recomendada.
+
+Se preferir navegar aqui mesmo no GitHub, o índice por tema também está no
+`Home.md`.
+
+## Estrutura
 
 | Pasta | O que tem |
 |---|---|
 | `00-Inicio/` | Como usar o vault, primeiros passos |
-| `01-Projeto/` | Sobre o projeto, como trabalhar com múltiplas IAs |
-| `02-Arquitetura/` | Arquitetura verificada, protocolo de rede, banco de dados, glossário |
-| `03-Aprendizado-CPP/` | Trilha de estudos, exercícios seguros, registro de aprendizado |
-| `04-Diario-do-Projeto/` | Log diário de trabalho (o que fez, o que decidiu) |
-| `05-Specs/` | Specs de features + **SDD** (documento de design) |
-| `06-Decisoes/` | ADRs — decisões de arquitetura e o porquê |
-| `07-Git-e-Workflow/` | Convenções de git e fluxo de trabalho |
-| `08-Ideias/` | **Backlog de ideias** — tudo que você quer fazer um dia |
-| `09-Guias/` | Guias passo a passo (compilar, rodar, configurar) |
-| `.cursor/rules/` | Regras que o Cursor carrega automaticamente (mantidas alinhadas com o vault) |
+| `01-Projeto/` | Visão geral, mapa geral do projeto, múltiplas IAs |
+| `02-Arquitetura/` | Arquitetura verificada, protocolo, banco, glossário |
+| `03-Aprendizado-CPP/` | Trilha de estudos, exercícios, registro de aprendizado |
+| `04-Diario-do-Projeto/` | Log diário de trabalho |
+| `05-Specs/` | Specs de features + documento de design (SDD) |
+| `06-Decisoes/` | ADRs — decisões e o porquê |
+| `07-Git-e-Workflow/` | Fluxo de trabalho + convenções de git |
+| `08-Ideias/` | Backlog de ideias |
+| `09-Guias/` | Guias passo a passo (compilar, rodar, banco) |
 
-## Regra de ouro do vault
+## Convenções
 
-O vault é **fonte de verdade legível por humano**. As regras que a IA
-(Cursor) usa ficam em `.cursor/rules/` — e devem estar sempre alinhadas
-com o que está aqui. Se mudar uma decisão de arquitetura, atualize os dois
-lugares. Para conversar com o Hermes sobre este projeto, o conteúdo do
-vault é o contexto a ser colado (ou você pode pedir pro Hermes ler o vault
-direto).
+- Documentação sem emojis nem decoração colorida — texto puro + ASCII.
+- O arquivo `AGENTS.md` na raiz é o contexto que IAs carregam
+  automaticamente ao trabalhar neste vault no Linux.
+- O fluxo de trabalho e as convenções de git estão em `07-Git-e-Workflow/`.
 
-## Código-fonte
+## Histórico
 
-- **Local:** `C:\Source Priston\Source Priston`
-- **Git:** repositório já inicializado (`git log` mostra o histórico)
-- **Estrutura:** `SrcGame/` (cliente) · `SrcServer/` (servidor) ·
- `Shared/` (código compartilhado) · `dependencies/` (bibliotecas de terceiros)
+Veja o `CHANGELOG.md` para o que mudou na documentação.
