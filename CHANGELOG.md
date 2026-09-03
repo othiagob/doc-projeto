@@ -1,0 +1,44 @@
+---
+tags: [changelog]
+---
+
+# Changelog
+
+Formato baseado em [Keep a Changelog](https://keepachangelog.com/).
+Toda entrada relevante (feature, fix, mudança de protocolo) deve virar uma
+linha aqui — é o resumo que você lê em 30 segundos pra lembrar "o que mudou
+desde a última vez que joguei build".
+
+## [Unreleased]
+
+### Adicionado
+- Análise completa do código-fonte (servidor, cliente, protocolo, banco)
+ e reestruturação da documentação para uso individual (Thiago)
+- Documento de design (SDD) em `05-Specs/SDD-Source-Priston.md`
+- Documentação do protocolo de rede (`02-Arquitetura/Protocolo-de-Rede.md`)
+- Documentação do banco de dados (`02-Arquitetura/Banco-de-Dados.md`)
+- Backlog de ideias (`08-Ideias/Backlog-de-Ideias.md`)
+- Guias em `09-Guias/`
+
+### Corrigido
+- Documentação de arquitetura: hipóteses "(a validar)" substituídas por
+ fatos verificados no código real
+- Referências ao trabalho em dupla removidas (documentação agora é pessoal)
+
+### Alterado
+- Regras do Cursor (`00-project-overview.mdc`) instaladas dentro do
+  repositório do jogo (`C:\Source Priston\Source Priston\.cursor\rules\`)
+- Documentação reestilizada: sem emojis nem decoração colorida — texto
+  puro e símbolos ASCII simples (preferência do autor)
+
+### Protocolo (Shared)
+> Toda entrada aqui deve citar o `smTRANSCODE_*` envolvido.
+-
+
+---
+
+## Como preencher
+Ao final de cada branch de feature/fix mergeada em `main`, adicione uma
+linha em `[Unreleased]`. Quando fizer uma build/release para testers, mova
+o conteúdo de `[Unreleased]` para uma nova seção `## [vX.Y.Z] - AAAA-MM-DD`
+e marque a tag de git correspondente (ver `07-Git-e-Workflow/Workflow-Git.md`).

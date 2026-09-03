@@ -1,0 +1,12 @@
+# Configuração local do Obsidian (não deve ser compartilhada)
+# - o .obsidian da RAIZ: ignora só o workspace (config local de janelas)
+.obsidian/workspace*.json
+.obsidian/.trash/
+# - .obsidian em subpastas: são resíduos de vaults abertos dentro do vault, ignora tudo
+**/.obsidian/
+
+# Temporários do sistema
+.DS_Store
+Thumbs.db
+*.swp
+~$*
