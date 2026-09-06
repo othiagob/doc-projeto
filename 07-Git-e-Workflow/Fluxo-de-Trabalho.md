@@ -33,7 +33,8 @@ Cada passo tem um "onde" e um "como". Os detalhes abaixo.
 ## 2. Spec (só se for não-trivial)
 
 - **Quando precisa de spec:** feature/mudança que toca `Shared/` ou mais de
-  uma pasta de módulo. Ver `05-Specs/TEMPLATE-Spec.md` (é um "SDD leve").
+  uma pasta de módulo. Ver `05-Specs/TEMPLATE-Spec.md` (é um "SDD leve") e o
+  ciclo completo em `05-Specs/Processo-Spec-Driven.md`.
 - **Quando NÃO precisa:** bug pontual, ajuste pequeno, exercício seguro —
   basta uma instrução clara no chat da IA.
 - Copie o template para `05-Specs/AAAA-MM-DD-nome-curto.md`, preencha, e use

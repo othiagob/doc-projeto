@@ -12,6 +12,7 @@ avançados conforme você aprende. O índice completo está em `Home.md`.
 - [[Como-Compilar]] — compilar cliente e servidor no Visual Studio
 - [[Como-Rodar]] — rodar o servidor e conectar o cliente localmente
 - [[Como-Configurar-Banco]] — SQL Server, bancos e o arquivo `SQL.ini`
+- [[VPS-e-SQL-Server]] — operar o banco em produção na VPS (backup, segurança)
 - [[Workflow-Git]] — (vive em `07-Git-e-Workflow/`)
 - [[Fluxo-de-Trabalho]] — (vive em `07-Git-e-Workflow/`)
 

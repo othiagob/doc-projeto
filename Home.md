@@ -43,12 +43,19 @@ abaixo ou use o índice por tema.
   - [[Banco-de-Dados]] — SQL Server, bancos e conexão
   - [[Glossario-Tecnico]] — termos, siglas, códigos de pacote
   - [[SDD-Source-Priston]] — o documento de design completo (a "SPEC" do projeto)
-- **Aprendizado de C++**
-  - [[Trilha-de-Aprendizado]] — o plano de estudos
-  - [[Exercicios-Seguros]] — tarefas de baixo risco no código real
+- **Dados do banco** (exportações da VPS, prontas pra usar no jogo)
+  - `Dados-SQL/README.md` — índice de tabelas + dicionário de colunas
+  - [[ListaItens_Drop]] — códigos de item pra `/drop`
+- **Aprendizado** (trilhas com exercícios guiados)
+  - [[Trilha-de-Aprendizado]] — o plano de estudos de C++ com o projeto
+  - [[Exercicios-Guiados]] — C++ progressivo: do nível 0 (básico) ao 5, com código real do jogo
+  - [[Exercicios-Seguros]] — primeiras tarefas de baixo risco no código
+  - [[Trilha-SQL-Server]] — SQL Server do zero, nas tabelas do projeto
+  - [[Exercicios-SQL-Guiados]] — SELECT a transações, passo a passo
   - [[Registro-de-Aprendizado]] — seu log pessoal de estudos
 - **Processo e fluxo de trabalho**
-  - [[Fluxo-de-Trabalho]] — o ciclo padrão de uma tarefa (central)
+  - [[Processo-Spec-Driven]] — o ciclo oficial: ideia -> backlog -> spec -> Cursor -> teste -> registro
+  - [[Fluxo-de-Trabalho]] — o dia a dia de uma tarefa, do início ao fim
   - [[Workflow-Git]] — branches, commits, tags
   - [[CHANGELOG]] — o que já mudou, versão a versão
 - **Specs e decisões** (antes/durante features)
@@ -56,10 +63,12 @@ abaixo ou use o índice por tema.
   - `06-Decisoes/TEMPLATE-ADR` — registre o "porquê" das decisões
 - **Diário do Projeto** (log cronológico de trabalho)
   - `04-Diario-do-Projeto/TEMPLATE-Entrada-Diario`
-- **Ideias** (coisas que você quer fazer um dia)
-  - [[Backlog-de-Ideias]]
+- **Ideias e próximos passos**
+  - [[Melhorias-Sugeridas]] — melhorias concretas já viáveis, em ordem de prioridade
+  - [[Backlog-de-Ideias]] — backlog geral (status das ideias)
 - **Guias** (passo a passo prático)
   - `09-Guias/index` — compilar, rodar, configurar banco
+  - [[VPS-e-SQL-Server]] — operar o banco em produção (backup, segurança)
 
 ---
 
@@ -84,13 +93,16 @@ e vazio.
 | `00-Inicio/` | Como usar o vault, primeiros passos |
 | `01-Projeto/` | Visão geral, mapa geral, sobre o projeto, múltiplas IAs |
 | `02-Arquitetura/` | Arquitetura verificada, protocolo, banco, glossário (+ anexos) |
-| `03-Aprendizado-CPP/` | Trilha de estudos, exercícios seguros, registro de aprendizado |
+| `03-Aprendizado-CPP/` | Trilha de estudos, exercícios guiados/seguros, registro |
+| `03-Aprendizado-SQL/` | Trilha e exercícios de SQL Server nas tabelas do projeto |
 | `04-Diario-do-Projeto/` | Log diário de trabalho |
-| `05-Specs/` | Specs de features + SDD |
+| `05-Specs/` | Specs de features + SDD + processo spec-driven |
 | `06-Decisoes/` | ADRs — decisões e o porquê |
 | `07-Git-e-Workflow/` | Fluxo de trabalho + convenções de git |
-| `08-Ideias/` | Backlog de ideias |
-| `09-Guias/` | Guias passo a passo (compilar, rodar, banco) |
+| `08-Ideias/` | Backlog de ideias + melhorias sugeridas |
+| `09-Guias/` | Guias passo a passo (compilar, rodar, banco, VPS) |
+| `Dados-SQL/` | Exportações de tabelas do banco da VPS (itens, NPCs, drops...) |
+| `Arquivos do Jogo/` | Source e cliente full — só leitura, fora do git |
 | `AGENTS.md` | Contexto para IAs que trabalham neste vault no Linux |
 
 > **Obs:** pastas arquivadas antigas foram removidas (arquivos obsoletos do

@@ -5,6 +5,10 @@
 # - .obsidian em subpastas: são resíduos de vaults abertos dentro do vault, ignora tudo
 **/.obsidian/
 
+# Arquivos do jogo (cliente full, source zipada, .exe/.pdb) — MB/GB demais
+# pra este repo de documentação. Ficam só na máquina.
+Arquivos do Jogo/
+
 # Temporários do sistema
 .DS_Store
 Thumbs.db

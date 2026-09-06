@@ -14,7 +14,8 @@ uma pasta de módulo. Bugs pontuais e ajustes pequenos não precisam de spec —
 só uma instrução clara no chat já basta.**
 
 > Para a visão geral do projeto (o documento de design completo), veja
-> [[SDD-Source-Priston]].
+> [[SDD-Source-Priston]]. Para o ciclo completo de como uma spec nasce e
+> morre, veja [[Processo-Spec-Driven]].
 
 ## Fluxo
 
@@ -33,6 +34,12 @@ só uma instrução clara no chat já basta.**
 ## Template
 
 ```markdown
+---
+tags: [specs]
+status: rascunho
+data: AAAA-MM-DD
+---
+
 # Spec: <nome da feature/mudança>
 
 ## Contexto

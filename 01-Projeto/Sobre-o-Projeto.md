@@ -43,7 +43,7 @@ modernizada com várias melhorias (novo acesso a banco, Discord, JSON, etc.).
  servidor usam o mesmo código compartilhado (protocolo, tabelas de
  skill/nível). Mudar só de um lado dessincroniza o jogo.
 3. **Não invente códigos de pacote (`smTRANSCODE_*`)** — são o contrato de
- rede. Número duplicado ou errado quebra a comunicação silenciosamente.
+ rede. Número duplicado ou errado quebra a comunicação silenciosamente.]
 4. **Escopo pequeno por tarefa** — não faça refactors gigantes "de brinde".
 5. **Não há testes automatizados** — toda mudança de lógica precisa de um
  plano de teste manual claro (o que testar no jogo).

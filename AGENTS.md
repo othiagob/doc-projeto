@@ -13,9 +13,10 @@ os caminhos reais são:
 
 | Item | Caminho no Linux |
 |---|---|
-| Código-fonte do jogo (repo git) | `/home/othiagob/Downloads/Source Priston/Source Priston` |
-| Este vault de documentação | `/home/othiagob/Área de trabalho/priston-documents` |
-| Binários compilados (Game.exe/Server.exe) | `/home/othiagob/Downloads/Source Priston/` |
+| Este vault de documentação | `/home/othiagob/Documentos/priston-documents` |
+| Cópia da source p/ leitura/análise | `Arquivos do Jogo/01 - Source Priston/Source Priston` (dentro do vault, fora do git via `.gitignore`) |
+| Cliente full extraído | `Arquivos do Jogo/02 - Cliente_Full_WDPT_2026` (fora do git) |
+| Código editável/compilável (repo git) | máquina **Windows** — via Cursor + Visual Studio |
 
 ## Papel desta IA no projeto
 
@@ -24,7 +25,7 @@ planejamento** — **nunca** para compilar ou rodar o jogo.
 
 - Este vault (`priston-documents`) é o **caderno de estudos e documentação
   viva** do Thiago: estudar o código do jogo, documentar, e servir de guia
-  de aprendizado de C++ (trilha, exercícios, diário, decisões).
+  de aprendizado de C++ e SQL Server (trilhas, exercícios, diário, decisões).
 - O código-fonte está presente no Linux **apenas para leitura/análise/estudo**.
 - O build é 100% MSBuild/Visual Studio 2022 no **Windows** (`SrcGame/Game.sln`
   e `SrcServer/server.sln`, Win32). Não existe build nativo no Linux e **não
@@ -41,7 +42,7 @@ planejamento** — **nunca** para compilar ou rodar o jogo.
 - `SrcServer/src/Server/` — servidor. Entry: `Winmain.cpp` -> `OnSever.cpp`
   (`ServerWinMain`, gigante ~34k linhas: dispatch de pacotes, game loop).
 - `Shared/` — código que precisa ser **idêntico** nos dois lados:
-  `smPacket.h` (protoloco, ~2.800 `smTRANSCODE_*`), `LevelTable.h`,
+  `smPacket.h` (protocolo, ~2.800 `smTRANSCODE_*`), `LevelTable.h`,
   `GlobalsShared.h`, `Skills/`, `Utils/`.
 - `dependencies/` — terceiros vendorizados (Delta3D, ziparchive) — **nunca editar**.
 
@@ -73,8 +74,10 @@ planejamento** — **nunca** para compilar ou rodar o jogo.
 - `02-Arquitetura/Arquitetura.md` — planta do código
 - `02-Arquitetura/Protocolo-de-Rede.md` e `Glossario-Tecnico.md` — se tocar rede/Shared
 - `05-Specs/SDD-Source-Priston.md` — design completo
-- `08-Ideias/Backlog-de-Ideias.md` — o que fazer a seguir
-- `09-Guias/` — como compilar/rodar/configurar banco
+- `05-Specs/Processo-Spec-Driven.md` — ciclo oficial de mudanças não-triviais
+- `08-Ideias/Backlog-de-Ideias.md` e `08-Ideias/Melhorias-Sugeridas.md` — o que fazer a seguir
+- `09-Guias/` — como compilar/rodar/configurar banco; `VPS-e-SQL-Server.md` p/ produção
+- `Dados-SQL/README.md` — tabelas do banco exportadas (itens, drops, NPCs)
 - `07-Git-e-Workflow/Fluxo-de-Trabalho.md` — o ciclo padrão de uma tarefa
 - `01-Projeto/Trabalhando-com-Multiplas-IAs.md` — como múltiplas IAs compartilham contexto
 

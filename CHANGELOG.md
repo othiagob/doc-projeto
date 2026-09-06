@@ -11,6 +11,26 @@ desde a última vez que joguei build".
 
 ## [Unreleased]
 
+### Adicionado (2026-09-06)
+- `05-Specs/Processo-Spec-Driven.md` — ciclo oficial de mudanças não-triviais
+  (ideia -> backlog -> spec -> Cursor -> teste -> registro)
+- `08-Ideias/Melhorias-Sugeridas.md` — melhorias concretas já viáveis
+  (segurança, banco, código, GM, jogabilidade, automação) em ordem de prioridade
+- `03-Aprendizado-CPP/Exercicios-Guiados.md` — exercícios do nível 0 (básico
+  introdutório) ao 5, com introdução didática e o código real do jogo
+- `03-Aprendizado-SQL/` — trilha de SQL Server + exercícios guiados S0-S9 nas
+  tabelas reais do projeto
+- `09-Guias/VPS-e-SQL-Server.md` — operação do banco em produção (inventário,
+  checklist de segurança, rotina de backup)
+- `Dados-SQL/README.md` — índice das tabelas exportadas + dicionário de colunas
+
+### Alterado (2026-09-06)
+- `ListaItens_Drop.md` movido da raiz para `Dados-SQL/`
+- `.gitignore`: `Arquivos do Jogo/` (7GB de source/cliente/binários) fica
+  fora do repo de documentação
+- `TEMPLATE-Spec.md` ganhou `status` no frontmatter; `Home.md`, `README.md`
+  e `AGENTS.md` atualizados com a nova estrutura
+
 ### Adicionado (2026-09-03)
 - `01-Projeto/Mapa-Geral-do-Projeto.md` — mapa mental didático da estrutura,
   com exemplos reais de código (ponto de partida de estudo)
@@ -25,11 +45,11 @@ desde a última vez que joguei build".
 
 ### Removido (2026-09-03)
 - Pastas `_arquivado/` e `_arquivado-equipe/` (arquivos obsoletos do tempo
-  do projeto em dupla) — decição do autor
+  do projeto em dupla) — decisão do autor
 - Config local do Obsidian (`.obsidian/workspace*.json` e `.obsidian` de
   subpastas) deixou de ser versionada (via `.gitignore`)
 
-### Adicionado
+### Adicionado (2026-08-31)
 - Análise completa do código-fonte (servidor, cliente, protocolo, banco)
  e reestruturação da documentação para uso individual (Thiago)
 - Documento de design (SDD) em `05-Specs/SDD-Source-Priston.md`
@@ -38,12 +58,12 @@ desde a última vez que joguei build".
 - Backlog de ideias (`08-Ideias/Backlog-de-Ideias.md`)
 - Guias em `09-Guias/`
 
-### Corrigido
+### Corrigido (2026-08-31)
 - Documentação de arquitetura: hipóteses "(a validar)" substituídas por
  fatos verificados no código real
 - Referências ao trabalho em dupla removidas (documentação agora é pessoal)
 
-### Alterado
+### Alterado (2026-08-31)
 - Regras do Cursor (`00-project-overview.mdc`) instaladas dentro do
   repositório do jogo (`C:\Source Priston\Source Priston\.cursor\rules\`)
 - Documentação reestilizada: sem emojis nem decoração colorida — texto

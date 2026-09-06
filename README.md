@@ -26,13 +26,16 @@ Se preferir navegar aqui mesmo no GitHub, o índice por tema também está no
 | `00-Inicio/` | Como usar o vault, primeiros passos |
 | `01-Projeto/` | Visão geral, mapa geral do projeto, múltiplas IAs |
 | `02-Arquitetura/` | Arquitetura verificada, protocolo, banco, glossário |
-| `03-Aprendizado-CPP/` | Trilha de estudos, exercícios, registro de aprendizado |
+| `03-Aprendizado-CPP/` | Trilha de estudos C++ e exercícios guiados |
+| `03-Aprendizado-SQL/` | Trilha de SQL Server e exercícios nas tabelas reais |
 | `04-Diario-do-Projeto/` | Log diário de trabalho |
-| `05-Specs/` | Specs de features + documento de design (SDD) |
+| `05-Specs/` | Specs de features + SDD + processo spec-driven |
 | `06-Decisoes/` | ADRs — decisões e o porquê |
 | `07-Git-e-Workflow/` | Fluxo de trabalho + convenções de git |
-| `08-Ideias/` | Backlog de ideias |
-| `09-Guias/` | Guias passo a passo (compilar, rodar, banco) |
+| `08-Ideias/` | Backlog de ideias + melhorias sugeridas |
+| `09-Guias/` | Guias passo a passo (compilar, rodar, banco, VPS) |
+| `Dados-SQL/` | Exportações de tabelas do banco (itens, drops, NPCs...) |
+| `Arquivos do Jogo/` | Source e cliente full (só leitura; `.gitignore`, fora do repo) |
 
 ## Convenções
 

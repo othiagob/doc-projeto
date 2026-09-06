@@ -36,7 +36,10 @@ Antes da primeira mudança real no jogo:
 2. Escolha um `.h` de `Shared/Skills/` (ex: `fighter.h`) e leia inteiro.
  Não precisa entender 100% — anote no seu registro de aprendizado o que
  não entendeu, e pergunte pra IA especificamente sobre aquilo.
-3. Siga [[Exercicios-Seguros]] #1 e #2.
+3. Faça o **Nível 0** de [[Exercicios-Guiados]] — é o degrau mais baixo,
+  feito pra quem está começando do absoluto zero com o código real do
+  projeto. Depois siga pro nível 1 do mesmo arquivo e para os
+  [[Exercicios-Seguros]] #1 e #2.
 
 ## Fase 2 — Rastrear um fluxo completo
 
