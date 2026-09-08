@@ -76,7 +76,7 @@ Solução: `Game.sln` -> projeto `src/game.vcxproj`. Entry point real:
 | `Login/` | Tela de login nova (checkbox "Lembrar ID", seleção de mundo "Draco Priston") |
 | `Chat/` | Chat novo (janela moderna) |
 | `Party/` | Party/raid |
-| `Quest/` | Quest + `QuestWindow` (1.474 l.) |
+| `Quest/` | Quest + `QuestWindow` (ImGui: janela Desafios tecla Q + taskbar de progresso). Recap: vault `10-Processos/2026-09-06 - Recap Desafios ImGui.md` |
 | `Shop/` | Loja nova + itens premium por tempo |
 | `Caravana/` | Sistema de caravana (comércio móvel) |
 | `Eventos/` | Arena (PvP em times), WarMode; **Invasao é stub** (1 linha) |
@@ -104,7 +104,8 @@ Solução: `Game.sln` -> projeto `src/game.vcxproj`. Entry point real:
 2. **Moderno `Engine/UI`** — classes `UIWindow`/`UIElement` com eventos
  (login novo, chat, quests). Gerenciadas pelo `CGameCore`.
 3. **ImGui** — overlays/alertas dos sistemas novos (HUD/InstancesFlag,
- Roleta, RankingWindow, SodWindow...).
+ Roleta, RankingWindow, SodWindow...) e a janela de **Desafios**
+ (`Quest/QuestWindow.cpp`).
 
 > Ao editar UI: **descubra primeiro qual sistema a tela usa** (sin, Engine/UI
 > ou ImGui) antes de mexer — os três coexistem.

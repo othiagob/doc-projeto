@@ -43,9 +43,27 @@ tags: [arquitetura, banco, servidor]
 | `ITEMLogDB` | log de itens (economia/rastreio) |
 | `PainelDB` | painel/website (provável) |
 
-> **Atenção:** A lista de tabelas de cada banco ainda não foi mapeada — tarefa futura
-> (rodar o SQL Server local e inspecionar com o SSMS, ou procurar scripts
-> `.sql` no projeto). Anote descobertas aqui.
+> **Atenção:** A lista de tabelas de cada banco ainda não foi mapeada por
+> completo — tarefa futura (SSMS). Descobertas pontuais abaixo.
+
+Atualizado 2026-09-08 (codigo + regra `.cursor/rules/40-database.mdc`):
+
+- Nome ausente no boot = `exit(0)`. SQL Server ignora maiusculas
+  (`userdb` = `UserDB`). `UserDB_VIP` e a **mesma** `UserDB`.
+- **Nao remova `PainelDB`.** GM grava bans em `PainelDB.dbo.Banneds`. Se o
+  banco foi dropado, o C++ tenta criar vazio via `master`
+  (`EnsurePainelDatabase` em `SQLConnection.cpp`). Script manual:
+  `09-Guias/sql/Create-PainelDB.sql`.
+- Falha de conexao agora loga o **nome** do banco.
+- Inventar catalogo de `GameServer` no C++ nao recupera dados zerados —
+  precisa restore `.bak`.
+- Loja de Coins: `ShopCoin.dbo.ShopItems` — colunas reais `ID`,
+  `CategoryID`, `SubCategoryID`, `ItemCode`, `ItemName`, `Price`,
+  `DiscountPercent`. No C++ o campo ainda se chama `Discount`. `ItemCode`
+  e o codigo do item (`OR129`), nao o caminho da imagem. Icone:
+  `image\sinImage\Items\<pasta>\itCODIGO.bmp` no cliente full.
+- Credenciais: `Server\Config\SQL.ini` (`Host`, `User`, `Password`) junto
+  ao executavel, fora do git.
 
 ## Onde isso importa na prática
 

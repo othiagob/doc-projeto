@@ -64,8 +64,10 @@ planejamento** — **nunca** para compilar ou rodar o jogo.
 - Sem emojis nem decoração colorida nos docs — texto puro + ASCII (preferência
   do autor). Ver `CHANGELOG.md`.
 - Siga os templates existentes para entrada de diário, spec (SDD) e decisão (ADR).
-- Ao fazer uma mudança relevante no jogo, registrar no diário (`04-Diario-do-Projeto/`)
-  e no `CHANGELOG.md`.
+- Ao fazer uma mudança relevante no jogo, registrar no diário (`04-Diario-do-Projeto/`),
+  no `CHANGELOG.md` (topico do modulo) e, se for um bloco que o jogador
+  percebe, em `10-Processos/` (template + recap). Bloco grande (varias
+  areas + decisoes): `11-Evolucao/`.
 
 ## Docs que valem ser lidos antes de tarefas não-triviais
 
@@ -76,6 +78,8 @@ planejamento** — **nunca** para compilar ou rodar o jogo.
 - `05-Specs/SDD-Source-Priston.md` — design completo
 - `05-Specs/Processo-Spec-Driven.md` — ciclo oficial de mudanças não-triviais
 - `08-Ideias/Backlog-de-Ideias.md` e `08-Ideias/Melhorias-Sugeridas.md` — o que fazer a seguir
+- `10-Processos/index.md` — recap do que ja foi implementado no jogo
+- `11-Evolucao/index.md` — sessoes especiais (falhas, acertos, decisoes)
 - `09-Guias/` — como compilar/rodar/configurar banco; `VPS-e-SQL-Server.md` p/ produção
 - `Dados-SQL/README.md` — tabelas do banco exportadas (itens, drops, NPCs)
 - `07-Git-e-Workflow/Fluxo-de-Trabalho.md` — o ciclo padrão de uma tarefa

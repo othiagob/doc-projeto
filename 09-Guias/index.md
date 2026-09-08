@@ -13,6 +13,7 @@ avançados conforme você aprende. O índice completo está em `Home.md`.
 - [[Como-Rodar]] — rodar o servidor e conectar o cliente localmente
 - [[Como-Configurar-Banco]] — SQL Server, bancos e o arquivo `SQL.ini`
 - [[VPS-e-SQL-Server]] — operar o banco em produção na VPS (backup, segurança)
+- `sql/Create-PainelDB.sql` — criar `PainelDB` + `dbo.Banneds` no SSMS
 - [[Workflow-Git]] — (vive em `07-Git-e-Workflow/`)
 - [[Fluxo-de-Trabalho]] — (vive em `07-Git-e-Workflow/`)
 

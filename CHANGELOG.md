@@ -11,7 +11,59 @@ desde a última vez que joguei build".
 
 ## [Unreleased]
 
-### Adicionado (2026-09-06)
+### Codigo do jogo
+
+#### Bloco HUD / loja / painel — 2026-09-08
+
+Relato completo: [[2026-09-08 - HUD ImGui lojas ranking mix e painel do servidor]].
+ADRs 0002, 0003, 0004. Recaps em `10-Processos/`.
+
+- Janelas de jogador (Desafios, Configuracoes, Loja Coins, Loja Tempo,
+  Ranking, Mix) no mesmo cromado ImGui (`ImGuiWindowChrome.h`). Titulos PNG.
+  Clique na UI nao anda o personagem. HUD de pedra intacto.
+- Loja: SQL `ShopItems.DiscountPercent`; `ItemCode` = codigo do item; icone
+  BMP no client. Lista `0x252031` em chunks (socket 8192).
+- Servidor: log de SQL com nome do banco; `EnsurePainelDatabase`; painel
+  ImGui do `Server.exe` (tema claro, `ToolTheme.h`). Sem transcode novo em
+  `Shared/`.
+
+### Documentacao
+
+#### Adicionado (2026-09-08)
+- `11-Evolucao/` — sessoes especiais de evolucao (template + primeira nota)
+- ADRs `0002`, `0003`, `0004`
+- `09-Guias/sql/Create-PainelDB.sql`
+- Recaps `2026-09-08` em `10-Processos/`
+- Diario `2026-09-08 - HUD ImGui loja ranking mix e painel`
+
+#### Quest (cliente) — 2026-09-06
+
+Redesign da janela **Desafios** (tecla Q). So cliente; servidor e `Shared/`
+intactos. Recap: [[2026-09-06 - Recap Desafios ImGui]].
+
+- Janela ImGui com cromado proprio (fundo escuro, borda dourada, cantos em L),
+  sem `StyleColorArmageddon()`. Lista agrupada (entregar / andamento /
+  disponiveis / concluidas) + detalhe + rodape de acao.
+- Abas Unicas / Diarias / Repetitivas; nas repetitivas, faixa de nivel
+  (`sinChar->Level` vs `minLevel`/`maxLevel`).
+- Titulo em imagem `game/images/quest/desafios.png` (fallback texto DESAFIOS).
+- Cancelar desafio: popup ImGui no mesmo cromado; fundo da tela mais escuro
+  (~0.80). VOLTAR / CONFIRMAR. Sem `cMessageBox`.
+- Taskbar "Em andamento": arrastavel, minimizavel, cantos retos, titulo
+  `emandamento.png`. Clique no nome abre Desafios nessa quest (`FocusQuest`).
+  Clique na caixa nao move o personagem (`IsBlockingMouse` + `WantCaptureMouse`).
+- Quest pronta para entregar na taskbar: texto verde + barra verde `n/n`
+  (sem check e sem "OK").
+- `MapasWU8` permanece ANSI (minimapa / `DrawTextA`); Desafios converte
+  com `ToUtf8()`. Corrige `IlusÃµes` no minimapa.
+- Q abre/fecha a janela grande (`openFlag`), nao o overlay.
+
+### Documentacao
+
+#### Adicionado (2026-09-06)
+- `10-Processos/` — secao nova para recap de processos ja implementados
+  (como era / o que o jogador ve / o que implementei). Primeira nota:
+  `2026-09-06 - Recap Desafios ImGui.md`. Template em `TEMPLATE-Processo.md`.
 - `05-Specs/Processo-Spec-Driven.md` — ciclo oficial de mudanças não-triviais
   (ideia -> backlog -> spec -> Cursor -> teste -> registro)
 - `08-Ideias/Melhorias-Sugeridas.md` — melhorias concretas já viáveis
@@ -76,7 +128,13 @@ desde a última vez que joguei build".
 ---
 
 ## Como preencher
-Ao final de cada branch de feature/fix mergeada em `main`, adicione uma
-linha em `[Unreleased]`. Quando fizer uma build/release para testers, mova
-o conteúdo de `[Unreleased]` para uma nova seção `## [vX.Y.Z] - AAAA-MM-DD`
+Ao final de cada bloco de feature/fix no **jogo**, adicione linhas em
+`[Unreleased]` no **topico certo** (`Quest (cliente)`, `Protocolo (Shared)`,
+etc.). Se o bloco merece recap (como era / o que implementei), copie
+`10-Processos/TEMPLATE-Processo.md`.
+
+Mudanca so de documentacao vai em `### Documentacao`.
+
+Quando fizer uma build/release para testers, mova o conteúdo de
+`[Unreleased]` para uma nova seção `## [vX.Y.Z] - AAAA-MM-DD`
 e marque a tag de git correspondente (ver `07-Git-e-Workflow/Workflow-Git.md`).

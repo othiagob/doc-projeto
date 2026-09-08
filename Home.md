@@ -58,11 +58,18 @@ abaixo ou use o índice por tema.
   - [[Fluxo-de-Trabalho]] — o dia a dia de uma tarefa, do início ao fim
   - [[Workflow-Git]] — branches, commits, tags
   - [[CHANGELOG]] — o que já mudou, versão a versão
+  - `10-Processos/index` — recap do que **já foi implementado** (como era / o que mudou)
+  - `11-Evolucao/index` — **sessoes especiais**: relato completo de um bloco
+    (acertos, falhas revertidas, decisoes para o futuro)
 - **Specs e decisões** (antes/durante features)
   - `05-Specs/TEMPLATE-Spec` — copie ao começar uma feature não-trivial
   - `06-Decisoes/TEMPLATE-ADR` — registre o "porquê" das decisões
+  - [[0002 - Duas identidades visuais jogador vs ferramenta]]
+  - [[0003 - Catalogo SQL vs icone BMP no client]]
+  - [[0004 - Encoding ImGui UTF-8 vs HUD legado Windows-1252]]
 - **Diário do Projeto** (log cronológico de trabalho)
   - `04-Diario-do-Projeto/TEMPLATE-Entrada-Diario`
+  - [[2026-09-08 - HUD ImGui loja ranking mix e painel]]
 - **Ideias e próximos passos**
   - [[Melhorias-Sugeridas]] — melhorias concretas já viáveis, em ordem de prioridade
   - [[Backlog-de-Ideias]] — backlog geral (status das ideias)
@@ -101,6 +108,8 @@ e vazio.
 | `07-Git-e-Workflow/` | Fluxo de trabalho + convenções de git |
 | `08-Ideias/` | Backlog de ideias + melhorias sugeridas |
 | `09-Guias/` | Guias passo a passo (compilar, rodar, banco, VPS) |
+| `10-Processos/` | Recap de processos ja feitos (como era / o que implementei) |
+| `11-Evolucao/` | Sessoes especiais: evolucao completa de um bloco de trabalho |
 | `Dados-SQL/` | Exportações de tabelas do banco da VPS (itens, NPCs, drops...) |
 | `Arquivos do Jogo/` | Source e cliente full — só leitura, fora do git |
 | `AGENTS.md` | Contexto para IAs que trabalham neste vault no Linux |

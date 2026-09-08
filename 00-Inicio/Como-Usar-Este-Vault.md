@@ -10,7 +10,10 @@ No Obsidian: **Abrir cofre -> Abrir pasta como cofre** -> selecione a pasta
 `priston-documents` (a raiz deste vault). Todo o conteúdo abaixo assume que
 esse é o cofre raiz.
 
-> Caminho completo: `C:\Users\carol\Desktop\OTHIAGOB PROJETO\source-priston\priston-documents`
+> Caminho completo neste PC: `C:\Users\carol\Desktop\doc-projeto`
+> (repo git `github.com/othiagob/doc-projeto`). Houve um caminho antigo em
+> `OTHIAGOB PROJETO\source-priston\priston-documents` — tratar esta pasta
+> como o vault vivo.
 
 ## 2. Plugins recomendados (todos gratuitos)
 
@@ -31,6 +34,8 @@ Não precisa instalar tudo de uma vez — comece só com Templater e Dataview.
 - Notas de diário: `AAAA-MM-DD - título curto.md`
 - Decisões (ADR): `NNNN - título curto.md` (número sequencial, sempre 4 dígitos)
 - Specs: `AAAA-MM-DD - nome-da-feature.md`
+- Processos (recap do que ja foi feito): `10-Processos/AAAA-MM-DD - nome-curto.md`
+- Evolucao (bloco inteiro, falhas e decisoes): `11-Evolucao/AAAA-MM-DD - titulo.md`
 - Registro de aprendizado: `Registro-de-Aprendizado.md` — log contínuo, não
  crie um por dia
 

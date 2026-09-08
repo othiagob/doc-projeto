@@ -34,6 +34,8 @@ Se preferir navegar aqui mesmo no GitHub, o índice por tema também está no
 | `07-Git-e-Workflow/` | Fluxo de trabalho + convenções de git |
 | `08-Ideias/` | Backlog de ideias + melhorias sugeridas |
 | `09-Guias/` | Guias passo a passo (compilar, rodar, banco, VPS) |
+| `10-Processos/` | Recap de processos ja feitos (como era / o que implementei) |
+| `11-Evolucao/` | Sessoes especiais (relato completo: falhas, acertos, decisoes) |
 | `Dados-SQL/` | Exportações de tabelas do banco (itens, drops, NPCs...) |
 | `Arquivos do Jogo/` | Source e cliente full (só leitura; `.gitignore`, fora do repo) |
 

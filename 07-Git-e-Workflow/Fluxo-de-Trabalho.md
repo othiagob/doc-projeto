@@ -74,7 +74,12 @@ Antes de eu (ou você) tocar no código, entenda o sistema envolvido:
   `06-Decisoes/` (o "porquê" importa mais que o "qual").
 - **Aprendizado:** registre no `03-Aprendizado-CPP/Registro-de-Aprendizado.md`
   o que entendeu e o que ainda confunde.
-- **CHANGELOG:** adicione uma linha em `CHANGELOG.md` na seção `[Unreleased]`.
+- **CHANGELOG:** adicione uma linha em `CHANGELOG.md` na seção `[Unreleased]`
+  (topico do modulo: Quest, HUD, protocolo, etc.).
+- **Processo (recap):** se o jogador percebe a mudanca (ou se a tarefa
+  ensinou um conceito que voce vai reencontrar), copie
+  `10-Processos/TEMPLATE-Processo.md` e preencha o "como era / o que
+  implementei". Ver `10-Processos/index.md`.
 - **Git:** faça o commit seguindo `07-Git-e-Workflow/Workflow-Git.md`
   (branch + conventional commits). Não commitar sem pedido explícito.
 

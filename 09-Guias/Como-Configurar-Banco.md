@@ -46,7 +46,14 @@ Password=sua_senha_aqui
 | `SoDDB`, `EventosDB`, `ShopCoin`, `Quest`, `GameServer`, `ITEMLogDB`, `PainelDB` | sistemas específicos |
 
 O servidor tenta conectar em **todos** eles. Se um falhar, ele loga o erro
-e fecha (`exit(0)`).
+**com o nome do banco** e fecha (`exit(0)`). Nao remova `PainelDB`: bans de
+GM vao em `PainelDB.dbo.Banneds`. Se o banco nao existir, o boot tenta
+criar um vazio (ver `EnsurePainelDatabase` e `09-Guias/sql/Create-PainelDB.sql`).
+
+Loja de Coins: tabela `ShopCoin.dbo.ShopItems`, coluna de desconto
+`DiscountPercent` (nao `Discount`). `ItemCode` e o codigo do item, nao o
+path do BMP. Detalhe: [[0003 - Catalogo SQL vs icone BMP no client]] e
+`02-Arquitetura/Banco-de-Dados.md`.
 
 ## Passo a passo rápido
 
