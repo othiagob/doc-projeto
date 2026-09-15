@@ -72,7 +72,7 @@ Solução: `Game.sln` -> projeto `src/game.vcxproj`. Entry point real:
 | `ActionGame.cpp` | Movimento por teclado + dash + auto-alvo |
 | `playsub.cpp` / `playmain.cpp` | HUD clássico (`DrawGameState`) / loop in-game + carregar mapas |
 | `GameCore.cpp` | **`CGameCore`** — gerenciador das janelas modernas (chat, party, minimapa, tooltips) |
-| `HUD/` | Overlays novos: minimapa, dano, alvo, ranking, roleta, SOD (alguns em **ImGui**) |
+| `HUD/` | Overlays novos: minimapa, dano, alvo, ranking, roleta, SOD, **armazem ImGui** (`WarehouseWindow.cpp`). Logica do bau continua em `sinbaram/sinTrade.cpp`. Planta: [[Armazem]] |
 | `Login/` | Tela de login nova (checkbox "Lembrar ID", seleção de mundo "Draco Priston") |
 | `Chat/` | Chat novo (janela moderna) |
 | `Party/` | Party/raid |
@@ -104,8 +104,9 @@ Solução: `Game.sln` -> projeto `src/game.vcxproj`. Entry point real:
 2. **Moderno `Engine/UI`** — classes `UIWindow`/`UIElement` com eventos
  (login novo, chat, quests). Gerenciadas pelo `CGameCore`.
 3. **ImGui** — overlays/alertas dos sistemas novos (HUD/InstancesFlag,
- Roleta, RankingWindow, SodWindow...) e a janela de **Desafios**
- (`Quest/QuestWindow.cpp`).
+ Roleta, RankingWindow, SodWindow...), a janela de **Desafios**
+ (`Quest/QuestWindow.cpp`) e o **Armazem** (`HUD/WarehouseWindow.cpp`).
+ A logica de item do bau continua no classico `cWAREHOUSE` — ver [[Armazem]].
 
 > Ao editar UI: **descubra primeiro qual sistema a tela usa** (sin, Engine/UI
 > ou ImGui) antes de mexer — os três coexistem.
@@ -285,8 +286,19 @@ mercenários + impostos), multiplicadores globais **eventoxp/eventodrop**,
 
 ---
 
-## 8. Ver também
+## 8. Funcionalidades com fluxograma
+
+Quando uma feature muda o fluxo (rede, save, janela + logica antiga),
+a planta detalhada mora aqui — nao so no recap. Convencao:
+[[Como-documentar-funcionalidade]].
+
+| Funcionalidade | Nota | O que o diagrama mostra |
+|---|---|---|
+| Armazem (3 paginas, ImGui) | [[Armazem]] | Camadas, abrir, gravar, memoria vs `.war` |
+
+## 9. Ver também
 
 - [[Protocolo-de-Rede]] · [[Banco-de-Dados]] · [[Glossario-Tecnico]] · [[SDD-Source-Priston]]
+- [[Armazem]] — bau (2026-09-15)
 - Guias: [[Como-Compilar]] · [[Como-Rodar]]
 - Anexos: `anexos/Relatorio-Analise-Cliente.md` · `anexos/Relatorio-Analise-Servidor.md` · `anexos/Relatorio-Analise-Build.md`

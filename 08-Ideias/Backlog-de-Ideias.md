@@ -71,6 +71,44 @@ funcionam (`Shared/Utils/Debug.h`), como confirmar que o código rodou.
 
 ---
 
+## UI visível ao jogador (2026-09-13)
+
+Mapa e ordem sugerida: [[Roadmap-UI]] em `12-UI-e-Artes/`.
+ADR: [[0005 - Distribuidor ImGui, armazem e inventario em pedra, artes no Cliente Full]].
+
+### Botão organizar inventário
+**Área:** cliente (`sinInvenTory`) · **Dificuldade:** 2/5 · **Status:** spec
+HUD de pedra. Agrupa/compacta a bag; não mexe no equipamento.
+Spec: [[2026-09-13-inventario-organizar]].
+
+### Armazém: busca, páginas e janela ImGui
+**Área:** cliente + servidor (save `.war`) · **Dificuldade:** 3/5 (páginas 4/5)
+**Status:** feito (2026-09-15)
+Janela ImGui (`WarehouseWindow`), 3×100 slots, busca local, mesmo
+transcode. Spec: [[2026-09-13-armazem-paginas-busca]]. Recap:
+[[2026-09-15 - Recap Armazem ImGui paginas e busca]]. Planta: [[Armazem]].
+ADR: [[0006 - Armazem ImGui, paginas no mesmo transcode]].
+
+### Distribuidor ImGui + correio 168h
+**Área:** cliente + servidor + Shared · **Dificuldade:** 5/5 · **Status:** spec
+Lista + detalhe estilo Desafios. Jogador envia item real para outro
+personagem; destinatário tem 168h para aceitar.
+Spec: [[2026-09-13-distribuidor-correio]].
+
+### Char select Fallen Tale (TGA)
+**Área:** arte no Cliente Full (`StartImage\login\`) · **Dificuldade:** arte
+**Status:** estudar
+C++ já aponta os arquivos. Brief:
+`Source-Priston/docs/prompt-antigravity-charselect-ui.md`. Não é
+redesign de login de conta (já PNG).
+
+### Sincronizar PNG de login source vs Cliente Full
+**Área:** operacional · **Status:** ideia
+Mesmos nomes, tamanhos diferentes. O exe lê o cliente. Ver
+[[Onde-vivem-as-imagens]].
+
+---
+
 ## Melhorias de jogo (ideias futuras)
 
 ### Novo sistema de drop/recompensa de evento

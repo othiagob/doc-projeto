@@ -6,10 +6,19 @@
 > (Windows) e a regra central do vault: **o vault manda** — ver
 > `01-Projeto/Trabalhando-com-Multiplas-IAs.md`.
 
-## Mapa de localizações (Linux)
+## Mapa de localizações
 
-Cuidado: vários docs antigos usam caminhos do Windows (`C:\...`). No Linux
-os caminhos reais são:
+**Windows (Cursor + Visual Studio + jogo):**
+
+| Papel | Caminho |
+|---|---|
+| Cliente do jogo | `C:\Cliente Full` |
+| Source code | `C:\Source Priston\Source Priston` |
+| Este vault | `C:\Users\carol\Desktop\doc-projeto` |
+
+Artes PNG/TGA: Antigravity + Gemini, gravar no Cliente Full.
+
+**Linux (opencode)** — docs antigos com `C:\...` nao se aplicam aqui:
 
 | Item | Caminho no Linux |
 |---|---|
@@ -23,9 +32,12 @@ os caminhos reais são:
 O opencode no Linux é usado para **estudo, análise, documentação e
 planejamento** — **nunca** para compilar ou rodar o jogo.
 
-- Este vault (`priston-documents`) é o **caderno de estudos e documentação
-  viva** do Thiago: estudar o código do jogo, documentar, e servir de guia
-  de aprendizado de C++ e SQL Server (trilhas, exercícios, diário, decisões).
+- Este vault (`priston-documents` / `doc-projeto`) e o **livro de
+  evolucao** do Thiago: historia, regras, caminho, e caderno de C++/SQL.
+  Capa: `Home.md`. Como navegar: `00-Inicio/Livro-de-Evolucao.md` e
+  `00-Inicio/Onde-Escrever.md`. Ritual de sync (quando o usuario pedir):
+  `00-Inicio/Ritual-Documentacao.md`. No Windows o Cursor consulta o
+  livro **antes** de criar/ajustar/refatorar (`.cursor/rules/01-consult-vault.mdc`).
 - O código-fonte está presente no Linux **apenas para leitura/análise/estudo**.
 - O build é 100% MSBuild/Visual Studio 2022 no **Windows** (`SrcGame/Game.sln`
   e `SrcServer/server.sln`, Win32). Não existe build nativo no Linux e **não
@@ -67,11 +79,18 @@ planejamento** — **nunca** para compilar ou rodar o jogo.
 - Ao fazer uma mudança relevante no jogo, registrar no diário (`04-Diario-do-Projeto/`),
   no `CHANGELOG.md` (topico do modulo) e, se for um bloco que o jogador
   percebe, em `10-Processos/` (template + recap). Bloco grande (varias
-  areas + decisoes): `11-Evolucao/`.
+  areas + decisoes): `11-Evolucao/`. Tela / arte / "ja fizemos isso na
+  UI?": `12-UI-e-Artes/`.
 
 ## Docs que valem ser lidos antes de tarefas não-triviais
 
-- `Home.md` — índice principal e ordem de leitura recomendada (comece aqui)
+- `Home.md` — capa do livro (comece aqui)
+- `00-Inicio/Livro-de-Evolucao.md` — as quatro partes (mundo / historia / regras / caminho)
+- `00-Inicio/Tres-Diretorios.md` — Cliente Full, source, vault
+- `00-Inicio/Onde-Escrever.md` — onde criar a proxima nota
+- `00-Inicio/Ritual-Documentacao.md` — sync diario/semanal quando o usuario pedir
+- `12-UI-e-Artes/Como-gerar-artes.md` — Antigravity + Gemini; o Cursor
+  entrega o prompt completo (`06-antigravity-brief.mdc` no repo do jogo)
 - `01-Projeto/Mapa-Geral-do-Projeto.md` — mapa mental didático da estrutura
 - `02-Arquitetura/Arquitetura.md` — planta do código
 - `02-Arquitetura/Protocolo-de-Rede.md` e `Glossario-Tecnico.md` — se tocar rede/Shared
@@ -80,6 +99,8 @@ planejamento** — **nunca** para compilar ou rodar o jogo.
 - `08-Ideias/Backlog-de-Ideias.md` e `08-Ideias/Melhorias-Sugeridas.md` — o que fazer a seguir
 - `10-Processos/index.md` — recap do que ja foi implementado no jogo
 - `11-Evolucao/index.md` — sessoes especiais (falhas, acertos, decisoes)
+- `12-UI-e-Artes/index.md` — mapa de artes (feito vs falta) e roadmap de
+  telas; ADR 0005 + 0006. Armazem feito: `02-Arquitetura/Armazem.md`
 - `09-Guias/` — como compilar/rodar/configurar banco; `VPS-e-SQL-Server.md` p/ produção
 - `Dados-SQL/README.md` — tabelas do banco exportadas (itens, drops, NPCs)
 - `07-Git-e-Workflow/Fluxo-de-Trabalho.md` — o ciclo padrão de uma tarefa

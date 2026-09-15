@@ -13,6 +13,40 @@ desde a última vez que joguei build".
 
 ### Codigo do jogo
 
+#### Armazem ImGui — 2026-09-15
+
+Janela de jogador no cromado 15 (titulo `armazem.png`), busca por nome,
+**3 paginas x 100 slots**. Logica continua em `cWAREHOUSE`. Sem transcode
+novo: `smTRANSCODE_WAREHOUSE` (`0x48470047`) com `wVersion=2` e
+`dwTemp[0]=pagina`. Save `.war` magica `WH02`; arquivo legado abre.
+Inventario permanece pedra.
+
+Recap: [[2026-09-15 - Recap Armazem ImGui paginas e busca]].
+Planta (fluxogramas): [[Armazem]]. ADR [[0006 - Armazem ImGui, paginas no mesmo transcode]].
+
+### Documentacao
+
+#### Fluxogramas de funcionalidade — 2026-09-15
+
+Mudanca grande de fluxo passa a ter mermaid em `02-Arquitetura/`.
+Convencao: [[Como-documentar-funcionalidade]]. Primeiro exemplo: o bau.
+
+#### UI / artes — 2026-09-13
+
+Hub `12-UI-e-Artes/` + livro de evolucao no vault (`Home.md`,
+`Livro-de-Evolucao.md`, `Onde-Escrever.md`, `Tres-Diretorios.md`).
+ADR 0005. Specs rascunho: distribuidor, armazem, organizar inventario.
+
+Artes PNG/TGA: **Antigravity + Gemini**, destino `C:\Cliente Full`.
+Regra Cursor `05-directories-and-art.mdc` + `06-antigravity-brief.mdc`
+(prompt completo ao refatorar janela: kit login/char select, pecas em
+arquivo vs cromado ImDrawList) + `01-consult-vault.mdc`.
+
+Nenhum C++ nesta entrada. Login PNG e titulos ImGui ja estavam no
+cliente; o vault passou a ser o livro (historia, regras, caminho).
+
+### Codigo do jogo
+
 #### Bloco HUD / loja / painel — 2026-09-08
 
 Relato completo: [[2026-09-08 - HUD ImGui lojas ranking mix e painel do servidor]].

@@ -166,13 +166,31 @@ simular: qual a chance de um jogador de nível X ver o item Y? Documentar
 a curva real antes de mexer. Depois, ajustar via tabela no banco (sem tocar
 em código).
 
-### 5.4 Client: consolidar os 3 sistemas de UI
+### 5.4 UI já especificada (hub `12-UI-e-Artes/`)
+
+Itens com spec rascunho — não começar pelo chat sem ler a spec:
+
+| Item | Dificuldade | Risco | Spec |
+|---|---|---|---|
+| Botão organizar inventário | 2/5 | médio (grade 2D) | [[2026-09-13-inventario-organizar]] |
+| Armazém ImGui + páginas (feito 2026-09-15) | — | — | recap [[2026-09-15 - Recap Armazem ImGui paginas e busca]] |
+| Distribuidor ImGui + correio 168h | 5/5 | alto (dupe, Shared) | [[2026-09-13-distribuidor-correio]] |
+
+Ordem sugerida no [[Roadmap-UI]]. Identidade ImGui vs pedra: ADR
+[[0005 - Distribuidor ImGui, armazem e inventario em pedra, artes no Cliente Full]]
+(distribuidor ImGui, inventário pedra) e ADR
+[[0006 - Armazem ImGui, paginas no mesmo transcode]] (bau saiu da pedra).
+
+### 5.5 Client: consolidar os 3 sistemas de UI
 **Dificuldade:** 5/5 · **Risco:** alto · longo prazo
 O cliente tem UI clássica (sin), UI nova (`Engine/UI`) e Dear ImGui em
 paralelo. Padrão: **não mexer nos sistemas que funcionam** — UI nova só em
 um dos sistemas, documentado em ADR qual é o "sistema oficial" pra novas
-features. Isso interrompe o espalhamento até o dia em que consolidar vira
-possível.
+features. Janela **nova** de jogador = ImGui (regra 15, ADR 0002). HUD de
+pedra só muda com pedido explícito; o pedido de 2026-09-13 (ADR 0005)
+migra o **distribuidor** e **não** o inventário. O armazém migrou em
+2026-09-15 (ADR 0006). Isso interrompe o
+espalhamento até o dia em que consolidar vira possível.
 
 ---
 
@@ -208,3 +226,7 @@ primeiro.** Ordem recomendada pra este arquivo:
 3. 4.4 (docs de comandos GM) — docs, ajuda no dia a dia
 4. 1.1 (hash de senha) — segurança alta, exige spec
 5. resto conforme o aprendizado e a vontade na hora
+
+UI visível (quando for a vez de telas, não de segurança/banco): 5.4
+primeiro o botão do inventário; páginas de armazém e correio só com
+a spec aberta no Cursor.

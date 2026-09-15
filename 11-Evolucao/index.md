@@ -20,6 +20,7 @@ tempo e voce quer um unico documento pra reler.
 ```
 ideia          -> 08-Ideias/
 planejar       -> 05-Specs/
+mapa de UI     -> 12-UI-e-Artes/
 fazer          -> codigo no Windows (Source-Priston)
 anotar o dia   -> 04-Diario-do-Projeto/
 resumo 30s     -> CHANGELOG.md
@@ -43,6 +44,10 @@ bloco inteiro  -> 11-Evolucao/   (esta pasta)
 | Data | Sessao | Escopo |
 |---|---|---|
 | 2026-09-08 | [[2026-09-08 - HUD ImGui lojas ranking mix e painel do servidor]] | cliente HUD ImGui, loja, SQL, painel Server.exe, regras Cursor |
+| 2026-09-15 | [[2026-09-15 - Armazem ImGui paginas e save]] | bau ImGui, 3 paginas, `.war` WH02, ADR 0006 |
+
+Artes e roadmap de telas (hub, nao sessao especial): `12-UI-e-Artes/index`
+(2026-09-13). ADR [[0005 - Distribuidor ImGui, armazem e inventario em pedra, artes no Cliente Full]].
 
 Sessoes anteriores (ainda no diario/processos, antes desta pasta existir):
 

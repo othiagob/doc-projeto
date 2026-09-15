@@ -38,6 +38,7 @@ Nao precisa para: typo, um comentario, um ajuste de uma linha.
 ```
 ideia     -> 08-Ideias/
 planejar  -> 05-Specs/          (antes de implementar)
+mapa de UI -> 12-UI-e-Artes/
 fazer     -> codigo no Windows
 anotar o dia -> 04-Diario-do-Projeto/
 resumo 30s   -> CHANGELOG.md
@@ -51,8 +52,13 @@ recap completa -> 10-Processos/   (esta pasta)
 Bloco maior (varias telas + SQL + Server.exe): pasta
 [[11-Evolucao/index|11-Evolucao]].
 
+Mapa de artes e roadmap (nao substitui os recaps abaixo):
+`12-UI-e-Artes/index`.
+
 | Data | Processo | Modulo | Status |
 |---|---|---|---|
 | 2026-09-06 | [[2026-09-06 - Recap Desafios ImGui]] | cliente / Quest | feito |
 | 2026-09-08 | [[2026-09-08 - Recap janelas ImGui de jogador]] | cliente / HUD | feito |
 | 2026-09-08 | [[2026-09-08 - Recap loja SQL e painel Server]] | servidor / loja | feito |
+| 2026-09-13 | [[2026-09-13 - Recap artes de login e titulos ImGui]] | cliente / artes | parcial |
+| 2026-09-15 | [[2026-09-15 - Recap Armazem ImGui paginas e busca]] | cliente / servidor / shared | feito |

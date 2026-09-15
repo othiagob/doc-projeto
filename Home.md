@@ -2,117 +2,124 @@
 tags: [moc, inicio]
 ---
 
-# Priston — Base de Documentação do Projeto (vault)
+# Source Priston — livro de evolucao
 
-> **Autor:** Thiago · **Uso:** pessoal (você + as IAs que você usar: Cursor,
-> Hermes, opencode). Este é o "caderno de estudos + documentação viva" do
-> projeto — estudar o código do jogo, documentar tudo, e servir de guia de
-> aprendizado de C++.
+Capa do vault. Toda vez que abrir o Obsidian, comece aqui.
 
-Este é o ponto de partida. Toda vez que abrir o Obsidian pra trabalhar no
-projeto, comece por aqui.
-
----
-
-## Comece por aqui (ordem de leitura)
-
-Se você está **começando agora**, leia nesta ordem. É uma trilha didática:
-primeiro a visão geral, depois o detalhe, depois como trabalhar.
-
-1. **[[Mapa-Geral-do-Projeto|Mapa Geral do Projeto]]** — entenda a estrutura
-   em uma leitura (linguagem simples, com exemplos reais). Comece aqui.
-2. **[[Sobre-o-Projeto]]** — o que é o projeto, seus objetivos e regras.
-3. **[[Trilha-de-Aprendizado]]** — o plano de estudos de C++ com o projeto.
-4. **[[Fluxo-de-Trabalho]]** — o ciclo padrão de uma tarefa, do início ao fim.
-5. **[[Como-Usar-Este-Vault]]** — convenções de pastas/tags/templates.
-
-Já trabalha no projeto e quer um atalho? Vá direto para o mapa de pastas
-abaixo ou use o índice por tema.
+Como o livro funciona: [[Livro-de-Evolucao]].
+Onde criar a proxima nota: [[Onde-Escrever]].
+Tres pastas no disco: [[Tres-Diretorios]].
+Ritual diario/semanal (voce pede no chat): [[Ritual-Documentacao]].
 
 ---
 
-## Mapa do vault (por tema)
+## Tres diretorios (Windows)
 
-- **Projeto / visão geral**
-  - [[Mapa-Geral-do-Projeto]] — mapa mental didático da estrutura
-  - [[Sobre-o-Projeto]] — o que é, objetivos, regras de ouro
-  - [[Trabalhando-com-Multiplas-IAs]] — como usar Cursor + Hermes + opencode
-- **Arquitetura** (referência técnica verificada)
-  - [[Arquitetura]] — planta baixa do código (client/server/shared)
-  - [[Protocolo-de-Rede]] — como cliente e servidor conversam (`smPacket.h`)
-  - [[Banco-de-Dados]] — SQL Server, bancos e conexão
-  - [[Glossario-Tecnico]] — termos, siglas, códigos de pacote
-  - [[SDD-Source-Priston]] — o documento de design completo (a "SPEC" do projeto)
-- **Dados do banco** (exportações da VPS, prontas pra usar no jogo)
-  - `Dados-SQL/README.md` — índice de tabelas + dicionário de colunas
-  - [[ListaItens_Drop]] — códigos de item pra `/drop`
-- **Aprendizado** (trilhas com exercícios guiados)
-  - [[Trilha-de-Aprendizado]] — o plano de estudos de C++ com o projeto
-  - [[Exercicios-Guiados]] — C++ progressivo: do nível 0 (básico) ao 5, com código real do jogo
-  - [[Exercicios-Seguros]] — primeiras tarefas de baixo risco no código
-  - [[Trilha-SQL-Server]] — SQL Server do zero, nas tabelas do projeto
-  - [[Exercicios-SQL-Guiados]] — SELECT a transações, passo a passo
-  - [[Registro-de-Aprendizado]] — seu log pessoal de estudos
-- **Processo e fluxo de trabalho**
-  - [[Processo-Spec-Driven]] — o ciclo oficial: ideia -> backlog -> spec -> Cursor -> teste -> registro
-  - [[Fluxo-de-Trabalho]] — o dia a dia de uma tarefa, do início ao fim
-  - [[Workflow-Git]] — branches, commits, tags
-  - [[CHANGELOG]] — o que já mudou, versão a versão
-  - `10-Processos/index` — recap do que **já foi implementado** (como era / o que mudou)
-  - `11-Evolucao/index` — **sessoes especiais**: relato completo de um bloco
-    (acertos, falhas revertidas, decisoes para o futuro)
-- **Specs e decisões** (antes/durante features)
-  - `05-Specs/TEMPLATE-Spec` — copie ao começar uma feature não-trivial
-  - `06-Decisoes/TEMPLATE-ADR` — registre o "porquê" das decisões
-  - [[0002 - Duas identidades visuais jogador vs ferramenta]]
-  - [[0003 - Catalogo SQL vs icone BMP no client]]
-  - [[0004 - Encoding ImGui UTF-8 vs HUD legado Windows-1252]]
-- **Diário do Projeto** (log cronológico de trabalho)
-  - `04-Diario-do-Projeto/TEMPLATE-Entrada-Diario`
-  - [[2026-09-08 - HUD ImGui loja ranking mix e painel]]
-- **Ideias e próximos passos**
-  - [[Melhorias-Sugeridas]] — melhorias concretas já viáveis, em ordem de prioridade
-  - [[Backlog-de-Ideias]] — backlog geral (status das ideias)
-- **Guias** (passo a passo prático)
-  - `09-Guias/index` — compilar, rodar, configurar banco
-  - [[VPS-e-SQL-Server]] — operar o banco em produção (backup, segurança)
-
----
-
-## Regra simples pra não se perder
-
-Se você não sabe onde algo deveria morar neste vault, pergunte: **"isso é
-sobre o código em si, sobre uma decisão, sobre um aprendizado pessoal, ou
-sobre o dia a dia de trabalho?"** — isso já aponta a pasta certa (Arquitetura,
-Decisões, Aprendizado, Diário). Ideia de mudança futura vai em
-[[Backlog-de-Ideias]].
-
-Quando em dúvida: crie a nota mesmo assim, no lugar que parecer mais certo,
-e mova depois. Um vault imperfeito e usado vale mais que um vault perfeito
-e vazio.
-
----
-
-## Estrutura de pastas
-
-| Pasta | O que tem |
+| Papel | Caminho |
 |---|---|
-| `00-Inicio/` | Como usar o vault, primeiros passos |
-| `01-Projeto/` | Visão geral, mapa geral, sobre o projeto, múltiplas IAs |
-| `02-Arquitetura/` | Arquitetura verificada, protocolo, banco, glossário (+ anexos) |
-| `03-Aprendizado-CPP/` | Trilha de estudos, exercícios guiados/seguros, registro |
-| `03-Aprendizado-SQL/` | Trilha e exercícios de SQL Server nas tabelas do projeto |
-| `04-Diario-do-Projeto/` | Log diário de trabalho |
-| `05-Specs/` | Specs de features + SDD + processo spec-driven |
-| `06-Decisoes/` | ADRs — decisões e o porquê |
-| `07-Git-e-Workflow/` | Fluxo de trabalho + convenções de git |
-| `08-Ideias/` | Backlog de ideias + melhorias sugeridas |
-| `09-Guias/` | Guias passo a passo (compilar, rodar, banco, VPS) |
-| `10-Processos/` | Recap de processos ja feitos (como era / o que implementei) |
-| `11-Evolucao/` | Sessoes especiais: evolucao completa de um bloco de trabalho |
-| `Dados-SQL/` | Exportações de tabelas do banco da VPS (itens, NPCs, drops...) |
-| `Arquivos do Jogo/` | Source e cliente full — só leitura, fora do git |
-| `AGENTS.md` | Contexto para IAs que trabalham neste vault no Linux |
+| Cliente do jogo | `C:\Cliente Full` |
+| Source code | `C:\Source Priston\Source Priston` |
+| Documentacao (este vault) | `C:\Users\carol\Desktop\doc-projeto` |
 
-> **Obs:** pastas arquivadas antigas foram removidas (arquivos obsoletos do
-> tempo em que o projeto era em dupla). Ver `CHANGELOG.md`.
+PNG/TGA novos: **Antigravity + Gemini**, gravar no Cliente Full.
+[[Como-gerar-artes]].
+
+---
+
+## Quatro portas
+
+| Porta | Pergunta | Abra |
+|---|---|---|
+| **Mundo** | Como o jogo e o codigo se partem? | [[Mapa-Geral-do-Projeto]], [[Arquitetura]], [[Tres-Diretorios]] |
+| **Historia** | O que ja aconteceu? | [[CHANGELOG]], `11-Evolucao/`, `10-Processos/` |
+| **Regras** | Por que e assim? | `06-Decisoes/`, [[Processo-Spec-Driven]] |
+| **Caminho** | O que falta? | [[Roadmap-UI]], [[Backlog-de-Ideias]], `05-Specs/` |
+
+---
+
+## Hoje no projeto
+
+**Ja no jogo (jogador ve)**
+
+- Janelas ImGui no cromado unico: Desafios, Loja Coins/Tempo, Ranking, Mix, Configuracoes, **Armazem**. Recap Desafios/loja: [[2026-09-08 - Recap janelas ImGui de jogador]]. Recap bau: [[2026-09-15 - Recap Armazem ImGui paginas e busca]]. Planta do bau: [[Armazem]].
+- Login de conta com PNG Fallen Tale (runtime = Cliente Full).
+- Painel do `Server.exe` (tema claro, ADR 0002).
+
+**Caminho de UI (specs, ainda nao e codigo)** — [[Roadmap-UI]]
+
+1. Organizar inventario — [[2026-09-13-inventario-organizar]]
+2. Distribuidor ImGui + correio 168h — [[2026-09-13-distribuidor-correio]]
+
+**Arte em andamento:** char select ainda TGA classico. Brief na source:
+`docs/prompt-antigravity-charselect-ui.md`.
+
+Mapa de artes: [[Inventario-de-Artes]].
+
+---
+
+## Historia recente
+
+- [[2026-09-15 - Armazem ImGui paginas e busca]] — diario
+- [[2026-09-15 - Recap Armazem ImGui paginas e busca]]
+- [[2026-09-15 - Armazem ImGui paginas e save]] — sessao
+- [[2026-09-13 - Artes visuais e roadmap UI]] — diario
+- [[2026-09-13 - Recap artes de login e titulos ImGui]]
+- [[2026-09-08 - HUD ImGui lojas ranking mix e painel do servidor]] — sessao
+- ADRs: [[0002 - Duas identidades visuais jogador vs ferramenta]],
+  [[0003 - Catalogo SQL vs icone BMP no client]],
+  [[0004 - Encoding ImGui UTF-8 vs HUD legado Windows-1252]],
+  [[0005 - Distribuidor ImGui, armazem e inventario em pedra, artes no Cliente Full]],
+  [[0006 - Armazem ImGui, paginas no mesmo transcode]]
+
+---
+
+## Mundo (referencia)
+
+- [[Sobre-o-Projeto]] — o que e, regras de ouro
+- [[Arquitetura]] · [[Armazem]] · [[Protocolo-de-Rede]] · [[Banco-de-Dados]] · [[Glossario-Tecnico]]
+- [[SDD-Source-Priston]] — design completo
+- `Dados-SQL/README.md` · [[ListaItens_Drop]]
+- Guias: `09-Guias/index` · [[VPS-e-SQL-Server]]
+- IAs: [[Trabalhando-com-Multiplas-IAs]] (Cursor, Hermes, opencode, **Antigravity/Gemini** nas artes)
+
+## Caminho e processo
+
+- [[Fluxo-de-Trabalho]] · [[Processo-Spec-Driven]] · [[Workflow-Git]]
+- [[Melhorias-Sugeridas]] · [[Backlog-de-Ideias]]
+- Specs de UI: armazem **feita**; faltam organizar inventario e distribuidor (links na porta Caminho)
+
+## Aprendizado (caderno ao lado)
+
+- [[Trilha-de-Aprendizado]] · [[Exercicios-Guiados]] · [[Exercicios-Seguros]]
+- [[Trilha-SQL-Server]] · [[Exercicios-SQL-Guiados]]
+- [[Registro-de-Aprendizado]]
+
+Primeira leitura (se esta comecando): Mapa Geral -> Sobre o Projeto ->
+Trilha -> Fluxo -> [[Como-Usar-Este-Vault]].
+
+---
+
+## Pastas = papel
+
+Numeracao so ordena a barra do Obsidian.
+
+| Pasta | Papel no livro |
+|---|---|
+| `00-Inicio/` | Capa, tres diretorios, onde escrever, ritual de sync |
+| `01-Projeto/` | Mundo: visao, mapa, IAs |
+| `02-Arquitetura/` | Mundo: planta verificada no codigo |
+| `03-Aprendizado-*` | Caderno de estudo (C++ / SQL) |
+| `04-Diario-do-Projeto/` | Historia curta (o dia) |
+| `05-Specs/` | Caminho: o que vamos implementar |
+| `06-Decisoes/` | Regras: o porquê |
+| `07-Git-e-Workflow/` | Como a tarefa anda + git |
+| `08-Ideias/` | Caminho: backlog |
+| `09-Guias/` | Mundo: como rodar a maquina |
+| `10-Processos/` | Historia: recap que o jogador percebe |
+| `11-Evolucao/` | Historia: bloco inteiro (falhas incluidas) |
+| `12-UI-e-Artes/` | Caminho + mapa de artes |
+| `Dados-SQL/` | Mundo: tabelas exportadas |
+| `Arquivos do Jogo/` | Linux: copia de leitura (fora do git) |
+
+Quando em duvida: [[Onde-Escrever]]. Vault imperfeito e usado vale mais
+que vault perfeito e vazio.

@@ -103,8 +103,26 @@ aprendizado — ver [[Trilha-de-Aprendizado]] Fase 2.
 - `smTRANSCODE_ENCODE_PACKET*` sugere que existe camada de codificação de
  pacote — detalhes/uso exato: ver análise do servidor em [[Arquitetura]].
 
+## Armazem (2026-09-15)
+
+Nenhum transcode novo. Cada pagina de 100 slots viaja no pacote que ja
+existia. Fluxogramas: [[Armazem]].
+
+| Codigo | Valor | Papel |
+|---|---|---|
+| `smTRANSCODE_OPEN_WAREHOUSE` | `0x48470048` | NPC pede para abrir; client encaminha ao DataServer |
+| `smTRANSCODE_WAREHOUSE` | `0x48470047` | Itens. `wVersion[0]=2`, `dwTemp[0]=pagina` (0..2) |
+
+`TRANS_WAREHOUSE.Data` continua cabendo **100** `sITEM` (socket 8192).
+Tres viagens = 300 slots. Save `.war` com magica `WH02`; arquivo legado
+(1 pagina) ainda abre. `rsPLAYINFO.WareHouseItemInfo` tem **300**
+entradas. Ouro so na pagina 0.
+
+Caravana (`TRANS_CARAVAN`) nao entrou nesse desenho.
+
 ## Ver também
 
+- [[Armazem]] — planta e mermaid do bau
 - [[Glossario-Tecnico]] — termos do protocolo
 - [[SDD-Source-Priston]] — documento de design completo
 - [[Como-Rodar]] — porta 8185 na prática
