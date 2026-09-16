@@ -59,7 +59,8 @@ players, eventos, arquivos, log, acoes); X minimiza; DirectX opcional.
 
 ## O que ficou de fora
 
-Mapeamento de todas as tabelas. Apagar `AdminChrome.h`.
+Mapeamento de todas as tabelas. `AdminChrome.h` foi apagado em 2026-09-16
+(recap [[2026-09-16 - Recap painel Server.exe splash e Segoe]]).
 
 ## Aprendizado
 

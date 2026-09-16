@@ -56,7 +56,7 @@ tags: [arquitetura, glossario]
 | **Montarias** | cliente | Montarias (modelos, animações) |
 | **Castelo Sagrado** | servidor | Siege com mercenários (20/lado), impostos (`Imposto`), ranking Sod |
 | **SOD** | servidor + cliente | Sistema "SoD" (origem coreana) — ranking próprio (`SodRanking`, `sinSOD2.cpp`) |
-| **PostBox** | servidor | Correio do jogo — sem pasta própria; usa `Data/PostBox/<usercode>/<id>.dat` |
+| **PostBox** | cliente + servidor | Correio (NPC distribuidor). Janela ImGui `PostBoxWindow`. Arquivo `Data/PostBox/<usercode>/<id>.dat` magica `PB02`. Planta: [[Distribuidor]] |
 | **PCBang / LowLevelPet** | cliente | Pets (sistemas de PC Bang e pet de nível baixo) |
 | **HoOpening / HoLogin** | cliente | Telas de abertura e login clássicas |
 

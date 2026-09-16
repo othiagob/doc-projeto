@@ -90,10 +90,12 @@ transcode. Spec: [[2026-09-13-armazem-paginas-busca]]. Recap:
 ADR: [[0006 - Armazem ImGui, paginas no mesmo transcode]].
 
 ### Distribuidor ImGui + correio 168h
-**Área:** cliente + servidor + Shared · **Dificuldade:** 5/5 · **Status:** spec
-Lista + detalhe estilo Desafios. Jogador envia item real para outro
-personagem; destinatário tem 168h para aceitar.
-Spec: [[2026-09-13-distribuidor-correio]].
+**Área:** cliente + servidor + Shared · **Dificuldade:** 5/5
+**Status:** feito (codigo 2026-09-15, commit source 2026-09-16)
+Janela ImGui (`PostBoxWindow`), lista + envio P2P, TTL 168h, save `PB02`.
+Spec: [[2026-09-13-distribuidor-correio]]. Recap:
+[[2026-09-15 - Recap Distribuidor ImGui e correio 168h]]. Planta:
+[[Distribuidor]]. ADR: [[0007 - Distribuidor ImGui, PB02 e transcodes novos]].
 
 ### Char select Fallen Tale (TGA)
 **Área:** arte no Cliente Full (`StartImage\login\`) · **Dificuldade:** arte

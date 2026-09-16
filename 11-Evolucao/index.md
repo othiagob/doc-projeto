@@ -45,6 +45,7 @@ bloco inteiro  -> 11-Evolucao/   (esta pasta)
 |---|---|---|
 | 2026-09-08 | [[2026-09-08 - HUD ImGui lojas ranking mix e painel do servidor]] | cliente HUD ImGui, loja, SQL, painel Server.exe, regras Cursor |
 | 2026-09-15 | [[2026-09-15 - Armazem ImGui paginas e save]] | bau ImGui, 3 paginas, `.war` WH02, ADR 0006 |
+| 2026-09-16 | [[2026-09-16 - Distribuidor ImGui, correio e painel Server]] | PostBox PB02, transcodes 0x48478A81-85, splash Server.exe, ADR 0007 |
 
 Artes e roadmap de telas (hub, nao sessao especial): `12-UI-e-Artes/index`
 (2026-09-13). ADR [[0005 - Distribuidor ImGui, armazem e inventario em pedra, artes no Cliente Full]].

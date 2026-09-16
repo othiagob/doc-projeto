@@ -23,7 +23,7 @@ C:\Source Priston\Source Priston\
 ```
 
 - **Cliente:** C++17 · janela Windows · render Direct3D9 via engine Delta3D
-- **Servidor:** C++14 · console (sem janela gráfica) · SQL Server via ODBC
+- **Servidor:** C++14 · janela Win32 + ImGui (`ServerPanel`, tema claro) · SQL Server via ODBC
 - **Saída do build:** `C:\Source Priston\Game.exe` e `Server.exe` (fora do repo)
 
 ### Regra de ouro
@@ -72,7 +72,7 @@ Solução: `Game.sln` -> projeto `src/game.vcxproj`. Entry point real:
 | `ActionGame.cpp` | Movimento por teclado + dash + auto-alvo |
 | `playsub.cpp` / `playmain.cpp` | HUD clássico (`DrawGameState`) / loop in-game + carregar mapas |
 | `GameCore.cpp` | **`CGameCore`** — gerenciador das janelas modernas (chat, party, minimapa, tooltips) |
-| `HUD/` | Overlays novos: minimapa, dano, alvo, ranking, roleta, SOD, **armazem ImGui** (`WarehouseWindow.cpp`). Logica do bau continua em `sinbaram/sinTrade.cpp`. Planta: [[Armazem]] |
+| `HUD/` | Overlays novos: minimapa, dano, alvo, ranking, roleta, SOD, **armazem ImGui** (`WarehouseWindow.cpp`), **distribuidor ImGui** (`PostBoxWindow.cpp`). Logica do bau continua em `sinbaram/sinTrade.cpp`. Plantas: [[Armazem]] · [[Distribuidor]] |
 | `Login/` | Tela de login nova (checkbox "Lembrar ID", seleção de mundo "Draco Priston") |
 | `Chat/` | Chat novo (janela moderna) |
 | `Party/` | Party/raid |
@@ -105,8 +105,10 @@ Solução: `Game.sln` -> projeto `src/game.vcxproj`. Entry point real:
  (login novo, chat, quests). Gerenciadas pelo `CGameCore`.
 3. **ImGui** — overlays/alertas dos sistemas novos (HUD/InstancesFlag,
  Roleta, RankingWindow, SodWindow...), a janela de **Desafios**
- (`Quest/QuestWindow.cpp`) e o **Armazem** (`HUD/WarehouseWindow.cpp`).
+ (`Quest/QuestWindow.cpp`), o **Armazem** (`HUD/WarehouseWindow.cpp`)
+ e o **Distribuidor** (`HUD/PostBoxWindow.cpp`).
  A logica de item do bau continua no classico `cWAREHOUSE` — ver [[Armazem]].
+ A caixa do correio continua arquivo por conta — ver [[Distribuidor]].
 
 > Ao editar UI: **descubra primeiro qual sistema a tela usa** (sin, Engine/UI
 > ou ImGui) antes de mexer — os três coexistem.
@@ -122,10 +124,12 @@ funções e NProtect. Em runtime: `LockSpeedProtect` + `_PACKET_PASS_XOR`.
 
 ## 3. SERVIDOR — `SrcServer/`
 
-Solução: `server.sln` -> projeto `src/server.vcxproj`. **Console application**
-(sem janela gráfica). Idioma: core original em coreano (CP949) + camada de
-modificações em português. ~260 arquivos — mas **`SrcServer/OnSever.cpp`
-tem 34.764 linhas (1 MB)** e concentra quase toda a lógica do jogo.
+Solução: `server.sln` -> projeto `src/server.vcxproj`. Janela Win32 +
+painel ImGui (`HUD/ServerPanel.cpp`, tema `ToolTheme.h`, ADR 0002).
+A logica do jogo continua no core. Idioma: core original em coreano
+(CP949) + camada de modificações em português. ~260 arquivos — mas
+**`SrcServer/OnSever.cpp` tem 34.764 linhas (1 MB)** e concentra quase
+toda a lógica do jogo.
 
 ### Ciclo de vida
 
@@ -157,6 +161,7 @@ tem 34.764 linhas (1 MB)** e concentra quase toda a lógica do jogo.
 | `Quest/` | Quests vindas do banco | `Quest.cpp/.h` |
 | `Shop/` | Loja premium em jogo (+ por tempo) | `NewShop.cpp`, `NewShopTime.cpp` |
 | `GM/` | GMs do banco + **comandos `/...` no chat** | `GM.cpp`, `ServerCommand.cpp` |
+| `HUD/` | Painel ImGui do `Server.exe` (claro, splash de boot) | `ServerPanel.cpp`, `ToolTheme.h` |
 | `CLI/` | Console do servidor (`exit;`, `kick <nome>;`...) | `CLI.cpp/.h` |
 | `Security/` | Firewall do Windows + validação de entrada | `Firewall.cpp`, `Joi.hpp` |
 | `Ranking/` | Rankings geral/PvP/castelo | `TopRanking.cpp`, `PVPRanking.cpp`, `SodRanking.cpp` |
@@ -295,10 +300,12 @@ a planta detalhada mora aqui — nao so no recap. Convencao:
 | Funcionalidade | Nota | O que o diagrama mostra |
 |---|---|---|
 | Armazem (3 paginas, ImGui) | [[Armazem]] | Camadas, abrir, gravar, memoria vs `.war` |
+| Distribuidor (correio 168h, ImGui) | [[Distribuidor]] | Camadas, OPEN/LIST/CLAIM/SEND, save `PB02` |
 
 ## 9. Ver também
 
 - [[Protocolo-de-Rede]] · [[Banco-de-Dados]] · [[Glossario-Tecnico]] · [[SDD-Source-Priston]]
 - [[Armazem]] — bau (2026-09-15)
+- [[Distribuidor]] — correio (2026-09-15)
 - Guias: [[Como-Compilar]] · [[Como-Rodar]]
 - Anexos: `anexos/Relatorio-Analise-Cliente.md` · `anexos/Relatorio-Analise-Servidor.md` · `anexos/Relatorio-Analise-Build.md`

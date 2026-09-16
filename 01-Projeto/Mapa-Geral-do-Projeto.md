@@ -27,6 +27,10 @@ Pense num restaurante com **cozinha** e **salão**:
 O salão **nunca decide sozinho** — ele manda o pedido, a cozinha decide e
 responde. Isso é a arquitetura **cliente-servidor**.
 
+No disco, sao **tres pastas** (nao misturar): cliente do jogo
+`C:\Cliente Full`, codigo `C:\Source Priston\Source Priston`, este livro
+`C:\Users\carol\Desktop\doc-projeto`. Detalhe: [[Tres-Diretorios]].
+
 ---
 
 ## As 4 pastas de cima

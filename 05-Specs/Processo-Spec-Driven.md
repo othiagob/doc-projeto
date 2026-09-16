@@ -47,6 +47,8 @@ Qualquer lugar serve, mas o destino final é sempre o backlog.
 ### 2. Backlog
 
 `08-Ideias/Backlog-de-Ideias.md` — tudo em um lugar só, com status.
+Telas e artes (feito vs falta) também no mapa `12-UI-e-Artes/` — não
+comece uma janela pelo chat se já existir spec lá.
 Antes de começar, a ideia precisa ter **status** claro lá:
 
 | Status | Significado |
@@ -68,9 +70,13 @@ não está pronta** — é sinal de que o escopo está mal definido.
 
 Antes de o Cursor tocar em qualquer arquivo:
 
-> "Leia essa spec e `02-Arquitetura/Arquitetura.md`. Liste **todos** os
-> arquivos que você pretende tocar, em ordem, antes de editar qualquer um.
+> "Leia essa spec, o CHANGELOG/recap/evolucao do assunto, e
+> `02-Arquitetura/Arquitetura.md`. Liste **todos** os arquivos que você
+> pretende tocar, em ordem, antes de editar qualquer um.
 > Se algum arquivo fora da lista for necessário, peça antes."
+
+O Cursor deve consultar o livro sozinho (regra `01-consult-vault.mdc`):
+ja fizemos isso? o que foi revertido?
 
 Se a lista vier com arquivo de `Shared/`, confira os pontos de impacto nos
 dois lados (`SrcGame` + `SrcServer`) **você mesmo**, sem delegar.

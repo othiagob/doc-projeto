@@ -1,51 +1,52 @@
 # Priston — Documentação do Projeto
 
-Este repositório guarda a **documentação viva** do projeto Source Priston
-(um servidor privado de Priston Tale em C++): arquitetura, protocolo de
-rede, banco de dados, decisões, diário, aprendizado de C++ e backlog de
-ideias. É, acima de tudo, o **caderno de estudos** do autor.
+Este repositório é o **livro de evolução** do Source Priston (servidor
+privado de Priston Tale em C++): história do que já foi feito, regras
+que não queremos esquecer, e o caminho que vamos seguir. Também é o
+caderno de estudos de C++ e SQL do autor.
 
-> **Importante:** este repositório é **só a documentação**. O código do jogo
-> fica em outro repositório (`Source-Priston`), com `SrcGame/` (cliente),
-> `SrcServer/` (servidor) e `Shared/` (código compartilhado).
+> **Só documentação.** O código fica em `C:\Source Priston\Source Priston`
+> (`SrcGame/`, `SrcServer/`, `Shared/`). O jogo lê artes em
+> `C:\Cliente Full`. Este vault: `C:\Users\carol\Desktop\doc-projeto`.
 
 ## Começando
 
-A forma de usar esta documentação é abri-la no **Obsidian** (como vault) e
-começar pelo índice principal:
+Abra no **Obsidian** como vault e comece pela capa:
 
-- **`Home.md`** — o ponto de partida e a ordem de leitura recomendada.
+- **`Home.md`** — o que já está no jogo, o que falta, quatro portas
+- **`00-Inicio/Livro-de-Evolucao.md`** — como o livro se parte
+- **`00-Inicio/Onde-Escrever.md`** — onde criar a próxima nota
+- **`00-Inicio/Tres-Diretorios.md`** — as três pastas no Windows
 
-Se preferir navegar aqui mesmo no GitHub, o índice por tema também está no
-`Home.md`.
+PNG/TGA de UI: Antigravity + Gemini, gravar no Cliente Full
+(`12-UI-e-Artes/Como-gerar-artes.md`).
 
-## Estrutura
+## Estrutura (pasta = papel)
 
-| Pasta | O que tem |
+| Pasta | Papel |
 |---|---|
-| `00-Inicio/` | Como usar o vault, primeiros passos |
-| `01-Projeto/` | Visão geral, mapa geral do projeto, múltiplas IAs |
-| `02-Arquitetura/` | Arquitetura verificada, protocolo, banco, glossário |
-| `03-Aprendizado-CPP/` | Trilha de estudos C++ e exercícios guiados |
-| `03-Aprendizado-SQL/` | Trilha de SQL Server e exercícios nas tabelas reais |
-| `04-Diario-do-Projeto/` | Log diário de trabalho |
-| `05-Specs/` | Specs de features + SDD + processo spec-driven |
-| `06-Decisoes/` | ADRs — decisões e o porquê |
-| `07-Git-e-Workflow/` | Fluxo de trabalho + convenções de git |
-| `08-Ideias/` | Backlog de ideias + melhorias sugeridas |
-| `09-Guias/` | Guias passo a passo (compilar, rodar, banco, VPS) |
-| `10-Processos/` | Recap de processos ja feitos (como era / o que implementei) |
-| `11-Evolucao/` | Sessoes especiais (relato completo: falhas, acertos, decisoes) |
-| `Dados-SQL/` | Exportações de tabelas do banco (itens, drops, NPCs...) |
-| `Arquivos do Jogo/` | Source e cliente full (só leitura; `.gitignore`, fora do repo) |
+| `00-Inicio/` | Capa, três diretórios, onde escrever, ritual de sync |
+| `01-Projeto/` | Mundo: visão, mapa, IAs |
+| `02-Arquitetura/` | Mundo: planta verificada |
+| `03-Aprendizado-*` | Caderno de estudo |
+| `04-Diario-do-Projeto/` | História do dia |
+| `05-Specs/` | Caminho (ainda não é código) |
+| `06-Decisoes/` | Regras (o porquê) |
+| `07-Git-e-Workflow/` | Ciclo da tarefa + git |
+| `08-Ideias/` | Caminho: backlog |
+| `09-Guias/` | Como rodar a máquina |
+| `10-Processos/` | História: recap que o jogador percebe |
+| `11-Evolucao/` | História: bloco inteiro |
+| `12-UI-e-Artes/` | Mapa de artes + roadmap de telas |
+| `Dados-SQL/` | Tabelas exportadas |
+| `Arquivos do Jogo/` | Linux, leitura, fora do git |
 
 ## Convenções
 
-- Documentação sem emojis nem decoração colorida — texto puro + ASCII.
-- O arquivo `AGENTS.md` na raiz é o contexto que IAs carregam
-  automaticamente ao trabalhar neste vault no Linux.
-- O fluxo de trabalho e as convenções de git estão em `07-Git-e-Workflow/`.
+- Sem emojis. Texto para reler daqui a meses.
+- `AGENTS.md` = contexto para IAs no Linux.
+- Vault manda; `.cursor/rules/` no repo do jogo acompanha.
 
 ## Histórico
 
-Veja o `CHANGELOG.md` para o que mudou na documentação.
+`CHANGELOG.md`.

@@ -62,3 +62,5 @@ Mapa de artes e roadmap (nao substitui os recaps abaixo):
 | 2026-09-08 | [[2026-09-08 - Recap loja SQL e painel Server]] | servidor / loja | feito |
 | 2026-09-13 | [[2026-09-13 - Recap artes de login e titulos ImGui]] | cliente / artes | parcial |
 | 2026-09-15 | [[2026-09-15 - Recap Armazem ImGui paginas e busca]] | cliente / servidor / shared | feito |
+| 2026-09-15 | [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]] | cliente / servidor / shared | feito |
+| 2026-09-16 | [[2026-09-16 - Recap painel Server.exe splash e Segoe]] | servidor / ferramenta | feito |

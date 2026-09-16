@@ -174,7 +174,7 @@ Itens com spec rascunho — não começar pelo chat sem ler a spec:
 |---|---|---|---|
 | Botão organizar inventário | 2/5 | médio (grade 2D) | [[2026-09-13-inventario-organizar]] |
 | Armazém ImGui + páginas (feito 2026-09-15) | — | — | recap [[2026-09-15 - Recap Armazem ImGui paginas e busca]] |
-| Distribuidor ImGui + correio 168h | 5/5 | alto (dupe, Shared) | [[2026-09-13-distribuidor-correio]] |
+| Distribuidor ImGui + correio 168h (feito 2026-09-15) | — | — | recap [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]] |
 
 Ordem sugerida no [[Roadmap-UI]]. Identidade ImGui vs pedra: ADR
 [[0005 - Distribuidor ImGui, armazem e inventario em pedra, artes no Cliente Full]]

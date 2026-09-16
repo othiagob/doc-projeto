@@ -41,14 +41,13 @@ PNG/TGA novos: **Antigravity + Gemini**, gravar no Cliente Full.
 
 **Ja no jogo (jogador ve)**
 
-- Janelas ImGui no cromado unico: Desafios, Loja Coins/Tempo, Ranking, Mix, Configuracoes, **Armazem**. Recap Desafios/loja: [[2026-09-08 - Recap janelas ImGui de jogador]]. Recap bau: [[2026-09-15 - Recap Armazem ImGui paginas e busca]]. Planta do bau: [[Armazem]].
+- Janelas ImGui no cromado unico: Desafios, Loja Coins/Tempo, Ranking, Mix, Configuracoes, **Armazem**, **Distribuidor**. Recap Desafios/loja: [[2026-09-08 - Recap janelas ImGui de jogador]]. Recap bau: [[2026-09-15 - Recap Armazem ImGui paginas e busca]]. Recap correio: [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]]. Plantas: [[Armazem]] · [[Distribuidor]].
 - Login de conta com PNG Fallen Tale (runtime = Cliente Full).
-- Painel do `Server.exe` (tema claro, ADR 0002).
+- Painel do `Server.exe` (tema claro, splash de boot, ADR 0002). Recap: [[2026-09-16 - Recap painel Server.exe splash e Segoe]].
 
 **Caminho de UI (specs, ainda nao e codigo)** — [[Roadmap-UI]]
 
 1. Organizar inventario — [[2026-09-13-inventario-organizar]]
-2. Distribuidor ImGui + correio 168h — [[2026-09-13-distribuidor-correio]]
 
 **Arte em andamento:** char select ainda TGA classico. Brief na source:
 `docs/prompt-antigravity-charselect-ui.md`.
@@ -59,6 +58,10 @@ Mapa de artes: [[Inventario-de-Artes]].
 
 ## Historia recente
 
+- [[2026-09-16 - Ritual vault, Distribuidor no git e painel Server]] — diario
+- [[2026-09-16 - Recap painel Server.exe splash e Segoe]]
+- [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]]
+- [[2026-09-16 - Distribuidor ImGui, correio e painel Server]] — sessao
 - [[2026-09-15 - Armazem ImGui paginas e busca]] — diario
 - [[2026-09-15 - Recap Armazem ImGui paginas e busca]]
 - [[2026-09-15 - Armazem ImGui paginas e save]] — sessao
@@ -69,14 +72,15 @@ Mapa de artes: [[Inventario-de-Artes]].
   [[0003 - Catalogo SQL vs icone BMP no client]],
   [[0004 - Encoding ImGui UTF-8 vs HUD legado Windows-1252]],
   [[0005 - Distribuidor ImGui, armazem e inventario em pedra, artes no Cliente Full]],
-  [[0006 - Armazem ImGui, paginas no mesmo transcode]]
+  [[0006 - Armazem ImGui, paginas no mesmo transcode]],
+  [[0007 - Distribuidor ImGui, PB02 e transcodes novos]]
 
 ---
 
 ## Mundo (referencia)
 
 - [[Sobre-o-Projeto]] — o que e, regras de ouro
-- [[Arquitetura]] · [[Armazem]] · [[Protocolo-de-Rede]] · [[Banco-de-Dados]] · [[Glossario-Tecnico]]
+- [[Arquitetura]] · [[Armazem]] · [[Distribuidor]] · [[Protocolo-de-Rede]] · [[Banco-de-Dados]] · [[Glossario-Tecnico]]
 - [[SDD-Source-Priston]] — design completo
 - `Dados-SQL/README.md` · [[ListaItens_Drop]]
 - Guias: `09-Guias/index` · [[VPS-e-SQL-Server]]
@@ -86,7 +90,7 @@ Mapa de artes: [[Inventario-de-Artes]].
 
 - [[Fluxo-de-Trabalho]] · [[Processo-Spec-Driven]] · [[Workflow-Git]]
 - [[Melhorias-Sugeridas]] · [[Backlog-de-Ideias]]
-- Specs de UI: armazem **feita**; faltam organizar inventario e distribuidor (links na porta Caminho)
+- Specs de UI: armazem e distribuidor **feitas**; falta organizar inventario (link na porta Caminho)
 
 ## Aprendizado (caderno ao lado)
 

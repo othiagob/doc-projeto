@@ -5,12 +5,10 @@ tags: [projeto, ia]
 # Trabalhando com múltiplas IAs (Cursor + Hermes + opencode)
 
 Você vai usar mais de uma IA: o **Cursor** (edição de código com o
-repositório indexado, no Windows), o **Hermes** (análises, documentação,
-diário) e o **opencode** (mesma coisa que o Hermes, mas rodando no Linux —
-análise, documentação, planejamento e git). Eventualmente outras (pesquisa,
-revisão). Isso é ótimo, mas cada IA "esquece" tudo entre sessões e nenhuma
-lê a mente da outra — então **este vault é o que garante que todas
-trabalhem com o mesmo entendimento do projeto.**
+repositório indexado, no Windows), o **Antigravity** com **Gemini**
+(artes PNG/TGA), o **Hermes** (análises, documentação, diário) e o
+**opencode** (mesma coisa que o Hermes, no Linux). Cada IA "esquece"
+entre sessões — **este vault é o livro que todas leem.**
 
 ## O problema que isso evita
 
@@ -26,19 +24,26 @@ de compilar ou no meio de um teste.
 dê a ela o mesmo contexto:**
 1. Link ou cole o conteúdo de [[Arquitetura]]
 2. Se a tarefa tocar `Shared/`: cole também [[Glossario-Tecnico]] e
- [[Protocolo-de-Rede]]
-3. Se for uma feature maior: escreva a spec primeiro (`05-Specs/`) e cole a
- spec inteira
+   [[Protocolo-de-Rede]]
+3. Se for uma feature maior: escreva a spec primeiro (`05-Specs/`) e cole
+   a spec inteira
+4. Se for UI: `12-UI-e-Artes/` + recaps. O Cursor no Windows tambem e
+   obrigado a consultar o vault sozinho (`.cursor/rules/01-consult-vault.mdc`)
+   antes de criar/ajustar/refatorar.
 
 Isso vale tanto pro Cursor (que já carrega `.cursor/rules/` sozinho) quanto
 pra qualquer outra IA que não tenha esse mecanismo automático — nesse caso,
 **colar manualmente é o substituto das rules**.
+
+Fim de dia ou de semana: peca no chat o [[Ritual-Documentacao]] para o
+Cursor (ou o Hermes) alinhar o livro ao codigo.
 
 ## Divisão de papel sugerida entre ferramentas
 
 | Ferramenta | Bom para |
 |---|---|
 | **Cursor** | edição direta de código no repositório (Windows), com contexto automático via `.cursor/rules/` e indexação do projeto; é onde o código é aplicado e compilado |
+| **Antigravity (Gemini)** | **artes visuais** (PNG, TGA de UI). Gravacao no Cliente Full. O Cursor nao gera esses arquivos. Ver `12-UI-e-Artes/Como-gerar-artes.md` |
 | **Hermes** | análise do código em profundidade, documentação, diário, backlog de ideias, estudos de C++ |
 | **opencode** (Linux) | o mesmo papel do Hermes, mas na sua máquina Linux: análise, documentação, planejamento de specs e git. Carrega o contexto via `AGENTS.md` na raiz do vault |
 | **Outras IAs de chat** | pesquisa, explicação de conceitos, "segunda opinião" sobre decisão de arquitetura |

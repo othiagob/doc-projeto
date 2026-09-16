@@ -13,6 +13,35 @@ desde a última vez que joguei build".
 
 ### Codigo do jogo
 
+#### Painel Server.exe (splash + Segoe) — 2026-09-16
+
+Splash a ecrã inteiro enquanto SQL/mapas sobem. Fonte Segoe UI. Sidebar
+agrupada (Monitorar / Operar), cards com filete, X nativo minimiza.
+`AdminChrome.h` apagado (leftover do ouro no servidor). Sem transcode.
+
+Recap: [[2026-09-16 - Recap painel Server.exe splash e Segoe]].
+Regra: `16-desktop-tools.mdc`. ADR [[0002 - Duas identidades visuais jogador vs ferramenta]].
+
+#### Armazem: clique direito deposita — 2026-09-16
+
+Com o bau aberto, clique direito num item da bag de pedra tenta guardar
+(peso, espaço, poção). Sem transcode novo.
+
+Recap bau: [[2026-09-15 - Recap Armazem ImGui paginas e busca]].
+
+#### Distribuidor ImGui + correio 168h — 2026-09-15
+
+Janela `PostBoxWindow` (lista + detalhe, cromado 15). Titulo
+`distribuidor.png` (400x64) e moldura `frame.png` (760x540) — excecao
+pontual, nao copiar para outras janelas. Transcodes novos
+`POSTBOX_OPEN/LIST/CLAIM/REFUSE/SEND` (`0x48478A81`–`0x48478A85`).
+`ITEM_EXPRESS` (`0x48478A80`) so entrega o item claimado. Save `PB02`,
+writer unico, TTL 168h, envio P2P com blob `sITEMINFO`. Inventario
+continua pedra. Primeiro commit na source em 2026-09-16.
+
+Recap: [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]].
+Planta: [[Distribuidor]]. ADR [[0007 - Distribuidor ImGui, PB02 e transcodes novos]].
+
 #### Armazem ImGui — 2026-09-15
 
 Janela de jogador no cromado 15 (titulo `armazem.png`), busca por nome,
@@ -25,6 +54,13 @@ Recap: [[2026-09-15 - Recap Armazem ImGui paginas e busca]].
 Planta (fluxogramas): [[Armazem]]. ADR [[0006 - Armazem ImGui, paginas no mesmo transcode]].
 
 ### Documentacao
+
+#### Ritual 2026-09-16 (capa, protocolo, indices)
+
+Capa [[Home]] passou o Distribuidor de "spec" para "ja no jogo".
+Protocolo ganhou a tabela `POSTBOX_*`. Recap e planta que estavam so
+no disco do vault entram no git. Spec [[2026-09-13-distribuidor-correio]]
+continua `feita`.
 
 #### Fluxogramas de funcionalidade — 2026-09-15
 

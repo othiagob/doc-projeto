@@ -23,8 +23,9 @@ protocolo primeiro.
 2. **Armazem** — **feito** (2026-09-15). ImGui + 3 paginas + busca.
    Recap: [[2026-09-15 - Recap Armazem ImGui paginas e busca]]. Planta:
    [[Armazem]]. Spec: [[2026-09-13-armazem-paginas-busca]].
-3. **Distribuidor ImGui + correio 168h** — maior. `Shared/`, anti-dupe,
-   TTL. Spec: [[2026-09-13-distribuidor-correio]].
+3. **Distribuidor ImGui + correio 168h** — **feito** (2026-09-15).
+   Recap: [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]].
+   Planta: [[Distribuidor]]. Spec: [[2026-09-13-distribuidor-correio]].
 
 Paralelo (arte, nao C++): char select Fallen Tale — trocar TGA no
 Cliente Full. Ver [[Inventario-de-Artes]].
@@ -40,9 +41,9 @@ Cliente Full. Ver [[Inventario-de-Artes]].
 | Armazem busca por nome | ImGui | nao (filtro local) | feito |
 | Armazem titulo PNG | ImGui 400x64 | nao | feito |
 | Armazem mais paginas | ImGui | **sim** (3 pacotes / `.war` WH02) | feito |
-| Distribuidor lista + detalhe | ImGui | **sim** (lista, nao um item por vez) | spec |
-| Enviar item a outro personagem | ImGui | **sim** (transcode novo ou extensao) | spec |
-| Pendencia 168h | servidor | **sim** (timestamp na struct / arquivo) | spec |
+| Distribuidor lista + detalhe | ImGui | **sim** (LIST em chunks) | feito |
+| Enviar item a outro personagem | ImGui | **sim** (`POSTBOX_SEND`) | feito |
+| Pendencia 168h | servidor | **sim** (TTL no PB02) | feito |
 
 ## O que cada frente e (em uma frase)
 
@@ -63,19 +64,13 @@ Planta: [[Armazem]].
 
 ### Distribuidor (NPC correio)
 
-Hoje: so **receber**, um item por vez (Yes/No), sem prazo.
-`smTRANSCODE_ITEM_EXPRESS` (`0x48478A80`), `POST_ITEM_MAX` 500, arquivo
-`Data\PostBox\<usercode>\<id>.dat`. Quest/loja/GM ja depositam; o
-jogador **nao envia**.
+**Feito.** Janela ImGui (`PostBoxWindow`) lista + detalhe, abas
+Receber/Enviar. Transcodes `0x48478A81`–`0x48478A85`. Save `PB02`.
+TTL 168h. Inventario continua pedra.
 
-Apos a spec: janela ImGui no estilo Desafios (lista + detalhe); enviar
-item real do inventario para **outro personagem**; destinatario tem
-**168 horas** para aceitar (proposta: expirado devolve ao remetente).
-Autoridade no servidor (tira o item antes de gravar no PostBox).
-
-Nao reutilizar `ITEM_EXPRESS` para outra coisa. Procurar em
-`Shared/smPacket.h` antes de criar transcode. Socket 8192 — lista grande
-vai em chunks (mesmo aprendizado da loja).
+ADR [[0007 - Distribuidor ImGui, PB02 e transcodes novos]].
+Planta: [[Distribuidor]]. Recap:
+[[2026-09-15 - Recap Distribuidor ImGui e correio 168h]].
 
 ## Fora deste roadmap (de proposito)
 

@@ -35,14 +35,14 @@ Contrato visual do jogador (janela ImGui): no repo do jogo,
 Cliente que o `game.exe` le: `C:\Cliente Full`.
 Source (codigo + copia opcional de PNG): `C:\Source Priston\Source Priston`.
 
-## Estado em 30 segundos (2026-09-15)
+## Estado em 30 segundos (2026-09-16)
 
 | Frente | Status |
 |---|---|
-| Titulos ImGui (Desafios, Lojas, Ranking, Mix, Configuracoes, Armazem) | feito |
+| Titulos ImGui (Desafios, Lojas, Ranking, Mix, Configuracoes, Armazem, Distribuidor) | feito |
 | Login de conta (PNG Fallen Tale) | feito no cliente; source e cliente podem divergir |
 | Selecao / criacao de personagem | arte em brief; jogo ainda TGA classico |
-| Distribuidor (lista + correio 168h) | spec rascunho — nao implementado |
+| Distribuidor (lista + correio 168h) | **feito** 2026-09-15 — [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]], planta [[Distribuidor]] |
 | Armazem (paginas + busca + titulo ImGui) | **feito** 2026-09-15 — [[2026-09-15 - Recap Armazem ImGui paginas e busca]], planta [[Armazem]] |
 | Botao organizar inventario | spec rascunho — nao implementado |
 
@@ -55,7 +55,7 @@ Source (codigo + copia opcional de PNG): `C:\Source Priston\Source Priston`.
 
 ## Specs
 
-- [[2026-09-13-distribuidor-correio]] — ainda nao e codigo
+- [[2026-09-13-distribuidor-correio]] — **feita** (codigo 2026-09-15)
 - [[2026-09-13-armazem-paginas-busca]] — **feita** (codigo 2026-09-15)
 - [[2026-09-13-inventario-organizar]] — ainda nao e codigo
 
@@ -64,12 +64,16 @@ Source (codigo + copia opcional de PNG): `C:\Source Priston\Source Priston`.
 - [[0002 - Duas identidades visuais jogador vs ferramenta]]
 - [[0005 - Distribuidor ImGui, armazem e inventario em pedra, artes no Cliente Full]]
 - [[0006 - Armazem ImGui, paginas no mesmo transcode]]
+- [[0007 - Distribuidor ImGui, PB02 e transcodes novos]]
 - [[2026-09-06 - Recap Desafios ImGui]]
 - [[2026-09-08 - Recap janelas ImGui de jogador]]
 - [[2026-09-13 - Recap artes de login e titulos ImGui]]
 - [[2026-09-15 - Recap Armazem ImGui paginas e busca]]
+- [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]]
 - Bloco HUD 2026-09-08: [[2026-09-08 - HUD ImGui lojas ranking mix e painel do servidor]]
 - Bloco armazem 2026-09-15: [[2026-09-15 - Armazem ImGui paginas e save]]
+- Bloco distribuidor + painel 2026-09-16: [[2026-09-16 - Distribuidor ImGui, correio e painel Server]]
+- [[2026-09-16 - Recap painel Server.exe splash e Segoe]]
 
 ## Relacao com o resto do vault
 

@@ -120,9 +120,27 @@ entradas. Ouro so na pagina 0.
 
 Caravana (`TRANS_CARAVAN`) nao entrou nesse desenho.
 
+## Distribuidor / correio (2026-09-15)
+
+Transcodes **novos**. `ITEM_EXPRESS` nao lista nem envia. Fluxogramas:
+[[Distribuidor]]. ADR [[0007 - Distribuidor ImGui, PB02 e transcodes novos]].
+
+| Codigo | Valor | Papel |
+|---|---|---|
+| `smTRANSCODE_ITEM_EXPRESS` | `0x48478A80` | S→C entrega de **um** `sITEMINFO` apos o claim |
+| `smTRANSCODE_POSTBOX_OPEN` | `0x48478A81` | C→S abrir / S→C NPC GiftExpress |
+| `smTRANSCODE_POSTBOX_LIST` | `0x48478A82` | S→C chunks de metadados (`POSTBOX_LIST_CHUNK` 16) |
+| `smTRANSCODE_POSTBOX_CLAIM` | `0x48478A83` | C→S `dwEntryId` + senha |
+| `smTRANSCODE_POSTBOX_REFUSE` | `0x48478A84` | C→S recusar |
+| `smTRANSCODE_POSTBOX_SEND` | `0x48478A85` | C→S nick + item; S→C resultado |
+
+Lista = metadados. O blob `sITEMINFO` viaja no save `PB02` e na entrega
+(`ITEM_EXPRESS`). Socket 8192: nao mandar 500 itens cheios de uma vez.
+
 ## Ver também
 
 - [[Armazem]] — planta e mermaid do bau
+- [[Distribuidor]] — planta e mermaid do correio
 - [[Glossario-Tecnico]] — termos do protocolo
 - [[SDD-Source-Priston]] — documento de design completo
 - [[Como-Rodar]] — porta 8185 na prática

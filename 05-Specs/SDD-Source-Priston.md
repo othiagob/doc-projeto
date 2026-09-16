@@ -19,16 +19,17 @@ ultima_revisao: 2026-08-31
 
 ## 1. Identificação
 
-| Campo | Valor |
-|---|---|
-| Projeto | Source Priston (servidor privado de Priston Tale) |
-| Base de código | WDPT (modernizada) |
-| Linguagens | C++ (cliente C++17, servidor C++14), Windows API, SQL |
-| Ferramentas | Visual Studio 2022 (v143), 32-bit (Win32) |
-| Código-fonte | `C:\Source Priston\Source Priston` |
-| Documentação | `C:\Users\carol\Desktop\OTHIAGOB PROJETO\source-priston\priston-documents` |
-| Git | `github.com/othiagob/Source-Priston` (branch `main`) |
-| Estado | Funcional — cliente e servidor compilam e o jogo loga |
+| Campo          | Valor                                                                      |
+| -------------- | -------------------------------------------------------------------------- |
+| Projeto        | Source Priston (servidor privado de Priston Tale)                          |
+| Base de código | WDPT (modernizada)                                                         |
+| Linguagens     | C++ (cliente C++17, servidor C++14), Windows API, SQL                      |
+| Ferramentas    | Visual Studio 2022 (v143), 32-bit (Win32)                                  |
+| Cliente jogo   | `C:\Cliente Full`                                                          |
+| Código-fonte   | `C:\Source Priston\Source Priston`                                         |
+| Documentação   | `C:\Users\carol\Desktop\doc-projeto` (repo `othiagob/doc-projeto`)         |
+| Git (codigo)   | `github.com/othiagob/Source-Priston` (branch `main`)                       |
+| Estado         | Funcional — cliente e servidor compilam e o jogo loga                      |
 
 ## 2. Objetivos e escopo
 

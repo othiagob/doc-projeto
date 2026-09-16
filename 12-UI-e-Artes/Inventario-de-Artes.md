@@ -1,12 +1,12 @@
 ---
 tags: [ui, artes, cliente]
 status: ativo
-data: 2026-09-15
+data: 2026-09-16
 ---
 
 # Inventario de artes visuais
 
-Estado em **2026-09-15**. Atualize esta nota quando uma arte entrar no
+Estado em **2026-09-16**. Atualize esta nota quando uma arte entrar no
 cliente ou uma tela mudar de classico para ImGui.
 
 Recap deste bloco: [[2026-09-13 - Recap artes de login e titulos ImGui]].
@@ -28,10 +28,17 @@ PNG faltar. Source e Cliente Full **iguais** nestes arquivos:
 | Ranking | `game/images/ranking/ranking.png` |
 | Lista de Mix | `game/images/mix/lista-de-mix.png` |
 | Armazem | `game/images/warehouse/armazem.png` |
+| Distribuidor | `game/images/postbox/distribuidor.png` |
+
+Excecao pontual do Distribuidor (nao e o cromado padrao):
+
+| Peca | Arquivo | Tamanho | Uso |
+|---|---|---|---|
+| Moldura da janela | `game/images/postbox/frame.png` | **760x540** | Blit 1:1 em `PostBoxWindow`. Nao copiar para Desafios/Loja/Armazem. |
 
 Contrato: `.cursor/rules/15-imgui-windows.mdc`. Janelas:
 `QuestWindow`, `Settings`, `NewShop`, `NewShopTime`, `RankingWindow`,
-`MixWindow`, `WarehouseWindow`. Cromado compartilhado: `ImGuiWindowChrome.h`.
+`MixWindow`, `WarehouseWindow`, `PostBoxWindow`. Cromado compartilhado: `ImGuiWindowChrome.h`.
 
 HUD classico de pedra (inventario, HP, `sinbaram/` **exceto o bau**)
 **nao** usa estes PNG. O armazem migrou (ADR 0006).
@@ -75,8 +82,6 @@ Estas telas continuam BMP/TGA legado ate pedido explicito (ADR 0002 +
 bau saiu da lista em 2026-09-15, ADR 0006):
 
 - Inventario e HP (`sinbaram/`)
-- Distribuidor atual (caixa Yes/No + `PostBox.sin`) — **vai migrar para
-  ImGui** quando a spec for implementada; hoje e classico
 - Icones de item (`image\sinImage\Items\...`)
 - Premium, caravana, party classica, minimapa, shop NPC de ouro
 

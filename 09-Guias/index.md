@@ -5,7 +5,8 @@ tags: [guias, inicio]
 # Guias — passo a passo
 
 Guias práticos de "como fazer". Começam simples e vão ficando mais
-avançados conforme você aprende. O índice completo está em `Home.md`.
+avançados conforme você aprende. O índice completo está em `Home.md`. Tres pastas no Windows:
+[[Tres-Diretorios]].
 
 ## Guias disponíveis
 

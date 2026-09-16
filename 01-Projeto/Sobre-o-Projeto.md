@@ -23,7 +23,8 @@ modernizada com várias melhorias (novo acesso a banco, Discord, JSON, etc.).
 - **Editar e melhorar o jogo** com ajuda de IA (Cursor) — você não precisa
  digitar código, mas quer **entender** o que está sendo feito e saber
  **pedir as coisas direito**.
-- **Documentar tudo** — por isso existe este vault (ver `Home.md`).
+- **Documentar tudo** — por isso existe este vault, o livro de evolucao
+  (ver [[Home]] e [[Livro-de-Evolucao]]).
 
 ## Estado atual
 
@@ -52,8 +53,9 @@ modernizada com várias melhorias (novo acesso a banco, Discord, JSON, etc.).
 
 | Item | Valor |
 |---|---|
+| Cliente do jogo | `C:\Cliente Full` |
 | Código-fonte | `C:\Source Priston\Source Priston` |
-| Documentação | `C:\Users\carol\Desktop\OTHIAGOB PROJETO\source-priston\priston-documents` |
+| Documentação (vault) | `C:\Users\carol\Desktop\doc-projeto` |
 | Cliente (solução) | `SrcGame\Game.sln` -> `game.vcxproj` |
 | Servidor (solução) | `SrcServer\server.sln` -> `server.vcxproj` |
 | Código compartilhado | `Shared\` (projeto `Shared.vcxitems`) |
@@ -66,6 +68,7 @@ modernizada com várias melhorias (novo acesso a banco, Discord, JSON, etc.).
 |---|---|
 | **Visual Studio 2022** | compilar e debugar (obrigatório — os `.sln` são dele) |
 | **Cursor** | editar código com IA (carrega `.cursor/rules/` automaticamente) |
+| **Antigravity (Gemini)** | artes visuais PNG/TGA — gravar em `C:\Cliente Full` |
 | **Hermes** | análises, documentação, diário — este vault é o contexto compartilhado |
 | **Obsidian** | este vault — documentação viva |
 | **Git / GitHub** | versionamento (ver [[Workflow-Git]]) |

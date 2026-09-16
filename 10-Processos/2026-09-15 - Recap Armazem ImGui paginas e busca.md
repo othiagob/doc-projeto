@@ -26,6 +26,8 @@ Arquivo `Data\DataServer\WareHouse\<id>.war` com um blob so. Spec de
 - Campo de busca por nome (esconde na grade; nao apaga).
 - Botoes **1 / 2 / 3** — 100 slots cada, 300 no total.
 - Ouro e peso na lateral; depositar/retirar num modal do mesmo cromado.
+- Com o bau aberto, **clique direito** num item da bag de pedra tenta
+  guardar (bloqueia pocoes, peso e falta de espaço).
 - Inventario ao lado **continua pedra**. Drag bau <-> bag igual ao
   antigo.
 - Clique na janela nao anda o personagem. ESC fecha (ou limpa busca /
@@ -60,7 +62,7 @@ Repo do jogo (`C:\Source Priston\Source Priston`):
 - `SrcGame/src/Game/netplay.cpp` / `.h`
 - `SrcGame/src/Game/GameCore.cpp`, `Winmain.cpp`, `HUD/InstancesFlag.cpp`
 - `SrcGame/src/Game/sinbaram/sinMain.cpp`, `sinSubMain.cpp`, `sinShop.cpp`,
-  `sinCharStatus.cpp`
+  `sinCharStatus.cpp`, `sinInvenTory.cpp` (clique direito deposita)
 - `SrcGame/src/Game/cSkinChanger.cpp` (nao desenha com o bau aberto)
 - `SrcGame/src/game.vcxproj`
 - `SrcServer/src/Server/Character/record.cpp` / `.h`
@@ -85,14 +87,15 @@ Cliente Full: `C:\Cliente Full\game\images\warehouse\armazem.png`
 1. Depositar e retirar (pagina 1 e pagina 3). Relogar.
 2. `.war` antigo — abre, paginas novas vazias, ouro igual.
 3. Busca parcial; limpar volta a grade; item nao some.
-4. Drag para o inventario de pedra e de volta.
+4. Drag para o inventario de pedra e de volta. Clique direito na bag
+   com o bau aberto.
 5. Mix / aging / loja NPC com o bau **fechado** — pedra deles intacta.
 6. Peso estourado — NPC nao abre o bau (mensagem antiga).
 
 ## O que ficou de fora / proximos passos
 
 - Organizar inventario (spec propria, ainda pedra).
-- Distribuidor / correio 168h.
+- Distribuidor / correio 168h — **feito** 2026-09-15 (commit source 16/09).
 - Caravana (continua 100 slots, arquivo separado).
 - Armazem de clan.
 

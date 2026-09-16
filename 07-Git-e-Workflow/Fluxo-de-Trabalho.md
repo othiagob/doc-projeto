@@ -43,6 +43,9 @@ Cada passo tem um "onde" e um "como". Os detalhes abaixo.
 ## 3. Estudar
 
 Antes de eu (ou você) tocar no código, entenda o sistema envolvido:
+- **Livro primeiro:** CHANGELOG, recaps (`10-Processos/`), sessões
+  (`11-Evolucao/`), spec e ADR do assunto — ja trabalhamos nisso? o que
+  foi revertido? (regra Cursor `01-consult-vault.mdc`)
 - Localize a pasta no `01-Projeto/Mapa-Geral-do-Projeto.md` ou na
   `02-Arquitetura/Arquitetura.md`.
 - Se envolve rede/`Shared/`, leia `02-Arquitetura/Protocolo-de-Rede.md`,
@@ -80,8 +83,13 @@ Antes de eu (ou você) tocar no código, entenda o sistema envolvido:
   ensinou um conceito que voce vai reencontrar), copie
   `10-Processos/TEMPLATE-Processo.md` e preencha o "como era / o que
   implementei". Ver `10-Processos/index.md`.
+- **UI / artes:** atualize `12-UI-e-Artes/Inventario-de-Artes.md` se um
+  PNG entrou no cliente; recap se a tela mudou.
 - **Git:** faça o commit seguindo `07-Git-e-Workflow/Workflow-Git.md`
   (branch + conventional commits). Não commitar sem pedido explícito.
+- **Ritual:** no fim do dia ou da semana, peca no chat para revisar
+  codigo + conversa e atualizar o vault. Checklist:
+  `00-Inicio/Ritual-Documentacao.md`.
 
 ---
 
@@ -89,9 +97,10 @@ Antes de eu (ou você) tocar no código, entenda o sistema envolvido:
 
 | Ferramenta | Papel no ciclo |
 |---|---|
-| **Obsidian** | visualizar/editar este vault (fonte de verdade legível por humano) |
+| **Obsidian** | visualizar/editar este vault (livro de evolucao) |
 | **Cursor (Windows)** | implementar código no repo, com contexto via `.cursor/rules/` |
-| **Visual Studio (Windows)** | compilar e testar o jogo |
+| **Visual Studio (Windows)** | compilar e testar o jogo (`C:\Cliente Full`) |
+| **Antigravity (Gemini)** | gerar PNG/TGA; gravar no Cliente Full |
 | **opencode (Linux)** | estudar/analisar/documentar/planejar neste vault; cuidar do git aqui |
 | **Hermes (Windows)** | análise profunda, documentação, diário |
 
