@@ -161,7 +161,7 @@ toda a lógica do jogo.
 | `Quest/` | Quests vindas do banco | `Quest.cpp/.h` |
 | `Shop/` | Loja premium em jogo (+ por tempo) | `NewShop.cpp`, `NewShopTime.cpp` |
 | `GM/` | GMs do banco + **comandos `/...` no chat** | `GM.cpp`, `ServerCommand.cpp` |
-| `HUD/` | Painel ImGui do `Server.exe` (claro, splash de boot) | `ServerPanel.cpp`, `ToolTheme.h` |
+| `HUD/` | Painel ImGui do `Server.exe` (claro, splash, modal, status) | `ServerPanel.cpp`, `ToolTheme.h` |
 | `CLI/` | Console do servidor (`exit;`, `kick <nome>;`...) | `CLI.cpp/.h` |
 | `Security/` | Firewall do Windows + validação de entrada | `Firewall.cpp`, `Joi.hpp` |
 | `Ranking/` | Rankings geral/PvP/castelo | `TopRanking.cpp`, `PVPRanking.cpp`, `SodRanking.cpp` |
@@ -299,13 +299,13 @@ a planta detalhada mora aqui — nao so no recap. Convencao:
 
 | Funcionalidade | Nota | O que o diagrama mostra |
 |---|---|---|
-| Armazem (3 paginas, ImGui) | [[Armazem]] | Camadas, abrir, gravar, memoria vs `.war` |
+| Armazem (ImGui + SQL) | [[Armazem]] | Trajetoria, abrir, chunks v3, UserDB |
 | Distribuidor (correio 168h, ImGui) | [[Distribuidor]] | Camadas, OPEN/LIST/CLAIM/SEND, save `PB02` |
 
 ## 9. Ver também
 
 - [[Protocolo-de-Rede]] · [[Banco-de-Dados]] · [[Glossario-Tecnico]] · [[SDD-Source-Priston]]
-- [[Armazem]] — bau (2026-09-15)
+- [[Armazem]] — bau (atualizado 2026-09-17)
 - [[Distribuidor]] — correio (2026-09-15)
 - Guias: [[Como-Compilar]] · [[Como-Rodar]]
 - Anexos: `anexos/Relatorio-Analise-Cliente.md` · `anexos/Relatorio-Analise-Servidor.md` · `anexos/Relatorio-Analise-Build.md`

@@ -64,6 +64,16 @@ Atualizado 2026-09-08 (codigo + regra `.cursor/rules/40-database.mdc`):
   `image\sinImage\Items\<pasta>\itCODIGO.bmp` no cliente full.
 - Credenciais: `Server\Config\SQL.ini` (`Host`, `User`, `Password`) junto
   ao executavel, fora do git.
+- **Distribuidor (auditoria):** `ITEMLogDB.dbo.PostBoxLog` — livro de
+  eventos (DEPOSIT / SEND / CLAIM / REFUSE / EXPIRE). A caixa viva do
+  jogador **nao** esta no SQL: fica em `Data\PostBox\<usercode>\<login>.dat`
+  (magica `PB02`). `Quest.dbo.PostBox` (e qualquer `UserDB.Postbox`) e
+  tabela antiga/nao usada pelo C++ atual. Script:
+  `09-Guias/sql/Create-PostBoxLog.sql`.
+- **Armazem (2026-09-17):** `UserDB.dbo.Warehouse` + `WarehouseItem`.
+  Nao e um database novo no boot. O C++ **nao** cria as tabelas;
+  script `09-Guias/sql/Create-Warehouse.sql`. Unique filtrado
+  `(AccountID, Head, ChkSum)` onde Head/ChkSum != 0. Planta: [[Armazem]].
 
 ## Onde isso importa na prática
 

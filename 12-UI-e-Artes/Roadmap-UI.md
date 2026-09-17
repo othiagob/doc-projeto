@@ -40,7 +40,7 @@ Cliente Full. Ver [[Inventario-de-Artes]].
 | Botao organizar inventario | pedra | provavelmente nao | spec |
 | Armazem busca por nome | ImGui | nao (filtro local) | feito |
 | Armazem titulo PNG | ImGui 400x64 | nao | feito |
-| Armazem mais paginas | ImGui | **sim** (3 pacotes / `.war` WH02) | feito |
+| Armazem mais paginas | ImGui | **sim** (3 pacotes; SQL UserDB desde 2026-09-17) | feito |
 | Distribuidor lista + detalhe | ImGui | **sim** (LIST em chunks) | feito |
 | Enviar item a outro personagem | ImGui | **sim** (`POSTBOX_SEND`) | feito |
 | Pendencia 168h | servidor | **sim** (TTL no PB02) | feito |
@@ -54,13 +54,11 @@ Nao mexe nos 16 slots de equipamento. Nao e redesign da janela.
 
 ### Armazem
 
-**Feito.** Janela ImGui (`WarehouseWindow`) no cromado 15; logica
-`cWAREHOUSE`. 3 paginas x 100, busca por nome, titulo
-`game/images/warehouse/armazem.png`. Mesmo transcode
-`smTRANSCODE_WAREHOUSE` (`0x48470047`), `wVersion=2`, uma pagina por
-pacote. Arquivo `.war` magica `WH02`. Inventario ao lado continua
-pedra. ADR [[0006 - Armazem ImGui, paginas no mesmo transcode]].
-Planta: [[Armazem]].
+**Feito (UI 15/09, SQL 17/09).** Janela ImGui (`WarehouseWindow`);
+logica `cWAREHOUSE`. 3 abas, grade 20×15 (300), busca, titulo
+`armazem.png`. Mesmo transcode `0x48470047`, `wVersion=3` (ocupados).
+Save: `UserDB` (ADR 0008). Inventario ao lado continua pedra. ADR UI
+[[0006 - Armazem ImGui, paginas no mesmo transcode]]. Planta: [[Armazem]].
 
 ### Distribuidor (NPC correio)
 

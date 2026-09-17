@@ -13,6 +13,38 @@ desde a última vez que joguei build".
 
 ### Codigo do jogo
 
+#### Armazem SQL, 300 slots, 3 paginas jogaveis — 2026-09-17
+
+Bau continua ImGui + `cWAREHOUSE`. Persistencia passa a `UserDB.dbo.Warehouse`
+/ `WarehouseItem`. Grade 20×15 (300), 5 paginas no schema, 3 no jogo.
+Mesmo transcode `0x48470047`, `wVersion=3`, so itens ocupados em chunks.
+Import WH02 uma vez. Unique Head+ChkSum. Script SSMS
+`Create-Warehouse.sql` (nao nasce no boot).
+
+Planta: [[Armazem]]. Recap: [[2026-09-17 - Recap Armazem SQL 300 slots]].
+ADR [[0008 - Armazem SQL, 300 slots, 5 paginas 3 liberadas]].
+
+#### Armazem ImGui — 2026-09-15
+
+Janela de jogador no cromado 15 (titulo `armazem.png`), busca por nome,
+3 paginas. Logica continua em `cWAREHOUSE`. Sem transcode novo:
+`smTRANSCODE_WAREHOUSE` (`0x48470047`). Em 2026-09-15 o save ainda era
+`.war` WH02 e `wVersion=2` (100 slots/pagina). Isso foi **substituido**
+em 2026-09-17 (SQL, 300 slots, `wVersion=3`) — ver entrada acima.
+
+Recap UI: [[2026-09-15 - Recap Armazem ImGui paginas e busca]].
+Planta atual: [[Armazem]]. ADR UI [[0006 - Armazem ImGui, paginas no mesmo transcode]].
+
+#### Painel Server.exe (modal, status, operador) — 2026-09-16
+
+Modal de confirmar desligar/sair/kick com margem, borda e dim suave.
+Header com ocupação e pílula **A desligar**. Status ganhou pico, RAM,
+SQL (host + bancos), mapas. Jogadores: classe, copiar IP. Log: filtro
+e copiar. Sem transcode. Sem ouro.
+
+Recap: [[2026-09-16 - Recap painel Server.exe modal e operador]].
+Regra: `16-desktop-tools.mdc`. ADR [[0002 - Duas identidades visuais jogador vs ferramenta]].
+
 #### Painel Server.exe (splash + Segoe) — 2026-09-16
 
 Splash a ecrã inteiro enquanto SQL/mapas sobem. Fonte Segoe UI. Sidebar
@@ -42,18 +74,13 @@ continua pedra. Primeiro commit na source em 2026-09-16.
 Recap: [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]].
 Planta: [[Distribuidor]]. ADR [[0007 - Distribuidor ImGui, PB02 e transcodes novos]].
 
-#### Armazem ImGui — 2026-09-15
-
-Janela de jogador no cromado 15 (titulo `armazem.png`), busca por nome,
-**3 paginas x 100 slots**. Logica continua em `cWAREHOUSE`. Sem transcode
-novo: `smTRANSCODE_WAREHOUSE` (`0x48470047`) com `wVersion=2` e
-`dwTemp[0]=pagina`. Save `.war` magica `WH02`; arquivo legado abre.
-Inventario permanece pedra.
-
-Recap: [[2026-09-15 - Recap Armazem ImGui paginas e busca]].
-Planta (fluxogramas): [[Armazem]]. ADR [[0006 - Armazem ImGui, paginas no mesmo transcode]].
-
 ### Documentacao
+
+#### Ritual 2026-09-17 (armazem SQL)
+
+Planta [[Armazem]] reescrita (trajetoria + SQL). ADR 0008. Recap e nota
+em `11-Evolucao/`. Protocolo `wVersion=3`. Diario [[2026-09-17]].
+Script `Create-Warehouse.sql` no vault.
 
 #### Ritual 2026-09-16 (capa, protocolo, indices)
 

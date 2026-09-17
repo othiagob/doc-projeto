@@ -103,20 +103,25 @@ aprendizado — ver [[Trilha-de-Aprendizado]] Fase 2.
 - `smTRANSCODE_ENCODE_PACKET*` sugere que existe camada de codificação de
  pacote — detalhes/uso exato: ver análise do servidor em [[Arquitetura]].
 
-## Armazem (2026-09-15)
+## Armazem (2026-09-17)
 
-Nenhum transcode novo. Cada pagina de 100 slots viaja no pacote que ja
-existia. Fluxogramas: [[Armazem]].
+Nenhum transcode novo. Fluxogramas e trajetoria: [[Armazem]]. ADR
+[[0008 - Armazem SQL, 300 slots, 5 paginas 3 liberadas]].
 
 | Codigo | Valor | Papel |
 |---|---|---|
 | `smTRANSCODE_OPEN_WAREHOUSE` | `0x48470048` | NPC pede para abrir; client encaminha ao DataServer |
-| `smTRANSCODE_WAREHOUSE` | `0x48470047` | Itens. `wVersion[0]=2`, `dwTemp[0]=pagina` (0..2) |
+| `smTRANSCODE_WAREHOUSE` | `0x48470047` | Itens. `wVersion[0]=3` |
 
-`TRANS_WAREHOUSE.Data` continua cabendo **100** `sITEM` (socket 8192).
-Tres viagens = 300 slots. Save `.war` com magica `WH02`; arquivo legado
-(1 pagina) ainda abre. `rsPLAYINFO.WareHouseItemInfo` tem **300**
-entradas. Ouro so na pagina 0.
+`dwTemp[0]` = pagina (0..2 no jogo; 3–4 recusados). `dwTemp[1/2]` =
+indice/total de chunks. `dwTemp[3]` = `Revision`. `dwTemp[4]` = commit
+(1 no ultimo chunk). `Data[]` = ocupados comprimidos (`WAREHOUSE_WIRE_DATA_MAX`
+7800), **nao** 300 `sITEM`. Socket 8192.
+
+`WareHouseItemInfo` tem **1500** entradas. Ouro so na conta
+(`dbo.Warehouse.Money`), ecoado na pagina 0 do fio. Formato 2026-09-15
+(`wVersion=2`, 100 `sITEM`, `.war` WH02) nao e mais o save vivo; WH02
+ainda importa uma vez para SQL.
 
 Caravana (`TRANS_CARAVAN`) nao entrou nesse desenho.
 

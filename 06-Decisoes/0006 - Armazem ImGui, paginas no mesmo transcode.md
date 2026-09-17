@@ -54,5 +54,9 @@ nota. Distribuidor e inventario na 0005 continuam validos.
 - Client e servidor **juntos** em qualquer save de pagina. `WareHouseItemInfo`
   no `rsPLAYINFO` tem de ter 300 entradas.
 - Prompt de arte do bau e titulo 400x64, nao redesenho de `shop-1.bmp`.
-- Planta: [[Armazem]]. Recap:
+- Planta: [[Armazem]] (persistencia **SQL** desde 2026-09-17 — ADR
+  [[0008 - Armazem SQL, 300 slots, 5 paginas 3 liberadas]]). Recap UI:
   [[2026-09-15 - Recap Armazem ImGui paginas e busca]].
+
+O hibrido ImGui + `cWAREHOUSE` desta ADR **permanece**. O save `.war`
+WH02 / `wVersion=2` / `WareHouseItemInfo[300]` foi substituido pela 0008.

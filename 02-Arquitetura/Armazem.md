@@ -1,226 +1,174 @@
 ---
-tags: [arquitetura, cliente, servidor, shared, ui]
+tags: [arquitetura, cliente, servidor, shared, sql]
 status: ativo
-data: 2026-09-15
+data: 2026-09-17
 ---
 
-# Arquitetura — Armazem (3 paginas)
+# Armazem (NPC Warehouse)
 
-Como o baú funciona **depois** da remodelagem de 2026-09-15. Recap do
-jogador: [[2026-09-15 - Recap Armazem ImGui paginas e busca]]. ADR:
-[[0006 - Armazem ImGui, paginas no mesmo transcode]]. Spec original:
-[[2026-09-13-armazem-paginas-busca]] (status `feita`; a UI saiu da
-pedra — ver ADR 0006).
+Planta viva do bau. Recap da UI ImGui (2026-09-15):
+[[2026-09-15 - Recap Armazem ImGui paginas e busca]]. Recap SQL/300
+slots: [[2026-09-17 - Recap Armazem SQL 300 slots]]. ADR UI
+[[0006 - Armazem ImGui, paginas no mesmo transcode]]. ADR persistencia
+[[0008 - Armazem SQL, 300 slots, 5 paginas 3 liberadas]]. Spec antiga
+(pedra): [[2026-09-13-armazem-paginas-busca]].
 
-Convencao de fluxograma para outras features grandes:
-[[Como-documentar-funcionalidade]].
+## Trajetoria (como era, o que tentamos, aonde estamos)
 
-## Em uma frase
+### Era (ate ~2026-09-14)
 
-A janela e ImGui (`WarehouseWindow`). A logica de item, peso, ouro e
-checksum continua em `cWAREHOUSE`. Cada pagina de 100 slots viaja num
-pacote `smTRANSCODE_WAREHOUSE` (`0x48470047`) ja existente. O arquivo
-`.war` guarda as 3 paginas. Inventario permanece HUD de pedra.
+NPC `Warehouse` / `Blacksmith` / `MagicMaster`. Janela de **pedra**
+(`shop-1.bmp`, `cWAREHOUSE` desenha e arrasta). Uma pagina de 100
+`sITEM`. Persistencia: arquivo `.war` no DataServer (`rsLoadWareHouseData`
+/ `rsSaveWareHouseData`). Pacote `smTRANSCODE_WAREHOUSE` (`0x48470047`):
+blob comprimido de **toda** a pagina. Abrir: `OPEN_WAREHOUSE`
+(`0x48470048`). Ouro no bau viaja na pagina 0. Peso era `short`.
 
-## Camadas (quem faz o que)
+Anti-dupe classico: `Head`/`ChkSum` contra inventario (`InvenItemInfo`)
+e contra o proprio bau (`WareHouseItemInfo`).
 
-```mermaid
-flowchart TB
-  jogador[Jogador / NPC do bau]
-  ui["WarehouseWindow<br/>ImGui: cromado, busca, abas 1/2/3, grade, ouro"]
-  logic["cWAREHOUSE / sWAREHOUSE<br/>sinTrade.cpp — overlap, pickup, peso, checksum"]
-  inv["Inventario de pedra<br/>sinInvenTory — nao migrou"]
-  net["netplay.cpp<br/>SaveWareHouse / LoadWareHouse"]
-  pkt["Shared/smPacket.h<br/>TRANS_WAREHOUSE + wVersion=2 + dwTemp pagina"]
-  srv["record.cpp<br/>rsLoad / rsSaveWareHouseData"]
-  disk["Data/DataServer/WareHouse/id.war"]
+### Tentamos (2026-09-15)
 
-  jogador --> ui
-  ui --> logic
-  logic --> inv
-  logic --> net
-  net --> pkt
-  pkt --> srv
-  srv --> disk
-```
+Migrar **so a pintura** para ImGui (`WarehouseWindow` + `frame.png` +
+titulo kit B `armazem.png`). Logica e drag **ficam** em `cWAREHOUSE`.
+Reescrever overlap no ImGui foi condenado na tabela de falhas daquela
+sessao.
 
-Por que essa separacao: reescrever o drag 22 px em ImGui do zero duplica
-item. O visual novo so pinta e traduz clique; quem mexe no `sITEM` e o
-codigo legado que ja existia.
+Paginas: 3 × 100 no mesmo transcode, `wVersion=2`, magica `WH02`.
+`dwTemp[0]` = pagina. Ouro so na pagina 0. Busca por nome local.
+Inventario ao lado continua pedra.
 
-| Camada | Arquivo | Papel |
+Isso funcionou, mas a grade **9×9 de 22 px** (~198 px) parecia um
+carimbo dentro da moldura 760×540. Capacidade espacial real de 1×1 era
+81 por pagina, nao 100.
+
+### Tentamos e nao fizemos (2026-09-17, planejamento)
+
+- So aumentar o pixel da celula: conforto, mesmos 100 slots.
+- Grade 12×12 / 144 slots ainda no `.war` WH03: ainda estoura compressao
+  se encher 300 `sITEM` no `Data[]`.
+- Database `WarehouseDB` no boot: mais um nome obrigatorio, `exit(0)`.
+- 5 paginas **jogaveis** de imediato: schema sim, jogo nao (anti-dupe e
+  teste).
+
+### Estamos (2026-09-17)
+
+Hibrido UI **igual** a 0006. Persistencia **SQL no UserDB**. Grade
+**20×15** (300 celulas 1×1). 5 paginas na RAM/schema, **3 abas** no
+jogo. Pacote `wVersion=3`: so ocupados, chunks, commit. `.war` WH02
+importa uma vez. Codigo na source; **tabelas ainda precisam do script
+no SSMS**. Teste de jogo completo ainda e checklist humano.
+
+## Constantes (`Shared/smPacket.h`)
+
+| Simbolo | Valor | Papel |
 |---|---|---|
-| Visual | `SrcGame/.../HUD/WarehouseWindow.cpp` | Cromado 15, busca, paginas, grade, modal de ouro, mouse |
-| Logica | `SrcGame/.../sinbaram/sinTrade.cpp` (`cWAREHOUSE`) | 3 paginas na RAM, overlap, save, checksum |
-| Rede client | `SrcGame/.../netplay.cpp` | Comprime 100 slots por pacote; `dwTemp[0]` = pagina |
-| Contrato | `Shared/smPacket.h` | Mesmo transcode; constantes `WAREHOUSE_*`; `WareHouseItemInfo[300]` |
-| Autoridade | `SrcServer/.../Character/record.cpp` | Le/grava `.war`; envia 3 pacotes; anti-dupe |
-| Arte | `C:\Cliente Full\game\images\warehouse\armazem.png` | Titulo 400x64. Cromado nao e PNG |
+| `WAREHOUSE_MAX_PAGES` | 5 | RAM + SQL |
+| `WAREHOUSE_UNLOCKED_PAGES` | 3 | jogo agora |
+| `WAREHOUSE_PAGE_SLOTS` | 300 | por pagina |
+| `WAREHOUSE_GRID_COLS` | 20 | overlap |
+| `WAREHOUSE_GRID_ROWS` | 15 | overlap |
+| `WAREHOUSE_TOTAL_SLOTS` | 1500 | `WareHouseItemInfo` |
+| `WAREHOUSE_PACKET_VERSION` | 3 | fio |
+| `WAREHOUSE_WIRE_DATA_MAX` | 7800 | `TRANS_WAREHOUSE.Data` |
+| `WAREHOUSE_DEFAULT_WEIGHT_MAX` | 8000 | teto |
 
-Constantes (os dois lados, `smPacket.h`):
+`TRANS_WAREHOUSE_LEGACY` existe so para o binario antigo (100 `sITEM`).
+Nao e o formato vivo.
 
-| Simbolo | Valor | Significado |
+## Dois mundos (nao misturar)
+
+| Mundo | Classe | O que faz |
 |---|---|---|
-| `WAREHOUSE_PAGE_COUNT` | 3 | Paginas 0, 1, 2 (botoes 1 / 2 / 3 na UI) |
-| `WAREHOUSE_PAGE_SLOTS` | 100 | Slots por pagina — igual ao legado |
-| `WAREHOUSE_TOTAL_SLOTS` | 300 | Teto na RAM e em `WareHouseItemInfo` |
-| `WAREHOUSE_PACKET_VERSION` | 2 | `wVersion[0]` do pacote novo |
-| `WAREHOUSE_FILE_MAGIC` | `0x32304857` | Bytes `WH02` no inicio do `.war` |
+| Pintura | `WarehouseWindow` | Moldura 760×540, 3 abas, grade 20×15 **escalada** ao retangulo, busca, ouro |
+| Logica | `cWAREHOUSE` (`sinTrade`) | `sWAREHOUSE`, overlap, peso `int`, ouro, `Pages[5][300]` |
 
-Ouro e peso moram so na pagina 0. Paginas 1 e 2 zeram `WareHouseMoney` /
-`UserMoney` no fio para nao duplicar gold.
+Filtros PNG (armas, armaduras…) sao **so UI**. Nao mudam o SQL.
 
-## Abrir o bau
+## Pacote (nenhum transcode novo)
 
-```mermaid
-sequenceDiagram
-  participant NPC
-  participant Client as Cliente
-  participant WH as cWAREHOUSE
-  participant UI as WarehouseWindow
-  participant DS as DataServer
-  participant Disk as arquivo .war
-
-  NPC->>Client: smTRANSCODE_OPEN_WAREHOUSE 0x48470048
-  Client->>UI: ArmHideClassic (esconde pedra shop-1.bmp)
-  Client->>DS: encaminha o pedido
-  DS->>Disk: ReadWareHouseFilePages
-  Note over DS,Disk: Magica WH02 = 3 paginas<br/>Sem magica = .war antigo, 1 pagina
-  DS->>Client: 3x smTRANSCODE_WAREHOUSE 0x48470047
-  Note over DS,Client: dwTemp[0] = 0, 1, 2<br/>wVersion[0] = 2
-  Client->>WH: pagina 0: BeginLoad + ApplyLoadedPage(0)
-  Client->>WH: paginas 1 e 2: ApplyLoadedPage
-  WH->>WH: TryFinishOpen quando AllPagesReady
-  WH->>UI: OpenFlag = 1, desenha ImGui
-```
-
-Se o pacote chegar sem versao 2 (cliente/servidor velho): a pagina 0
-abre e `FillEmptyRemainingPages` zera 1 e 2. `.war` antigo nao corrompe.
-
-Enquanto `IsLoadingPages()`, a pedra classica continua escondida
-(`ShouldHideClassicPanels`). Sem isso o `shop-1.bmp` (compartilhado com
-loja NPC / aging) aparece por um frame.
-
-## Fechar e gravar
-
-```mermaid
-sequenceDiagram
-  participant UI as WarehouseWindow
-  participant WH as cWAREHOUSE
-  participant Net as SaveWareHousePage
-  participant DS as rsSaveWareHouseData
-  participant Disk as id.war
-
-  UI->>WH: X / ESC / RequestClose
-  WH->>WH: CloseWareHouse -> SaveAllPages
-  loop pagina 0, 1, 2
-    WH->>Net: comprime sWAREHOUSE daquela pagina
-    Net->>DS: smTRANSCODE_WAREHOUSE wVersion=2 dwTemp=pagina
-    DS->>Disk: le .war, troca so aquela pagina, grava .tmp atomico
-  end
-  Note over Net: Depois da ultima pagina, SaveGameData
-```
-
-Nao cabe um blob de 300 `sITEM` no socket (`smSOCKBUFF_SIZE` = 8192).
-Por isso **nao** inchamos `TRANS_WAREHOUSE.Data`. Cada pacote continua
-com `Data[sizeof(sITEM)*100+256]`. Tres viagens, mesmo transcode.
-
-O servidor **nao substitui o arquivo inteiro** com a primeira pagina:
-lê as 3, aplica a que chegou, escreve de novo. Sem isso, mudar da
-pagina 2 apagaria a 1.
-
-## Memoria vs fio vs disco
-
-```mermaid
-flowchart LR
-  ram["RAM do client<br/>Pages[3][100]<br/>sWAREHOUSE mostra a pagina atual"]
-  wire["Rede<br/>1 pacote = 1 pagina comprimida<br/>TRANS_WAREHOUSE"]
-  file["Disco<br/>magic WH02 + nPages<br/>+ size + pacote, tres vezes"]
-
-  ram -- "SaveAllPages" --> wire
-  wire -- "rsSave mergeia" --> file
-  file -- "rsLoad envia 3" --> wire
-  wire -- "BeginLoad / ApplyLoadedPage" --> ram
-```
-
-Formato do `.war` novo:
+Socket 8192. Nunca mandar `sizeof(sITEM)*300`.
 
 ```
-DWORD magic     = 0x32304857   // "WH02"
-int   nPages    = 3
-para cada pagina:
-    int  pktSize
-    bytes do TRANS_WAREHOUSE (pktSize)
+NPC clique
+  -> OPEN_WAREHOUSE (0x48470048)
+  -> DataServer: SELECT Warehouse + WarehouseItem
+  -> N chunks WAREHOUSE (0x48470047) por pagina, wVersion[0]=3
+     dwTemp[0]=pagina  dwTemp[1]=chunk  dwTemp[2]=totalChunks
+     dwTemp[3]=revision  dwTemp[4]=0
+  -> chunk final da ultima pagina: dwTemp[4]=1 (sessao pronta)
+  -> client: ApplyLoadedChunk; AllPagesReady quando as 3 chegaram
+
+Fechar / salvar
+  -> 3 paginas, cada uma em N chunks (so ocupados, EecodeCompress)
+  -> ultimo chunk da pagina 2: dwTemp[4]=1
+  -> servidor junta na sessao; so no commit valida overlap, Head+ChkSum,
+     inventario, UnlockedPages, Revision; transacao SQL
 ```
 
-`.war` legado: um `TRANS_WAREHOUSE` cru, sem magica. O leitor
-(`ReadWareHouseFilePages`) detecta, trata como 1 pagina, e o save
-seguinte ja grava WH02 com paginas 2 e 3 vazias.
+`wVersion[0] != 3` no save = recusa. Pagina >= 3 = recusa + log.
 
-Checksum de item / ouro XOR (`dwChkSum`, `WareHouseMoney ^ chkSum`)
-nao mudou de regra. Ouro so viaja na pagina 0.
+Abrir o bau de novo: `rsWareHouseSessionFree` no reset/disconnect
+(`OnSever.cpp`). Reenvio do chunk 0 de uma pagina **substitui** aquela
+pagina na sessao (nao empilha duplicata).
 
-Anti-dupe no servidor: `rsPLAYINFO.WareHouseItemInfo` passou de **120**
-para **300** (`Shared/smPacket.h`). Loops em `OnSever.cpp` usam
-`WAREHOUSE_TOTAL_SLOTS`, nao mais `100`.
+Detalhe do fio: `Shared/WarehouseWire.h` (`sWAREHOUSE_WIRE_ITEM` =
+`sITEMINFO` + x,y,w,h,Class,Slot). Sem ponteiro GPU no SQL.
 
-## UI (o que o jogador clica)
+## Persistencia SQL (`UserDB`)
 
-```mermaid
-flowchart TB
-  chrome["Cromado ImDrawList<br/>DrawPlayerWindowChrome"]
-  title["Titulo PNG 400x64<br/>game/images/warehouse/armazem.png"]
-  search["Busca por nome<br/>filtro local, case-insensitive"]
-  pages["Botoes 1 / 2 / 3<br/>SwitchPage"]
-  grid["Grade 9x9 celulas<br/>icone BMP do item"]
-  side["Peso, ouro, depositar / retirar"]
-  gold["Modal de ouro<br/>mesmo cromado"]
+Nao e o 12º database. Script:
+`09-Guias/sql/Create-Warehouse.sql`.
 
-  chrome --> title
-  chrome --> search
-  chrome --> pages
-  chrome --> grid
-  chrome --> side
-  side --> gold
-  search -->|"achou noutra pagina"| pages
-```
-
-- Busca **nao** apaga item: `ItemMatchesSearch` so esconde na grade.
-  Se o nome esta noutra pagina, `FindSearchPage` troca sozinho.
-- Clique na janela nao anda o personagem: `IsBlockingMouse` em
-  `GameCore` / `Winmain` (mesmo padrao de Desafios).
-- Campo de busca come teclado: `ShouldCaptureKeyboard` (senao o chat
-  ou atalhos do `sinProc` roubam a letra).
-- ImGui desenha **depois** do HUD de pedra (`sinDraw` em `sinMain.cpp`).
-  Se renderizar antes (como estava em `sinCharStatus`), o BMP
-  `CraftItemMain` cobre o bau.
-
-Inventario ao lado continua pedra. Drag bau <-> bag usa as funcoes
-antigas (`PickUpWareHouseItem`, `LastSetWareHouseItem`) com coordenada
-logica convertida da grade ImGui.
-
-## Pacotes (nenhum transcode novo)
-
-| Codigo | Valor | Uso agora |
+| Tabela | Chave | Conteudo |
 |---|---|---|
-| `smTRANSCODE_OPEN_WAREHOUSE` | `0x48470048` | NPC pede para abrir. Client encaminha ao DataServer. |
-| `smTRANSCODE_WAREHOUSE` | `0x48470047` | Ida e volta dos itens. `wVersion[0]=2`, `dwTemp[0]=pagina`. |
+| `dbo.Warehouse` | `AccountID` | Money, WeightMax, UnlockedPages, Revision, ImportedFromWar |
+| `dbo.WarehouseItem` | Account + Page + Slot | GridX/Y, ItemBlob (`sITEMINFO`), ItemCode, Head, ChkSum |
 
-Caravana **nao** entrou neste desenho (`TRANS_CARAVAN` segue 100 slots).
+Unique filtrado: `(AccountID, Head, ChkSum) WHERE Head<>0 AND ChkSum<>0`.
+Pocao/ouro (Head 0) ficam de fora do indice — o C++ ainda valida peso e
+overlap.
 
-## O que testar (arquitetura)
+Save atomico: DELETE itens da conta + INSERT da sessao + UPDATE cabecalho
+com `Revision = @rev`. Depois SELECT; se nao for `@rev+1`, rollback
+(buraco de 0 linhas).
 
-1. Personagem com `.war` antigo (100 slots) — abre, paginas 2 e 3 vazias, nao some ouro.
-2. Depositar na pagina 2, fechar, relogar — item ainda na 2.
-3. Busca com item na pagina 3 — a UI salta para essa pagina; limpar volta o filtro, nao apaga o item.
-4. Inventario de pedra ao lado — drag nos dois sentidos.
-5. Abrir mix/aging/loja NPC com o bau fechado — `shop-1.bmp` ainda aparece (compartilhado).
-6. Peso acima do limite — `OPEN_WAREHOUSE` recusa como antes.
+Import `.war`: se `ImportedFromWar=0` e o arquivo WH02 existir, le e
+grava SQL uma vez. Save do personagem **nao** reabre o `.war` em
+`sWAREHOUSE` de 300 slots; usa `WareHouseItemInfo` + ouro.
 
-## Ver tambem
+`rsSaveWareHouseData` no `netplay` do servidor (compressao 300 `sITEM`)
+fica **desligado** (`return FALSE`) para ninguem gravar o formato morto.
 
-- Recap: [[2026-09-15 - Recap Armazem ImGui paginas e busca]]
-- Sessao: [[2026-09-15 - Armazem ImGui paginas e save]]
-- Protocolo geral: [[Protocolo-de-Rede]]
-- Planta: [[Arquitetura]]
-- Titulo PNG: [[Inventario-de-Artes]]
+## Anti-dupe (eixo desta entrega)
+
+1. Unique SQL na conta.
+2. Choque Head+ChkSum com inventario na hora do commit → recusa, log,
+   kick.
+3. Unique na sessao (mesmo item em duas paginas).
+4. Overlap 20×15 no servidor (`WarehouseWire_ValidateOverlap`).
+5. `Revision` da sessao tem que bater com o SQL.
+6. Paginas alem de `UnlockedPages` recusadas.
+
+## UI
+
+Celula **escala** para caber 20×15 no painel (nao 22 px fixos). Tres
+abas. Paginas 4–5 existem em `cWAREHOUSE` e no SQL (`UnlockedPages` ate
+5); o C++ de jogo nao mostra aba 4 e 5 ainda.
+
+## O que o humano ainda faz
+
+1. Colar o SQL no SSMS (`UserDB`).
+2. Compilar **client + server**.
+3. Checklist: bau vazio, import WH02, 300 na pagina, 3 abas, recusa
+   pagina 4, overlap, ouro, relogin, dois clientes mesma conta,
+   item do inventario vs bau.
+
+## Arquivos
+
+| Onde | Arquivo |
+|---|---|
+| Shared | `smPacket.h`, `WarehouseWire.h` |
+| Client | `WarehouseWindow.cpp/.h`, `sinTrade.cpp/.h`, `netplay.cpp` |
+| Server | `record.cpp`, `SQLConnection.cpp/.h`, `OnSever.cpp`, `netplay.cpp` |
+| SQL | `docs/sql/Create-Warehouse.sql` (source) e esta pasta no vault |

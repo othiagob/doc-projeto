@@ -43,7 +43,7 @@ Source (codigo + copia opcional de PNG): `C:\Source Priston\Source Priston`.
 | Login de conta (PNG Fallen Tale) | feito no cliente; source e cliente podem divergir |
 | Selecao / criacao de personagem | arte em brief; jogo ainda TGA classico |
 | Distribuidor (lista + correio 168h) | **feito** 2026-09-15 — [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]], planta [[Distribuidor]] |
-| Armazem (paginas + busca + titulo ImGui) | **feito** 2026-09-15 — [[2026-09-15 - Recap Armazem ImGui paginas e busca]], planta [[Armazem]] |
+| Armazem (paginas + busca + titulo ImGui + SQL) | UI 2026-09-15; SQL 2026-09-17 — [[Armazem]], ADR 0008 |
 | Botao organizar inventario | spec rascunho — nao implementado |
 
 ## Indice desta pasta
@@ -64,16 +64,17 @@ Source (codigo + copia opcional de PNG): `C:\Source Priston\Source Priston`.
 - [[0002 - Duas identidades visuais jogador vs ferramenta]]
 - [[0005 - Distribuidor ImGui, armazem e inventario em pedra, artes no Cliente Full]]
 - [[0006 - Armazem ImGui, paginas no mesmo transcode]]
-- [[0007 - Distribuidor ImGui, PB02 e transcodes novos]]
+- [[0008 - Armazem SQL, 300 slots, 5 paginas 3 liberadas]]
 - [[2026-09-06 - Recap Desafios ImGui]]
 - [[2026-09-08 - Recap janelas ImGui de jogador]]
 - [[2026-09-13 - Recap artes de login e titulos ImGui]]
 - [[2026-09-15 - Recap Armazem ImGui paginas e busca]]
 - [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]]
 - Bloco HUD 2026-09-08: [[2026-09-08 - HUD ImGui lojas ranking mix e painel do servidor]]
-- Bloco armazem 2026-09-15: [[2026-09-15 - Armazem ImGui paginas e save]]
+- Bloco armazem SQL 2026-09-17: [[2026-09-17 - Armazem SQL e capacidade]]
 - Bloco distribuidor + painel 2026-09-16: [[2026-09-16 - Distribuidor ImGui, correio e painel Server]]
 - [[2026-09-16 - Recap painel Server.exe splash e Segoe]]
+- [[2026-09-16 - Recap painel Server.exe modal e operador]]
 
 ## Relacao com o resto do vault
 

@@ -41,9 +41,9 @@ PNG/TGA novos: **Antigravity + Gemini**, gravar no Cliente Full.
 
 **Ja no jogo (jogador ve)**
 
-- Janelas ImGui no cromado unico: Desafios, Loja Coins/Tempo, Ranking, Mix, Configuracoes, **Armazem**, **Distribuidor**. Recap Desafios/loja: [[2026-09-08 - Recap janelas ImGui de jogador]]. Recap bau: [[2026-09-15 - Recap Armazem ImGui paginas e busca]]. Recap correio: [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]]. Plantas: [[Armazem]] · [[Distribuidor]].
+- Janelas ImGui no cromado unico: Desafios, Loja Coins/Tempo, Ranking, Mix, Configuracoes, **Armazem**, **Distribuidor**. Recap Desafios/loja: [[2026-09-08 - Recap janelas ImGui de jogador]]. Recap bau UI: [[2026-09-15 - Recap Armazem ImGui paginas e busca]]. Recap bau SQL: [[2026-09-17 - Recap Armazem SQL 300 slots]]. Recap correio: [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]]. Plantas: [[Armazem]] · [[Distribuidor]].
 - Login de conta com PNG Fallen Tale (runtime = Cliente Full).
-- Painel do `Server.exe` (tema claro, splash de boot, ADR 0002). Recap: [[2026-09-16 - Recap painel Server.exe splash e Segoe]].
+- Painel do `Server.exe` (tema claro, splash, modal de confirmação, status de operador, ADR 0002). Recaps: [[2026-09-16 - Recap painel Server.exe splash e Segoe]] · [[2026-09-16 - Recap painel Server.exe modal e operador]].
 
 **Caminho de UI (specs, ainda nao e codigo)** — [[Roadmap-UI]]
 
@@ -58,6 +58,11 @@ Mapa de artes: [[Inventario-de-Artes]].
 
 ## Historia recente
 
+- [[2026-09-17]] — diario (armazem SQL)
+- [[2026-09-17 - Recap Armazem SQL 300 slots]]
+- [[2026-09-17 - Armazem SQL e capacidade]] — sessao
+- [[2026-09-16 - Painel Server.exe UX operador]] — diario
+- [[2026-09-16 - Recap painel Server.exe modal e operador]]
 - [[2026-09-16 - Ritual vault, Distribuidor no git e painel Server]] — diario
 - [[2026-09-16 - Recap painel Server.exe splash e Segoe]]
 - [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]]
@@ -73,7 +78,8 @@ Mapa de artes: [[Inventario-de-Artes]].
   [[0004 - Encoding ImGui UTF-8 vs HUD legado Windows-1252]],
   [[0005 - Distribuidor ImGui, armazem e inventario em pedra, artes no Cliente Full]],
   [[0006 - Armazem ImGui, paginas no mesmo transcode]],
-  [[0007 - Distribuidor ImGui, PB02 e transcodes novos]]
+  [[0007 - Distribuidor ImGui, PB02 e transcodes novos]],
+  [[0008 - Armazem SQL, 300 slots, 5 paginas 3 liberadas]]
 
 ---
 

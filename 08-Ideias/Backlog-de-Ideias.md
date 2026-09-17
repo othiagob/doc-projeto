@@ -82,12 +82,14 @@ HUD de pedra. Agrupa/compacta a bag; não mexe no equipamento.
 Spec: [[2026-09-13-inventario-organizar]].
 
 ### Armazém: busca, páginas e janela ImGui
-**Área:** cliente + servidor (save `.war`) · **Dificuldade:** 3/5 (páginas 4/5)
-**Status:** feito (2026-09-15)
-Janela ImGui (`WarehouseWindow`), 3×100 slots, busca local, mesmo
-transcode. Spec: [[2026-09-13-armazem-paginas-busca]]. Recap:
-[[2026-09-15 - Recap Armazem ImGui paginas e busca]]. Planta: [[Armazem]].
-ADR: [[0006 - Armazem ImGui, paginas no mesmo transcode]].
+**Área:** cliente + servidor (SQL UserDB) · **Dificuldade:** 3/5 (páginas 4/5 ainda ocultas)
+**Status:** feito UI 2026-09-15; SQL/300 slots 2026-09-17 (codigo; SSMS pendente)
+Janela ImGui (`WarehouseWindow`), 3×300, busca local, mesmo transcode.
+Spec: [[2026-09-13-armazem-paginas-busca]]. Recaps:
+[[2026-09-15 - Recap Armazem ImGui paginas e busca]],
+[[2026-09-17 - Recap Armazem SQL 300 slots]]. Planta: [[Armazem]].
+ADR: [[0006 - Armazem ImGui, paginas no mesmo transcode]],
+[[0008 - Armazem SQL, 300 slots, 5 paginas 3 liberadas]].
 
 ### Distribuidor ImGui + correio 168h
 **Área:** cliente + servidor + Shared · **Dificuldade:** 5/5

@@ -10,7 +10,9 @@ implementado: 2026-09-15
 > **Feita (2026-09-15).** A UI saiu da pedra: janela ImGui
 > (`WarehouseWindow`) + logica `cWAREHOUSE`. 3 paginas no mesmo
 > transcode. Recap: [[2026-09-15 - Recap Armazem ImGui paginas e busca]].
-> Planta: [[Armazem]]. ADR: [[0006 - Armazem ImGui, paginas no mesmo transcode]].
+> Planta: [[Armazem]]. ADR UI: [[0006 - Armazem ImGui, paginas no mesmo transcode]].
+> Persistencia SQL (300 slots): ADR [[0008 - Armazem SQL, 300 slots, 5 paginas 3 liberadas]],
+> recap [[2026-09-17 - Recap Armazem SQL 300 slots]].
 > O texto abaixo e o plano original (pedra) — nao reescreva; o "como
 > ficou" esta na planta.
 
