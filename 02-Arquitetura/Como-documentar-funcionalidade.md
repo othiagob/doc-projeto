@@ -48,3 +48,9 @@ Nao copie o recap. Recap = jogador. Esta nota = planta.
 - Ritual: [[Ritual-Documentacao]] passo dos fluxogramas.
 
 Hub: [[Arquitetura]].
+
+```mermaid
+flowchart LR
+  recap[10 jogador ve] --> planta[02 fluxo]
+  planta --> adr[06 por que]
+```

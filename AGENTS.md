@@ -91,6 +91,7 @@ planejamento** — **nunca** para compilar ou rodar o jogo.
 - `00-Inicio/Ritual-Documentacao.md` — sync diario/semanal quando o usuario pedir
 - `12-UI-e-Artes/Como-gerar-artes.md` — Antigravity + Gemini; o Cursor
   entrega o prompt completo (`06-antigravity-brief.mdc` no repo do jogo)
+- Source `ANTIGRAVITY AGENT/` — se a sessao for no Antigravity **escrevendo C++**
 - `01-Projeto/Mapa-Geral-do-Projeto.md` — mapa mental didático da estrutura
 - `02-Arquitetura/Arquitetura.md` — planta do código
 - `02-Arquitetura/Protocolo-de-Rede.md` e `Glossario-Tecnico.md` — se tocar rede/Shared

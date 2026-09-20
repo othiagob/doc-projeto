@@ -62,6 +62,15 @@ ajuda de IA via Cursor e Hermes).
 
 ## 4. Arquitetura de alto nível
 
+```mermaid
+flowchart TB
+  C[Cliente SrcGame] <-->|TCP| S[Servidor SrcServer]
+  S --> SQL[(12 bancos ODBC)]
+  S --> DAT[arquivos .dat .war PB02]
+  C --> SH[Shared]
+  S --> SH
+```
+
 ```
 +----------------------+                      +----------------------+
 |       CLIENTE        |   TCP (pacotes       |       SERVIDOR        |

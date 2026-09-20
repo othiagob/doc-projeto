@@ -29,6 +29,17 @@ Se em algum momento parecer que está "crescendo", **pare e vire spec**.
 
 ## Ciclo completo (spec obrigatória)
 
+```mermaid
+flowchart LR
+  i[Ideia] --> b[Backlog]
+  b --> s[Spec]
+  s --> p[Lista arquivos]
+  p --> c[Codigo]
+  c --> t[Teste]
+  t --> r[Diario CHANGELOG]
+  r --> a[Spec feita]
+```
+
 ```
  1. IDEIA          2. BACKLOG          3. SPEC           4. REVISÃO DO PLANO
  (anotar onde      (08-Ideias/          (05-Specs/        (Cursor lista arquivos

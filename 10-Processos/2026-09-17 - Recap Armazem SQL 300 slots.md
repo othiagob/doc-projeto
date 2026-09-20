@@ -7,9 +7,10 @@ tela: Armazem
 
 # Recap: Armazem SQL, 300 slots, 3 paginas jogaveis
 
-> Codigo na source. Tabelas **nao** nascem sozinhas. Teste de jogo
-> ainda e checklist. A recap 2026-09-15 (ImGui + WH02) continua
-> verdadeira para a **pintura**; esta nota e a persistencia e a grade.
+> **Historico.** Persistencia SQL nao fechou no jogo. Save vivo em
+> 2026-09-18: arquivo WH03 — [[2026-09-18 - Recap Armazem arquivo WH03]].
+> A recap 2026-09-15 continua verdadeira para a **pintura**. Grade 300
+> e fio v3 desta entrega **ficaram**.
 
 ## O que o jogador passa a ver (depois do SQL + F5)
 

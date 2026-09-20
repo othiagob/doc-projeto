@@ -11,18 +11,53 @@ desde a última vez que joguei build".
 
 ## [Unreleased]
 
+### Documentacao
+
+#### Ritual 2026-09-19 (fluxogramas + kit Antigravity Agent)
+
+Livro ganhou mermaid nas notas de mundo/processo. Plantas [[Clan]] e
+[[Login-e-intro]]. Pasta na source `ANTIGRAVITY AGENT/` para IA
+escrever C++ com spec-driven. ADR 0010. Recap clan (codigo, teste
+pendente). Diario e sessao 19/09.
+
 ### Codigo do jogo
+
+#### Mestre dos Clan ImGui + ClanDB — 2026-09-19
+
+Janela `ClanWindow` kit B. Servidor `GuildService`. Fio
+`Shared/GuildWire.h`. Transcodes `smTRANSCODE_GUILD_OPEN/SNAPSHOT/SEARCH/ACTION`
+(`0x48478A20`–`0x48478A23`). SQL `ClanDB` via `Create-ClanGuild.sql`.
+Teste no jogo pendente (gate NPC `dwGuildNpcTime`).
+
+Planta: [[Clan]]. Recap: [[2026-09-19 - Recap Mestre dos Clan ImGui]].
+ADR [[0010 - Mestre dos Clan ImGui, GuildWire e ClanDB]].
+
+#### Intro antes do login — 2026-09-19
+
+`IntroSplash`: video `login.asf` ou `intro.png` ou texto. Skip
+clique/tecla. Sem transcode. Planta: [[Login-e-intro]].
+
+#### Armazem arquivo WH03 (SQL revertido) — 2026-09-18
+
+Save vivo volta para `Data\DataServer\warehouse\<n>\<conta>.war`
+(magica WH03, so ocupados, 300×3). Grade 20×15, 3 abas e fio
+`wVersion=3` **permanecem**. SQL `UserDB.Warehouse` nao e mais lido.
+Testado: item persiste ao fechar/reabrir. Falha de save: mensagem
+honesta + rollback do inventario.
+
+Planta: [[Armazem]]. Como funciona: [[Armazem-como-funciona]].
+Recap: [[2026-09-18 - Recap Armazem arquivo WH03]].
+ADR [[0009 - Armazem arquivo WH03, SQL revertido]].
+Falhas: [[2026-09-18 - Armazem WH03 e falhas SQL]].
 
 #### Armazem SQL, 300 slots, 3 paginas jogaveis — 2026-09-17
 
-Bau continua ImGui + `cWAREHOUSE`. Persistencia passa a `UserDB.dbo.Warehouse`
-/ `WarehouseItem`. Grade 20×15 (300), 5 paginas no schema, 3 no jogo.
-Mesmo transcode `0x48470047`, `wVersion=3`, so itens ocupados em chunks.
-Import WH02 uma vez. Unique Head+ChkSum. Script SSMS
-`Create-Warehouse.sql` (nao nasce no boot).
+Tentativa: persistencia `UserDB.dbo.Warehouse` / `WarehouseItem`.
+Grade 20×15 e `wVersion=3` nasceram aqui. **No jogo o save SQL nao
+fechou** (18/09 voltou para arquivo). Nao repetir sem ADR nova.
 
-Planta: [[Armazem]]. Recap: [[2026-09-17 - Recap Armazem SQL 300 slots]].
-ADR [[0008 - Armazem SQL, 300 slots, 5 paginas 3 liberadas]].
+Recap historica: [[2026-09-17 - Recap Armazem SQL 300 slots]].
+ADR 0008 (substituida na persistencia).
 
 #### Armazem ImGui — 2026-09-15
 
@@ -30,7 +65,8 @@ Janela de jogador no cromado 15 (titulo `armazem.png`), busca por nome,
 3 paginas. Logica continua em `cWAREHOUSE`. Sem transcode novo:
 `smTRANSCODE_WAREHOUSE` (`0x48470047`). Em 2026-09-15 o save ainda era
 `.war` WH02 e `wVersion=2` (100 slots/pagina). Isso foi **substituido**
-em 2026-09-17 (SQL, 300 slots, `wVersion=3`) — ver entrada acima.
+em 2026-09-17 (tentativa SQL + grade 300) e o save vivo em 2026-09-18
+(arquivo WH03) — ver entradas acima.
 
 Recap UI: [[2026-09-15 - Recap Armazem ImGui paginas e busca]].
 Planta atual: [[Armazem]]. ADR UI [[0006 - Armazem ImGui, paginas no mesmo transcode]].
@@ -75,6 +111,13 @@ Recap: [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]].
 Planta: [[Distribuidor]]. ADR [[0007 - Distribuidor ImGui, PB02 e transcodes novos]].
 
 ### Documentacao
+
+#### Ritual 2026-09-18 (armazem WH03 + falhas SQL)
+
+Planta [[Armazem]] atualizada. Documento auxiliar
+[[Armazem-como-funciona]] (fluxogramas mermaid). ADR 0009. Recap,
+diario, sessao `11-Evolucao`. ADR 0008 marcada substituida. Autorizacao
+permanente do Cursor no vault (sem pedir arquivo a arquivo).
 
 #### Ritual 2026-09-17 (armazem SQL)
 

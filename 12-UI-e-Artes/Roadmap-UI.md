@@ -20,12 +20,14 @@ protocolo primeiro.
 
 1. **Organizar inventario** — menor. Client, HUD de pedra, provavelmente
    sem transcode novo. Spec: [[2026-09-13-inventario-organizar]].
-2. **Armazem** — **feito** (2026-09-15). ImGui + 3 paginas + busca.
-   Recap: [[2026-09-15 - Recap Armazem ImGui paginas e busca]]. Planta:
-   [[Armazem]]. Spec: [[2026-09-13-armazem-paginas-busca]].
+2. **Armazem** — **feito** (UI 15/09, save vivo WH03 18/09). ImGui + 3
+   paginas + busca. Recap UI: [[2026-09-15 - Recap Armazem ImGui paginas e busca]].
+   Recap save: [[2026-09-18 - Recap Armazem arquivo WH03]]. Planta: [[Armazem]].
 3. **Distribuidor ImGui + correio 168h** — **feito** (2026-09-15).
    Recap: [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]].
    Planta: [[Distribuidor]]. Spec: [[2026-09-13-distribuidor-correio]].
+4. **Mestre dos Clan** — **em andamento** (codigo 19/09). Planta: [[Clan]].
+   Spec: [[2026-09-19-mestre-dos-clan]].
 
 Paralelo (arte, nao C++): char select Fallen Tale — trocar TGA no
 Cliente Full. Ver [[Inventario-de-Artes]].
@@ -40,10 +42,11 @@ Cliente Full. Ver [[Inventario-de-Artes]].
 | Botao organizar inventario | pedra | provavelmente nao | spec |
 | Armazem busca por nome | ImGui | nao (filtro local) | feito |
 | Armazem titulo PNG | ImGui 400x64 | nao | feito |
-| Armazem mais paginas | ImGui | **sim** (3 pacotes; SQL UserDB desde 2026-09-17) | feito |
+| Armazem mais paginas | ImGui | **sim** (chunks v3; save arquivo WH03) | feito |
 | Distribuidor lista + detalhe | ImGui | **sim** (LIST em chunks) | feito |
 | Enviar item a outro personagem | ImGui | **sim** (`POSTBOX_SEND`) | feito |
 | Pendencia 168h | servidor | **sim** (TTL no PB02) | feito |
+| Mestre dos Clan | ImGui | **sim** (`GUILD_*`) | em andamento |
 
 ## O que cada frente e (em uma frase)
 
@@ -54,10 +57,11 @@ Nao mexe nos 16 slots de equipamento. Nao e redesign da janela.
 
 ### Armazem
 
-**Feito (UI 15/09, SQL 17/09).** Janela ImGui (`WarehouseWindow`);
-logica `cWAREHOUSE`. 3 abas, grade 20×15 (300), busca, titulo
-`armazem.png`. Mesmo transcode `0x48470047`, `wVersion=3` (ocupados).
-Save: `UserDB` (ADR 0008). Inventario ao lado continua pedra. ADR UI
+**Feito (UI 15/09, save arquivo WH03 18/09).** Janela ImGui
+(`WarehouseWindow`); logica `cWAREHOUSE`. 3 abas, grade 20×15 (300),
+busca, titulo `armazem.png`. Mesmo transcode `0x48470047`, `wVersion=3`.
+Save: `.war` WH03 (ADR 0009). Tentativa SQL ADR 0008 **nao** e a fonte.
+Inventario ao lado continua pedra. ADR UI
 [[0006 - Armazem ImGui, paginas no mesmo transcode]]. Planta: [[Armazem]].
 
 ### Distribuidor (NPC correio)
@@ -69,6 +73,13 @@ TTL 168h. Inventario continua pedra.
 ADR [[0007 - Distribuidor ImGui, PB02 e transcodes novos]].
 Planta: [[Distribuidor]]. Recap:
 [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]].
+
+### Mestre dos Clan
+
+**Codigo (19/09), teste pendente.** Janela `ClanWindow` kit B.
+`GuildService` + `ClanDB`. Transcodes `0x48478A20`–`23`.
+ADR [[0010 - Mestre dos Clan ImGui, GuildWire e ClanDB]].
+Planta: [[Clan]].
 
 ## Fora deste roadmap (de proposito)
 

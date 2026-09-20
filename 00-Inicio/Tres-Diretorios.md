@@ -18,6 +18,14 @@ arte e todo `.cpp` mora em um deles.
 A pasta pai do codigo e `C:\Source Priston`. O repositorio compilavel e
 a subpasta `Source Priston`.
 
+```mermaid
+flowchart TB
+  src[Source C++] --> build[VS Release Win32]
+  build --> exe[Game.exe Server.exe]
+  full[Cliente Full PNG] --> exe
+  vault[Vault livro] --> ia[IA consulta]
+```
+
 Caminho antigo do vault
 (`C:\Users\carol\Desktop\OTHIAGOB PROJETO\source-priston\priston-documents`)
 nao e mais a fonte viva.

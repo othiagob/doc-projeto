@@ -6,7 +6,7 @@ data: 2026-09-16
 
 # Inventario de artes visuais
 
-Estado em **2026-09-16**. Atualize esta nota quando uma arte entrar no
+Estado em **2026-09-19**. Atualize esta nota quando uma arte entrar no
 cliente ou uma tela mudar de classico para ImGui.
 
 Recap deste bloco: [[2026-09-13 - Recap artes de login e titulos ImGui]].
@@ -29,6 +29,7 @@ PNG faltar. Source e Cliente Full **iguais** nestes arquivos:
 | Lista de Mix | `game/images/mix/lista-de-mix.png` |
 | Armazem | `game/images/warehouse/armazem.png` |
 | Distribuidor | `game/images/postbox/distribuidor.png` |
+| Mestre dos Clan | `game/images/clan/mestre-dos-clan.png` (320×26 kit B) |
 
 Excecao pontual do Distribuidor (nao e o cromado padrao):
 
@@ -38,12 +39,19 @@ Excecao pontual do Distribuidor (nao e o cromado padrao):
 
 Contrato: `.cursor/rules/15-imgui-windows.mdc`. Janelas:
 `QuestWindow`, `Settings`, `NewShop`, `NewShopTime`, `RankingWindow`,
-`MixWindow`, `WarehouseWindow`, `PostBoxWindow`. Cromado compartilhado: `ImGuiWindowChrome.h`.
+`MixWindow`, `WarehouseWindow`, `PostBoxWindow`, `ClanWindow`. Cromado compartilhado: `ImGuiWindowChrome.h`.
+
+Moldura kit B (`frame.png` 760×540, bronze 732) — mesmo arquivo em:
+
+`postbox/`, `quest/`, `settings/`, `shop/`, `ranking/`, `mix/`,
+`warehouse/`, `clan/`. Nao e 9-slice.
 
 HUD classico de pedra (inventario, HP, `sinbaram/` **exceto o bau**)
 **nao** usa estes PNG. O armazem migrou (ADR 0006).
 
-## Feito a parte — login de conta
+## Feito a parte — login de conta + intro
+
+Kit PNG Fallen Tale. O C++ carrega de `game\images\login\`:
 
 Kit PNG Fallen Tale. O C++ carrega de `game\images\login\`:
 
@@ -61,6 +69,10 @@ Nomes existem na source **e** no Cliente Full, mas os **bytes divergem**
 
 Ainda referenciados no codigo e **ausentes** nos dois lados:
 `bg_servers.png`, `seasonal_overlay.png`.
+
+Intro (`IntroSplash`): video `game\textures\misc\login.asf` ou PNG
+`intro.png` (brief `docs/prompt-antigravity-intro-ui.md`). Planta:
+[[Login-e-intro]].
 
 ## Em arte, ainda nao no jogo — char select
 

@@ -1,10 +1,16 @@
 ---
 tags: [decisao, sql, cliente, servidor, shared]
-status: aceita
+status: substituida
 data: 2026-09-17
 ---
 
 # 0008 - Armazem SQL, 300 slots, 5 paginas (3 liberadas)
+
+> **Substituida em 2026-09-18** pela ADR
+> [[0009 - Armazem arquivo WH03, SQL revertido]] **na persistencia**.
+> A grade 300, 3 paginas jogaveis e o fio `wVersion=3` **ficaram**.
+> `UserDB.dbo.Warehouse` **nao** e a fonte viva. Nao reativar SQL do
+> bau sem ADR nova. Historico: [[2026-09-18 - Armazem WH03 e falhas SQL]].
 
 ## Contexto
 

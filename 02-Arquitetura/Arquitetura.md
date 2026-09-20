@@ -14,11 +14,21 @@ tags: [arquitetura, cliente, servidor, shared]
 MMO cliente-servidor em **C++** (Visual Studio 2022, toolset v143, **32-bit**),
 com duas soluções que compartilham código:
 
+```mermaid
+flowchart LR
+  G[SrcGame Game.exe] <-->|TCP smTRANSCODE| S[SrcServer Server.exe]
+  G --> Sh[Shared]
+  S --> Sh
+  S --> SQL[(SQL Server)]
+  S --> files[.dat .war PB02]
+```
+
 ```
 C:\Source Priston\Source Priston\
 |-- SrcGame/      -> CLIENTE (Game.sln -> Game.exe) - o jogo na tela
 |-- SrcServer/    -> SERVIDOR (server.sln -> Server.exe) - a "verdade" do jogo
 |-- Shared/       -> código compilado DENTRO dos dois (protocolo, utils, tabelas)
+|-- ANTIGRAVITY AGENT/ -> kit spec-driven para IA escrever codigo
 `-- dependencies/ -> bibliotecas de terceiros pré-compiladas (NUNCA editar)
 ```
 
@@ -72,8 +82,8 @@ Solução: `Game.sln` -> projeto `src/game.vcxproj`. Entry point real:
 | `ActionGame.cpp` | Movimento por teclado + dash + auto-alvo |
 | `playsub.cpp` / `playmain.cpp` | HUD clássico (`DrawGameState`) / loop in-game + carregar mapas |
 | `GameCore.cpp` | **`CGameCore`** — gerenciador das janelas modernas (chat, party, minimapa, tooltips) |
-| `HUD/` | Overlays novos: minimapa, dano, alvo, ranking, roleta, SOD, **armazem ImGui** (`WarehouseWindow.cpp`), **distribuidor ImGui** (`PostBoxWindow.cpp`). Logica do bau continua em `sinbaram/sinTrade.cpp`. Plantas: [[Armazem]] · [[Distribuidor]] |
-| `Login/` | Tela de login nova (checkbox "Lembrar ID", seleção de mundo "Draco Priston") |
+| `HUD/` | Overlays novos: minimapa, dano, alvo, ranking, roleta, SOD, **armazem ImGui** (`WarehouseWindow.cpp`), **distribuidor ImGui** (`PostBoxWindow.cpp`), **clan ImGui** (`ClanWindow.cpp`). Logica do bau continua em `sinbaram/sinTrade.cpp`. Plantas: [[Armazem]] · [[Distribuidor]] · [[Clan]] |
+| `Login/` | IntroSplash (video/PNG) + tela de login nova. Planta: [[Login-e-intro]] |
 | `Chat/` | Chat novo (janela moderna) |
 | `Party/` | Party/raid |
 | `Quest/` | Quest + `QuestWindow` (ImGui: janela Desafios tecla Q + taskbar de progresso). Recap: vault `10-Processos/2026-09-06 - Recap Desafios ImGui.md` |
@@ -106,9 +116,11 @@ Solução: `Game.sln` -> projeto `src/game.vcxproj`. Entry point real:
 3. **ImGui** — overlays/alertas dos sistemas novos (HUD/InstancesFlag,
  Roleta, RankingWindow, SodWindow...), a janela de **Desafios**
  (`Quest/QuestWindow.cpp`), o **Armazem** (`HUD/WarehouseWindow.cpp`)
- e o **Distribuidor** (`HUD/PostBoxWindow.cpp`).
+ o **Distribuidor** (`HUD/PostBoxWindow.cpp`) e o **Mestre dos Clan**
+ (`HUD/ClanWindow.cpp`).
  A logica de item do bau continua no classico `cWAREHOUSE` — ver [[Armazem]].
  A caixa do correio continua arquivo por conta — ver [[Distribuidor]].
+ O cla vive em `ClanDB` via `GuildService` — ver [[Clan]].
 
 > Ao editar UI: **descubra primeiro qual sistema a tela usa** (sin, Engine/UI
 > ou ImGui) antes de mexer — os três coexistem.
@@ -152,6 +164,7 @@ toda a lógica do jogo.
 | `SrcServer/` (raiz) | **Núcleo**: entry, dispatch gigante de pacotes (`RecvMessage`), loop, castelo, billing | `OnSever.cpp` (34.764 l.), `DllServer.cpp`, `gameSQL.cpp`, `BlessCastle.h` |
 | `Character/` | Personagens: combate, dano, skills, **save `.dat`** | `playmain.cpp`, `playsub.cpp`, `damage.cpp`, `record.cpp` |
 | `Login/` | Autenticação de conta (UserDB, tabela `Users`) | `ProcessLogin.cpp` |
+| `Clan/` | Mestre dos Clan (`GuildService`, ClanDB) | `GuildService.cpp` |
 | `GameServer/` | Carrega do banco: monstros, itens, NPCs, drops | `GameServer.cpp` |
 | `Database/` | **Camada ODBC moderna** — 12 bancos | `SQLConnection.h/.cpp` |
 | `SQL.cpp` (raiz) | Singleton ODBC p/ shop em jogo + logs | `SQL.cpp`, `SQL.h` |
@@ -299,13 +312,17 @@ a planta detalhada mora aqui — nao so no recap. Convencao:
 
 | Funcionalidade | Nota | O que o diagrama mostra |
 |---|---|---|
-| Armazem (ImGui + SQL) | [[Armazem]] | Trajetoria, abrir, chunks v3, UserDB |
+| Armazem (ImGui + arquivo WH03) | [[Armazem]] · [[Armazem-como-funciona]] | Camadas, abrir, fechar, disco |
 | Distribuidor (correio 168h, ImGui) | [[Distribuidor]] | Camadas, OPEN/LIST/CLAIM/SEND, save `PB02` |
+| Mestre dos Clan | [[Clan]] | ImGui, GUILD_*, ClanDB |
+| Login e intro | [[Login-e-intro]] | video / PNG / texto ate HoOpening |
 
 ## 9. Ver também
 
 - [[Protocolo-de-Rede]] · [[Banco-de-Dados]] · [[Glossario-Tecnico]] · [[SDD-Source-Priston]]
-- [[Armazem]] — bau (atualizado 2026-09-17)
+- [[Armazem]] — bau (atualizado 2026-09-18) · [[Armazem-como-funciona]]
 - [[Distribuidor]] — correio (2026-09-15)
+- [[Clan]] — guilda (codigo 2026-09-19)
+- [[Login-e-intro]] — intro + conta
 - Guias: [[Como-Compilar]] · [[Como-Rodar]]
 - Anexos: `anexos/Relatorio-Analise-Cliente.md` · `anexos/Relatorio-Analise-Servidor.md` · `anexos/Relatorio-Analise-Build.md`

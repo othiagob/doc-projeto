@@ -35,16 +35,24 @@ Contrato visual do jogador (janela ImGui): no repo do jogo,
 Cliente que o `game.exe` le: `C:\Cliente Full`.
 Source (codigo + copia opcional de PNG): `C:\Source Priston\Source Priston`.
 
-## Estado em 30 segundos (2026-09-16)
+## Estado em 30 segundos (2026-09-19)
 
 | Frente | Status |
 |---|---|
-| Titulos ImGui (Desafios, Lojas, Ranking, Mix, Configuracoes, Armazem, Distribuidor) | feito |
+| Titulos ImGui kit B + `frame.png` 760×540 | feito nas janelas grandes (inclui mix/quest/shop/ranking/settings/clan) |
 | Login de conta (PNG Fallen Tale) | feito no cliente; source e cliente podem divergir |
+| Intro splash | codigo; arte `intro.png` opcional |
 | Selecao / criacao de personagem | arte em brief; jogo ainda TGA classico |
-| Distribuidor (lista + correio 168h) | **feito** 2026-09-15 — [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]], planta [[Distribuidor]] |
-| Armazem (paginas + busca + titulo ImGui + SQL) | UI 2026-09-15; SQL 2026-09-17 — [[Armazem]], ADR 0008 |
+| Distribuidor (lista + correio 168h) | **feito** 2026-09-15 — planta [[Distribuidor]] |
+| Armazem (paginas + busca + ImGui + WH03) | UI 15/09; SQL tentado 17/09; save vivo **arquivo** 18/09 — [[Armazem]], ADR 0009 |
+| Mestre dos Clan | codigo 19/09 — [[Clan]], teste pendente |
 | Botao organizar inventario | spec rascunho — nao implementado |
+
+```mermaid
+flowchart LR
+  feito[Inventario de artes] --> recap[10-Processos]
+  falta[Roadmap-UI] --> spec[05-Specs]
+```
 
 ## Indice desta pasta
 

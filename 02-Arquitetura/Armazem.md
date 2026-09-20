@@ -1,69 +1,84 @@
 ---
-tags: [arquitetura, cliente, servidor, shared, sql]
+tags: [arquitetura, cliente, servidor, shared]
 status: ativo
-data: 2026-09-17
+data: 2026-09-18
 ---
 
 # Armazem (NPC Warehouse)
 
-Planta viva do bau. Recap da UI ImGui (2026-09-15):
-[[2026-09-15 - Recap Armazem ImGui paginas e busca]]. Recap SQL/300
-slots: [[2026-09-17 - Recap Armazem SQL 300 slots]]. ADR UI
-[[0006 - Armazem ImGui, paginas no mesmo transcode]]. ADR persistencia
-[[0008 - Armazem SQL, 300 slots, 5 paginas 3 liberadas]]. Spec antiga
-(pedra): [[2026-09-13-armazem-paginas-busca]].
+Planta viva do bau. **Como funciona (fluxogramas):**
+[[Armazem-como-funciona]].
 
-## Trajetoria (como era, o que tentamos, aonde estamos)
+Recap UI: [[2026-09-15 - Recap Armazem ImGui paginas e busca]].
+Recap SQL (tentativa, nao e o save vivo):
+[[2026-09-17 - Recap Armazem SQL 300 slots]].
+Recap arquivo atual: [[2026-09-18 - Recap Armazem arquivo WH03]].
+ADR UI: [[0006 - Armazem ImGui, paginas no mesmo transcode]].
+ADR persistencia viva: [[0009 - Armazem arquivo WH03, SQL revertido]].
+ADR SQL (substituida): [[0008 - Armazem SQL, 300 slots, 5 paginas 3 liberadas]].
+Falhas: [[2026-09-18 - Armazem WH03 e falhas SQL]].
+Spec antiga (pedra): [[2026-09-13-armazem-paginas-busca]].
+
+## Uma frase
+
+ImGui pinta a janela; `cWAREHOUSE` arrasta; o servidor grava
+`Data\DataServer\warehouse\<n>\<conta>.war` (magica WH03). UserDB
+**nao** e a fonte do bau.
+
+## Trajetoria
 
 ### Era (ate ~2026-09-14)
 
 NPC `Warehouse` / `Blacksmith` / `MagicMaster`. Janela de **pedra**
-(`shop-1.bmp`, `cWAREHOUSE` desenha e arrasta). Uma pagina de 100
-`sITEM`. Persistencia: arquivo `.war` no DataServer (`rsLoadWareHouseData`
-/ `rsSaveWareHouseData`). Pacote `smTRANSCODE_WAREHOUSE` (`0x48470047`):
-blob comprimido de **toda** a pagina. Abrir: `OPEN_WAREHOUSE`
-(`0x48470048`). Ouro no bau viaja na pagina 0. Peso era `short`.
+(`shop-1.bmp`). Uma pagina de 100 `sITEM`. Arquivo `.war`. Pacote
+`smTRANSCODE_WAREHOUSE` (`0x48470047`) com blob da pagina inteira.
+Abrir: `OPEN_WAREHOUSE` (`0x48470048`).
 
-Anti-dupe classico: `Head`/`ChkSum` contra inventario (`InvenItemInfo`)
-e contra o proprio bau (`WareHouseItemInfo`).
+### Tentamos e funcionou (2026-09-15)
 
-### Tentamos (2026-09-15)
+So a pintura foi para ImGui (`WarehouseWindow` + `frame.png` + titulo
+kit B `armazem.png`). Drag ficou em `cWAREHOUSE`. 3 paginas WH02,
+`wVersion=2`. **Save em arquivo funcionava.** Grade visivel 9×9 de
+22 px parecia pequena na moldura 760×540.
 
-Migrar **so a pintura** para ImGui (`WarehouseWindow` + `frame.png` +
-titulo kit B `armazem.png`). Logica e drag **ficam** em `cWAREHOUSE`.
-Reescrever overlap no ImGui foi condenado na tabela de falhas daquela
-sessao.
+Reescrever overlap no ImGui foi **condenado** (tabela de falhas 15/09).
 
-Paginas: 3 × 100 no mesmo transcode, `wVersion=2`, magica `WH02`.
-`dwTemp[0]` = pagina. Ouro so na pagina 0. Busca por nome local.
-Inventario ao lado continua pedra.
+### Tentamos e nao fizemos (planejamento 17/09)
 
-Isso funcionou, mas a grade **9×9 de 22 px** (~198 px) parecia um
-carimbo dentro da moldura 760×540. Capacidade espacial real de 1×1 era
-81 por pagina, nao 100.
+- So aumentar o pixel da celula.
+- 300 `sITEM` no `Data[]` (estoura 8192).
+- Database `WarehouseDB` no boot.
+- 5 abas jogaveis no dia 1.
 
-### Tentamos e nao fizemos (2026-09-17, planejamento)
+### Tentamos e falhou no jogo (2026-09-17 a 18)
 
-- So aumentar o pixel da celula: conforto, mesmos 100 slots.
-- Grade 12×12 / 144 slots ainda no `.war` WH03: ainda estoura compressao
-  se encher 300 `sITEM` no `Data[]`.
-- Database `WarehouseDB` no boot: mais um nome obrigatorio, `exit(0)`.
-- 5 paginas **jogaveis** de imediato: schema sim, jogo nao (anti-dupe e
-  teste).
+Persistencia SQL `UserDB.Warehouse` / `WarehouseItem` (ADR 0008).
+Grade 20×15 e fio `wVersion=3` **entraram**. O save SQL **nao**.
+Sintoma: 1 anel, fecha, item volta. Varias correcoes ODBC nao
+fecharam. Nao repetir sem ADR nova — ver evolucao 18/09.
 
-### Estamos (2026-09-17)
+### Estamos (2026-09-18, testado)
 
-Hibrido UI **igual** a 0006. Persistencia **SQL no UserDB**. Grade
-**20×15** (300 celulas 1×1). 5 paginas na RAM/schema, **3 abas** no
-jogo. Pacote `wVersion=3`: so ocupados, chunks, commit. `.war` WH02
-importa uma vez. Codigo na source; **tabelas ainda precisam do script
-no SSMS**. Teste de jogo completo ainda e checklist humano.
+Hibrido UI 0006. Grade 20×15, 3 abas, fio v3 ocupados. Persistencia
+**arquivo WH03**. WH02 importa uma vez (backup `.wh02`).
+
+```mermaid
+flowchart LR
+  ui[ImGui WarehouseWindow]
+  logic[cWAREHOUSE]
+  wire[0x48470047 v3 chunks]
+  file[.war WH03]
+
+  ui --> logic
+  logic --> wire
+  wire --> file
+```
 
 ## Constantes (`Shared/smPacket.h`)
 
 | Simbolo | Valor | Papel |
 |---|---|---|
-| `WAREHOUSE_MAX_PAGES` | 5 | RAM + SQL |
+| `WAREHOUSE_MAX_PAGES` | 5 | RAM |
 | `WAREHOUSE_UNLOCKED_PAGES` | 3 | jogo agora |
 | `WAREHOUSE_PAGE_SLOTS` | 300 | por pagina |
 | `WAREHOUSE_GRID_COLS` | 20 | overlap |
@@ -72,97 +87,42 @@ no SSMS**. Teste de jogo completo ainda e checklist humano.
 | `WAREHOUSE_PACKET_VERSION` | 3 | fio |
 | `WAREHOUSE_WIRE_DATA_MAX` | 7800 | `TRANS_WAREHOUSE.Data` |
 | `WAREHOUSE_DEFAULT_WEIGHT_MAX` | 8000 | teto |
+| `WAREHOUSE_FILE_MAGIC_V3` | `0x33304857` | disco WH03 |
 
-`TRANS_WAREHOUSE_LEGACY` existe so para o binario antigo (100 `sITEM`).
-Nao e o formato vivo.
+`TRANS_WAREHOUSE_LEGACY` so para binario antigo (100 `sITEM`).
 
-## Dois mundos (nao misturar)
+## Persistencia (arquivo)
 
-| Mundo | Classe | O que faz |
-|---|---|---|
-| Pintura | `WarehouseWindow` | Moldura 760×540, 3 abas, grade 20×15 **escalada** ao retangulo, busca, ouro |
-| Logica | `cWAREHOUSE` (`sinTrade`) | `sWAREHOUSE`, overlap, peso `int`, ouro, `Pages[5][300]` |
+Path: `Data\DataServer\warehouse\<GetUserCode>\<conta>.war`.
 
-Filtros PNG (armas, armaduras…) sao **so UI**. Nao mudam o SQL.
+Header WH03: magica, revision, money, weightMax, unlocked, count,
+depois `sWAREHOUSE_SAVE_ITEM[]`. Write via `.tmp` + `MoveFileEx`.
+
+`Create-Warehouse.sql` e **legado**. Tabelas no SSMS, se existirem,
+nao sao lidas pelo `server.exe`.
 
 ## Pacote (nenhum transcode novo)
 
-Socket 8192. Nunca mandar `sizeof(sITEM)*300`.
+Socket 8192. Nunca mandar `sizeof(sITEM)*300`. Detalhe e mermaid
+de abrir/fechar: [[Armazem-como-funciona]].
 
-```
-NPC clique
-  -> OPEN_WAREHOUSE (0x48470048)
-  -> DataServer: SELECT Warehouse + WarehouseItem
-  -> N chunks WAREHOUSE (0x48470047) por pagina, wVersion[0]=3
-     dwTemp[0]=pagina  dwTemp[1]=chunk  dwTemp[2]=totalChunks
-     dwTemp[3]=revision  dwTemp[4]=0
-  -> chunk final da ultima pagina: dwTemp[4]=1 (sessao pronta)
-  -> client: ApplyLoadedChunk; AllPagesReady quando as 3 chegaram
+`wVersion[0] != 3` no save = recusa. Pagina >= 3 = recusa.
 
-Fechar / salvar
-  -> 3 paginas, cada uma em N chunks (so ocupados, EecodeCompress)
-  -> ultimo chunk da pagina 2: dwTemp[4]=1
-  -> servidor junta na sessao; so no commit valida overlap, Head+ChkSum,
-     inventario, UnlockedPages, Revision; transacao SQL
-```
+## Anti-dupe
 
-`wVersion[0] != 3` no save = recusa. Pagina >= 3 = recusa + log.
-
-Abrir o bau de novo: `rsWareHouseSessionFree` no reset/disconnect
-(`OnSever.cpp`). Reenvio do chunk 0 de uma pagina **substitui** aquela
-pagina na sessao (nao empilha duplicata).
-
-Detalhe do fio: `Shared/WarehouseWire.h` (`sWAREHOUSE_WIRE_ITEM` =
-`sITEMINFO` + x,y,w,h,Class,Slot). Sem ponteiro GPU no SQL.
-
-## Persistencia SQL (`UserDB`)
-
-Nao e o 12º database. Script:
-`09-Guias/sql/Create-Warehouse.sql`.
-
-| Tabela | Chave | Conteudo |
-|---|---|---|
-| `dbo.Warehouse` | `AccountID` | Money, WeightMax, UnlockedPages, Revision, ImportedFromWar |
-| `dbo.WarehouseItem` | Account + Page + Slot | GridX/Y, ItemBlob (`sITEMINFO`), ItemCode, Head, ChkSum |
-
-Unique filtrado: `(AccountID, Head, ChkSum) WHERE Head<>0 AND ChkSum<>0`.
-Pocao/ouro (Head 0) ficam de fora do indice — o C++ ainda valida peso e
-overlap.
-
-Save atomico: DELETE itens da conta + INSERT da sessao + UPDATE cabecalho
-com `Revision = @rev`. Depois SELECT; se nao for `@rev+1`, rollback
-(buraco de 0 linhas).
-
-Import `.war`: se `ImportedFromWar=0` e o arquivo WH02 existir, le e
-grava SQL uma vez. Save do personagem **nao** reabre o `.war` em
-`sWAREHOUSE` de 300 slots; usa `WareHouseItemInfo` + ouro.
-
-`rsSaveWareHouseData` no `netplay` do servidor (compressao 300 `sITEM`)
-fica **desligado** (`return FALSE`) para ninguem gravar o formato morto.
-
-## Anti-dupe (eixo desta entrega)
-
-1. Unique SQL na conta.
-2. Choque Head+ChkSum com inventario na hora do commit → recusa, log,
-   kick.
-3. Unique na sessao (mesmo item em duas paginas).
-4. Overlap 20×15 no servidor (`WarehouseWire_ValidateOverlap`).
-5. `Revision` da sessao tem que bater com o SQL.
-6. Paginas alem de `UnlockedPages` recusadas.
+Overlap 20×15, Head+ChkSum na sessao, choque com inventario, paginas
+alem de `UnlockedPages`. Sem unique SQL.
 
 ## UI
 
-Celula **escala** para caber 20×15 no painel (nao 22 px fixos). Tres
-abas. Paginas 4–5 existem em `cWAREHOUSE` e no SQL (`UnlockedPages` ate
-5); o C++ de jogo nao mostra aba 4 e 5 ainda.
+Celula escala para 20×15 no painel. Tres abas. Paginas 4–5 na RAM,
+sem aba.
 
-## O que o humano ainda faz
+## O que o humano faz
 
-1. Colar o SQL no SSMS (`UserDB`).
-2. Compilar **client + server**.
-3. Checklist: bau vazio, import WH02, 300 na pagina, 3 abas, recusa
-   pagina 4, overlap, ouro, relogin, dois clientes mesma conta,
-   item do inventario vs bau.
+1. Compilar **server.exe** (+ Game.exe se a mensagem de falha for antiga).
+2. Checklist: 1 item persiste; log `FILE commit OK`; arquivo `.war`;
+   falha de disco restaura inventario; WH02 antigo importa.
 
 ## Arquivos
 
@@ -170,5 +130,5 @@ abas. Paginas 4–5 existem em `cWAREHOUSE` e no SQL (`UnlockedPages` ate
 |---|---|
 | Shared | `smPacket.h`, `WarehouseWire.h` |
 | Client | `WarehouseWindow.cpp/.h`, `sinTrade.cpp/.h`, `netplay.cpp` |
-| Server | `record.cpp`, `SQLConnection.cpp/.h`, `OnSever.cpp`, `netplay.cpp` |
-| SQL | `docs/sql/Create-Warehouse.sql` (source) e esta pasta no vault |
+| Server | `record.cpp`, `OnSever.cpp` |
+| SQL legado | `docs/sql/Create-Warehouse.sql` |

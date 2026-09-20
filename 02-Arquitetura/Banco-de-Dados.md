@@ -19,6 +19,14 @@ tags: [arquitetura, banco, servidor]
 
 ## Como o servidor conecta (código real)
 
+```mermaid
+flowchart TD
+  ini[SQL.ini Host User Password] --> boot[openDatabase]
+  boot --> each[12 conexoes ODBC]
+  each -->|ok| run[ServerWinMain]
+  each -->|falha| exit[exit 0]
+```
+
 1. `gameSQL.cpp` lê o `Server\Config\SQL.ini` (seções `Database`: `Host`,
  `User`, `Password`).
 2. `Database/SQLConnection.cpp` monta a string de conexão ODBC:
@@ -70,10 +78,14 @@ Atualizado 2026-09-08 (codigo + regra `.cursor/rules/40-database.mdc`):
   (magica `PB02`). `Quest.dbo.PostBox` (e qualquer `UserDB.Postbox`) e
   tabela antiga/nao usada pelo C++ atual. Script:
   `09-Guias/sql/Create-PostBoxLog.sql`.
-- **Armazem (2026-09-17):** `UserDB.dbo.Warehouse` + `WarehouseItem`.
-  Nao e um database novo no boot. O C++ **nao** cria as tabelas;
-  script `09-Guias/sql/Create-Warehouse.sql`. Unique filtrado
-  `(AccountID, Head, ChkSum)` onde Head/ChkSum != 0. Planta: [[Armazem]].
+- **Armazem (2026-09-18):** save vivo e arquivo WH03, **nao** UserDB.
+  Tabelas `Warehouse` / `WarehouseItem` foram tentativa (ADR 0008) e
+  **nao** devem ser ligadas de novo sem ADR nova (ADR 0009). Script
+  historico: `09-Guias/sql/Create-Warehouse.sql`. Planta: [[Armazem]].
+- **Clan / Mestre dos Clan (2026-09-19):** `ClanDB` tabelas `CL`, `UL`,
+  `CT` + `ClanProfile`, `ClanApplication`, `ClanAudit`. Script
+  `09-Guias/sql/Create-ClanGuild.sql` (copia na source
+  `docs/sql/Create-ClanGuild.sql`). C++ nao cria no boot. Planta: [[Clan]].
 
 ## Onde isso importa na prática
 

@@ -16,6 +16,8 @@ trabalhamos", "sync do vault", "ritual da semana", "o que falta no livro".
 Regra Cursor (sempre ativa): `.cursor/rules/01-consult-vault.mdc`.
 Onde cada nota mora: [[Onde-Escrever]].
 
+Kit de IA na source (nao e este vault): `ANTIGRAVITY AGENT/`.
+
 ## Diario (fim do dia de codigo)
 
 Curto. Uma entrada em `04-Diario-do-Projeto/` + linha no `CHANGELOG.md`

@@ -2,13 +2,31 @@
 tags: [projeto, ia]
 ---
 
-# Trabalhando com múltiplas IAs (Cursor + Hermes + opencode)
+# Trabalhando com múltiplas IAs (Cursor + Antigravity + Hermes + opencode)
 
 Você vai usar mais de uma IA: o **Cursor** (edição de código com o
-repositório indexado, no Windows), o **Antigravity** com **Gemini**
-(artes PNG/TGA), o **Hermes** (análises, documentação, diário) e o
+repositório indexado, no Windows), o **Antigravity** (**Gemini** para
+PNG/TGA **e**, a partir de 2026-09-19, um kit na source para tentar
+C++), o **Hermes** (análises, documentação, diário) e o
 **opencode** (mesma coisa que o Hermes, no Linux). Cada IA "esquece"
 entre sessões — **este vault é o livro que todas leem.**
+
+Kit de codigo no repo do jogo (abrir primeiro se a sessao for no
+Antigravity):
+
+`C:\Source Priston\Source Priston\ANTIGRAVITY AGENT\`
+
+```mermaid
+flowchart TB
+  vault[Este vault livro]
+  cursor[Cursor Windows indexado]
+  anti[Antigravity]
+  vault --> cursor
+  vault --> anti
+  anti -->|PNG Gemini| full[Cliente Full]
+  anti -->|C++ le o kit| src[Source]
+  cursor --> src
+```
 
 ## O problema que isso evita
 
@@ -43,7 +61,7 @@ Cursor (ou o Hermes) alinhar o livro ao codigo.
 | Ferramenta | Bom para |
 |---|---|
 | **Cursor** | edição direta de código no repositório (Windows), com contexto automático via `.cursor/rules/` e indexação do projeto; é onde o código é aplicado e compilado |
-| **Antigravity (Gemini)** | **artes visuais** (PNG, TGA de UI). Gravacao no Cliente Full. O Cursor nao gera esses arquivos. Ver `12-UI-e-Artes/Como-gerar-artes.md` |
+| **Antigravity** | **Artes** com Gemini (PNG/TGA no Cliente Full). **Codigo:** so depois de ler `ANTIGRAVITY AGENT/` na source; o Cursor revisa o diff no Windows |
 | **Hermes** | análise do código em profundidade, documentação, diário, backlog de ideias, estudos de C++ |
 | **opencode** (Linux) | o mesmo papel do Hermes, mas na sua máquina Linux: análise, documentação, planejamento de specs e git. Carrega o contexto via `AGENTS.md` na raiz do vault |
 | **Outras IAs de chat** | pesquisa, explicação de conceitos, "segunda opinião" sobre decisão de arquitetura |

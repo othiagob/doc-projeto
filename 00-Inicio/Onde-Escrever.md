@@ -8,6 +8,13 @@ data: 2026-09-13
 
 Uma pergunta, um destino. Evita diario virar spec e spec virar recap.
 
+```mermaid
+flowchart LR
+  fez[Acabei de fazer] --> hist[04 10 11 CHANGELOG]
+  quer[Quero fazer] --> cam[08 05 12]
+  entende[Quero entender] --> mundo[01 02 09]
+```
+
 ## Acabei de fazer algo
 
 | O que foi | Onde |
@@ -36,6 +43,7 @@ Uma pergunta, um destino. Evita diario virar spec e spec virar recap.
 |---|---|
 | Visao geral | [[Mapa-Geral-do-Projeto]] |
 | Planta, pacote, banco | `02-Arquitetura/` |
+| Kit spec-driven para IA no Antigravity | source `ANTIGRAVITY AGENT/` |
 | Como compilar / SQL / VPS | `09-Guias/` |
 | Exercicio de C++ ou SQL | `03-Aprendizado-*/` |
 | Tres pastas no disco | [[Tres-Diretorios]] |

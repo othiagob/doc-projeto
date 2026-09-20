@@ -31,6 +31,15 @@ No disco, sao **tres pastas** (nao misturar): cliente do jogo
 `C:\Cliente Full`, codigo `C:\Source Priston\Source Priston`, este livro
 `C:\Users\carol\Desktop\doc-projeto`. Detalhe: [[Tres-Diretorios]].
 
+```mermaid
+flowchart LR
+  salao[SrcGame tela] -->|pedido smTRANSCODE| cozinha[SrcServer]
+  cozinha -->|resposta| salao
+  cardapio[Shared smPacket.h]
+  salao --> cardapio
+  cozinha --> cardapio
+```
+
 ---
 
 ## As 4 pastas de cima

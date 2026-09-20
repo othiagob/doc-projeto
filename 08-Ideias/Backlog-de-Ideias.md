@@ -82,14 +82,14 @@ HUD de pedra. Agrupa/compacta a bag; não mexe no equipamento.
 Spec: [[2026-09-13-inventario-organizar]].
 
 ### Armazém: busca, páginas e janela ImGui
-**Área:** cliente + servidor (SQL UserDB) · **Dificuldade:** 3/5 (páginas 4/5 ainda ocultas)
-**Status:** feito UI 2026-09-15; SQL/300 slots 2026-09-17 (codigo; SSMS pendente)
+**Área:** cliente + servidor · **Dificuldade:** 3/5
+**Status:** feito (UI 15/09; save vivo WH03 18/09; SQL 17/09 revertido)
 Janela ImGui (`WarehouseWindow`), 3×300, busca local, mesmo transcode.
 Spec: [[2026-09-13-armazem-paginas-busca]]. Recaps:
 [[2026-09-15 - Recap Armazem ImGui paginas e busca]],
-[[2026-09-17 - Recap Armazem SQL 300 slots]]. Planta: [[Armazem]].
+[[2026-09-18 - Recap Armazem arquivo WH03]]. Planta: [[Armazem]].
 ADR: [[0006 - Armazem ImGui, paginas no mesmo transcode]],
-[[0008 - Armazem SQL, 300 slots, 5 paginas 3 liberadas]].
+[[0009 - Armazem arquivo WH03, SQL revertido]].
 
 ### Distribuidor ImGui + correio 168h
 **Área:** cliente + servidor + Shared · **Dificuldade:** 5/5
@@ -98,6 +98,13 @@ Janela ImGui (`PostBoxWindow`), lista + envio P2P, TTL 168h, save `PB02`.
 Spec: [[2026-09-13-distribuidor-correio]]. Recap:
 [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]]. Planta:
 [[Distribuidor]]. ADR: [[0007 - Distribuidor ImGui, PB02 e transcodes novos]].
+
+### Mestre dos Clan
+**Área:** cliente + servidor + Shared + ClanDB · **Dificuldade:** 4/5
+**Status:** em andamento (codigo 19/09)
+Janela ImGui kit B, `GuildService`, `GuildWire.h`.
+Spec: [[2026-09-19-mestre-dos-clan]]. Planta: [[Clan]].
+ADR: [[0010 - Mestre dos Clan ImGui, GuildWire e ClanDB]].
 
 ### Char select Fallen Tale (TGA)
 **Área:** arte no Cliente Full (`StartImage\login\`) · **Dificuldade:** arte

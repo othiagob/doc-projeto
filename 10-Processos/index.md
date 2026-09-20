@@ -33,6 +33,13 @@ Nao precisa para: typo, um comentario, um ajuste de uma linha.
 5. Coloque uma linha no `CHANGELOG.md` (topico certo: Quest, HUD, etc.).
 6. Se couber, uma entrada curta no diario (`04-Diario-do-Projeto/`).
 
+```mermaid
+flowchart LR
+  ideia[08] --> spec[05]
+  spec --> code[source]
+  code --> recap[10 esta pasta]
+```
+
 ## Relacao com o resto do vault
 
 ```
@@ -65,4 +72,6 @@ Mapa de artes e roadmap (nao substitui os recaps abaixo):
 | 2026-09-15 | [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]] | cliente / servidor / shared | feito |
 | 2026-09-16 | [[2026-09-16 - Recap painel Server.exe splash e Segoe]] | servidor / ferramenta | feito |
 | 2026-09-16 | [[2026-09-16 - Recap painel Server.exe modal e operador]] | servidor / ferramenta | feito |
-| 2026-09-17 | [[2026-09-17 - Recap Armazem SQL 300 slots]] | cliente / servidor / shared / SQL | codigo (SSMS pendente) |
+| 2026-09-17 | [[2026-09-17 - Recap Armazem SQL 300 slots]] | cliente / servidor / shared / SQL | codigo (SSMS pendente; save vivo revertido 18/09) |
+| 2026-09-18 | [[2026-09-18 - Recap Armazem arquivo WH03]] | cliente / servidor / shared | feito |
+| 2026-09-19 | [[2026-09-19 - Recap Mestre dos Clan ImGui]] | cliente / servidor / shared / SQL | parcial (codigo) |

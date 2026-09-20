@@ -51,6 +51,15 @@ specs; o mapa nao substitui a historia.
 
 ## Como o caminho anda
 
+```mermaid
+flowchart LR
+  ideia[08 ideias] --> spec[05 spec]
+  spec --> code[Cursor ou Antigravity C++]
+  code --> png[Gemini PNG Cliente Full]
+  png --> jogo[teste]
+  jogo --> livro[diario changelog recap]
+```
+
 ```
 ideia (08) -> spec (05) -> Cursor lista arquivos -> codigo na source
          -> arte no Cliente Full (Antigravity/Gemini, se PNG)

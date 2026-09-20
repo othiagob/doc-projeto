@@ -19,6 +19,13 @@ Template: `Source-Priston/docs/prompt-antigravity-TEMPLATE.md`.
 
 Fluxo:
 
+```mermaid
+flowchart LR
+  brief[Cursor brief] --> gemini[Antigravity Gemini]
+  gemini --> full[Cliente Full]
+  full --> f5[F5 jogo]
+```
+
 1. Cursor escreve o brief (nomes, tamanho, estilo, o que nao redesenhar).
 2. Voce cola no **Antigravity**, modelo **Gemini**.
 3. Salvar no **Cliente Full**, no path que o C++ ja carrega.

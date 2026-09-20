@@ -13,6 +13,15 @@ tags: [processo, workflow, inicio]
 
 ## Visão geral do ciclo
 
+```mermaid
+flowchart LR
+  e[Escolher backlog] --> s[Spec se preciso]
+  s --> st[Estudar livro]
+  st --> i[Implementar Windows]
+  i --> t[Testar jogo]
+  t --> r[Registrar]
+```
+
 ```
 1. ESCOLHER  -> 2. (SPEC)  -> 3. ESTUDAR  -> 4. IMPLEMENTAR  -> 5. TESTAR  -> 6. REGISTRAR
    (Backlog)    (05-Specs)    (código)       (no Windows)     (jogo)       (diário+changelog)

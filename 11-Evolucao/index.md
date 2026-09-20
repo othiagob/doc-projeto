@@ -15,6 +15,12 @@ daqui a meses.
 Use quando um periodo de dias (ou uma sprint) mudou varias areas ao mesmo
 tempo e voce quer um unico documento pra reler.
 
+```mermaid
+flowchart LR
+  recap[10 tela] --> sessao[11 bloco]
+  sessao --> adr[06 ADR]
+```
+
 ## Relacao com o resto do vault
 
 ```
@@ -46,7 +52,9 @@ bloco inteiro  -> 11-Evolucao/   (esta pasta)
 | 2026-09-08 | [[2026-09-08 - HUD ImGui lojas ranking mix e painel do servidor]] | cliente HUD ImGui, loja, SQL, painel Server.exe, regras Cursor |
 | 2026-09-15 | [[2026-09-15 - Armazem ImGui paginas e save]] | bau ImGui, 3 paginas, `.war` WH02, ADR 0006 |
 | 2026-09-16 | [[2026-09-16 - Distribuidor ImGui, correio e painel Server]] | PostBox PB02, transcodes 0x48478A81-85, splash Server.exe, ADR 0007 |
-| 2026-09-17 | [[2026-09-17 - Armazem SQL e capacidade]] | UserDB Warehouse, 300 slots, wVersion 3, ADR 0008 |
+| 2026-09-17 | [[2026-09-17 - Armazem SQL e capacidade]] | tentativa UserDB Warehouse, ADR 0008 (persistencia substituida) |
+| 2026-09-18 | [[2026-09-18 - Armazem WH03 e falhas SQL]] | SQL do bau revertido, WH03, ADR 0009 |
+| 2026-09-19 | [[2026-09-19 - Ritual docs e Antigravity Agent]] | mermaid, kit agente, clan no livro, ADR 0010 |
 
 Artes e roadmap de telas (hub, nao sessao especial): `12-UI-e-Artes/index`
 (2026-09-13). ADR [[0005 - Distribuidor ImGui, armazem e inventario em pedra, artes no Cliente Full]].

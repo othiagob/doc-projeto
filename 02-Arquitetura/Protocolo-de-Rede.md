@@ -71,6 +71,18 @@ dos pacotes (linhas ~409 em diante). Exemplos:
 
 ## Como um pacote flui (visão de pássaro)
 
+```mermaid
+sequenceDiagram
+  participant J as Jogador
+  participant C as Game.exe netplay
+  participant S as Server.exe RecvMessage
+  J->>C: acao
+  C->>S: smTRANSCODE_* + corpo
+  S->>S: valida e aplica
+  S->>C: resposta
+  C->>J: tela atualiza
+```
+
 ```
 Jogador aperta ataque no cliente
  -> cliente monta o pacote (código smTRANSCODE_ATTACKDATA + dados)
@@ -103,25 +115,26 @@ aprendizado — ver [[Trilha-de-Aprendizado]] Fase 2.
 - `smTRANSCODE_ENCODE_PACKET*` sugere que existe camada de codificação de
  pacote — detalhes/uso exato: ver análise do servidor em [[Arquitetura]].
 
-## Armazem (2026-09-17)
+## Armazem (2026-09-18)
 
-Nenhum transcode novo. Fluxogramas e trajetoria: [[Armazem]]. ADR
-[[0008 - Armazem SQL, 300 slots, 5 paginas 3 liberadas]].
+Nenhum transcode novo. Fluxogramas: [[Armazem]] · [[Armazem-como-funciona]].
+ADR viva [[0009 - Armazem arquivo WH03, SQL revertido]]. ADR 0008
+(SQL) esta substituida na persistencia.
 
 | Codigo | Valor | Papel |
 |---|---|---|
 | `smTRANSCODE_OPEN_WAREHOUSE` | `0x48470048` | NPC pede para abrir; client encaminha ao DataServer |
-| `smTRANSCODE_WAREHOUSE` | `0x48470047` | Itens. `wVersion[0]=3` |
+| `smTRANSCODE_WAREHOUSE` | `0x48470047` | Itens. `wVersion[0]=3`. Tambem RESULT (`dwTemp[4]=2`) |
 
 `dwTemp[0]` = pagina (0..2 no jogo; 3–4 recusados). `dwTemp[1/2]` =
-indice/total de chunks. `dwTemp[3]` = `Revision`. `dwTemp[4]` = commit
-(1 no ultimo chunk). `Data[]` = ocupados comprimidos (`WAREHOUSE_WIRE_DATA_MAX`
-7800), **nao** 300 `sITEM`. Socket 8192.
+indice/total de chunks. `dwTemp[3]` = `Revision`. `dwTemp[4]` = 1
+commit no ultimo chunk do save; 2 = resultado ok/fail. `Data[]` =
+ocupados comprimidos (`WAREHOUSE_WIRE_DATA_MAX` 7800), **nao** 300
+`sITEM`. Socket 8192.
 
-`WareHouseItemInfo` tem **1500** entradas. Ouro so na conta
-(`dbo.Warehouse.Money`), ecoado na pagina 0 do fio. Formato 2026-09-15
-(`wVersion=2`, 100 `sITEM`, `.war` WH02) nao e mais o save vivo; WH02
-ainda importa uma vez para SQL.
+`WareHouseItemInfo` tem **1500** entradas. Ouro viaja no header do
+`.war` WH03 e ecoa na pagina 0 do fio. Formato 2026-09-15 (`wVersion=2`,
+100 `sITEM`, WH02) importa uma vez. SQL UserDB **nao** e o save vivo.
 
 Caravana (`TRANS_CARAVAN`) nao entrou nesse desenho.
 
@@ -142,10 +155,25 @@ Transcodes **novos**. `ITEM_EXPRESS` nao lista nem envia. Fluxogramas:
 Lista = metadados. O blob `sITEMINFO` viaja no save `PB02` e na entrega
 (`ITEM_EXPRESS`). Socket 8192: nao mandar 500 itens cheios de uma vez.
 
+## Mestre dos Clan (2026-09-19)
+
+Transcodes **novos**. Fio em `Shared/GuildWire.h`. Planta: [[Clan]].
+ADR [[0010 - Mestre dos Clan ImGui, GuildWire e ClanDB]].
+
+| Codigo | Valor | Papel |
+|---|---|---|
+| `smTRANSCODE_OPEN_CLANMENU` | `0x48478A00` | S→C (legado) abre janela |
+| `smTRANSCODE_GUILD_OPEN` | `0x48478A20` | C→S pede snapshot |
+| `smTRANSCODE_GUILD_SNAPSHOT` | `0x48478A21` | S→C status/roster/search/apps/audit/result |
+| `smTRANSCODE_GUILD_SEARCH` | `0x48478A22` | C→S query paginada |
+| `smTRANSCODE_GUILD_ACTION` | `0x48478A23` | C→S apply/create/kick/... |
+
 ## Ver também
 
-- [[Armazem]] — planta e mermaid do bau
+- [[Armazem]] · [[Armazem-como-funciona]] — planta e processo do bau
 - [[Distribuidor]] — planta e mermaid do correio
+- [[Clan]] — guilda
+- [[Login-e-intro]] — intro sem transcode
 - [[Glossario-Tecnico]] — termos do protocolo
 - [[SDD-Source-Priston]] — documento de design completo
 - [[Como-Rodar]] — porta 8185 na prática

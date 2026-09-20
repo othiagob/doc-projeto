@@ -35,10 +35,13 @@ BEGIN
 		Slot       SMALLINT       NOT NULL,
 		GridX      SMALLINT       NOT NULL,
 		GridY      SMALLINT       NOT NULL,
-		ItemBlob   VARBINARY(2048) NOT NULL,
+		ItemBlob   VARBINARY(4096) NOT NULL,
 		ItemCode   INT            NOT NULL,
 		Head       INT            NOT NULL,
 		ChkSum     INT            NOT NULL,
+		GridW      SMALLINT       NOT NULL CONSTRAINT DF_WarehouseItem_GridW DEFAULT (22),
+		GridH      SMALLINT       NOT NULL CONSTRAINT DF_WarehouseItem_GridH DEFAULT (22),
+		ItemClass  INT            NOT NULL CONSTRAINT DF_WarehouseItem_Class DEFAULT (0),
 		CONSTRAINT PK_WarehouseItem PRIMARY KEY (AccountID, Page, Slot),
 		CONSTRAINT FK_WarehouseItem_Account FOREIGN KEY (AccountID)
 			REFERENCES dbo.Warehouse (AccountID),
@@ -52,5 +55,22 @@ BEGIN
 	CREATE UNIQUE INDEX UX_WarehouseItem_HeadChk
 		ON dbo.WarehouseItem (AccountID, Head, ChkSum)
 		WHERE Head <> 0 AND ChkSum <> 0;
+END
+GO
+
+-- Tabelas ja criadas: blob maior + geometria da grade.
+IF OBJECT_ID(N'dbo.WarehouseItem', N'U') IS NOT NULL
+BEGIN
+	IF COL_LENGTH(N'dbo.WarehouseItem', N'ItemBlob') IS NOT NULL
+		ALTER TABLE dbo.WarehouseItem ALTER COLUMN ItemBlob VARBINARY(4096) NOT NULL;
+
+	IF COL_LENGTH(N'dbo.WarehouseItem', N'GridW') IS NULL
+		ALTER TABLE dbo.WarehouseItem ADD GridW SMALLINT NOT NULL CONSTRAINT DF_WarehouseItem_GridW DEFAULT (22);
+
+	IF COL_LENGTH(N'dbo.WarehouseItem', N'GridH') IS NULL
+		ALTER TABLE dbo.WarehouseItem ADD GridH SMALLINT NOT NULL CONSTRAINT DF_WarehouseItem_GridH DEFAULT (22);
+
+	IF COL_LENGTH(N'dbo.WarehouseItem', N'ItemClass') IS NULL
+		ALTER TABLE dbo.WarehouseItem ADD ItemClass INT NOT NULL CONSTRAINT DF_WarehouseItem_Class DEFAULT (0);
 END
 GO

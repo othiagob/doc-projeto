@@ -6,6 +6,12 @@ data: 2026-09-17
 
 # Evolucao: do `.war` ao SQL no armazem
 
+> **Depois desta nota:** o SQL **nao fechou no jogo**. Em 2026-09-18 o
+> save voltou para arquivo WH03. Leia
+> [[2026-09-18 - Armazem WH03 e falhas SQL]] e a ADR
+> [[0009 - Armazem arquivo WH03, SQL revertido]]. Esta pagina fica
+> como historia do bloco 17/09, nao como planta atual.
+
 Bloco 2026-09-15 (UI) + 2026-09-17 (capacidade/SQL). Nao apaga a nota
 [[2026-09-15 - Recap Armazem ImGui paginas e busca]]; esta e a memoria
 do **porquê** da segunda virada.

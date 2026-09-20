@@ -24,6 +24,20 @@ Ritual diario/semanal (voce pede no chat): [[Ritual-Documentacao]].
 PNG/TGA novos: **Antigravity + Gemini**, gravar no Cliente Full.
 [[Como-gerar-artes]].
 
+Kit para IA escrever **codigo** no Antigravity (nao substitui este
+livro): `C:\Source Priston\Source Priston\ANTIGRAVITY AGENT\`.
+
+```mermaid
+flowchart LR
+  mundo[Mundo planta]
+  hist[Historia changelog]
+  regras[Regras ADR]
+  caminho[Caminho spec]
+  mundo --> hist
+  hist --> regras
+  regras --> caminho
+```
+
 ---
 
 ## Quatro portas
@@ -41,9 +55,10 @@ PNG/TGA novos: **Antigravity + Gemini**, gravar no Cliente Full.
 
 **Ja no jogo (jogador ve)**
 
-- Janelas ImGui no cromado unico: Desafios, Loja Coins/Tempo, Ranking, Mix, Configuracoes, **Armazem**, **Distribuidor**. Recap Desafios/loja: [[2026-09-08 - Recap janelas ImGui de jogador]]. Recap bau UI: [[2026-09-15 - Recap Armazem ImGui paginas e busca]]. Recap bau SQL: [[2026-09-17 - Recap Armazem SQL 300 slots]]. Recap correio: [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]]. Plantas: [[Armazem]] · [[Distribuidor]].
-- Login de conta com PNG Fallen Tale (runtime = Cliente Full).
+- Janelas ImGui no cromado unico: Desafios, Loja Coins/Tempo, Ranking, Mix, Configuracoes, **Armazem**, **Distribuidor**, **Mestre dos Clan** (codigo 19/09, teste no jogo pendente). Recap Desafios/loja: [[2026-09-08 - Recap janelas ImGui de jogador]]. Recap bau UI: [[2026-09-15 - Recap Armazem ImGui paginas e busca]]. Recap bau save atual: [[2026-09-18 - Recap Armazem arquivo WH03]]. Recap correio: [[2026-09-15 - Recap Distribuidor ImGui e correio 168h]]. Recap cla: [[2026-09-19 - Recap Mestre dos Clan ImGui]]. Plantas: [[Armazem]] · [[Armazem-como-funciona]] · [[Distribuidor]] · [[Clan]] · [[Login-e-intro]].
+- Login de conta com PNG Fallen Tale (runtime = Cliente Full). Intro antes do form: [[Login-e-intro]].
 - Painel do `Server.exe` (tema claro, splash, modal de confirmação, status de operador, ADR 0002). Recaps: [[2026-09-16 - Recap painel Server.exe splash e Segoe]] · [[2026-09-16 - Recap painel Server.exe modal e operador]].
+- Kit agente na source: `ANTIGRAVITY AGENT/` (spec-driven + fluxos).
 
 **Caminho de UI (specs, ainda nao e codigo)** — [[Roadmap-UI]]
 
@@ -58,7 +73,13 @@ Mapa de artes: [[Inventario-de-Artes]].
 
 ## Historia recente
 
-- [[2026-09-17]] — diario (armazem SQL)
+- [[2026-09-19 - Ritual documentacao e Antigravity Agent]] — diario
+- [[2026-09-19 - Recap Mestre dos Clan ImGui]]
+- [[2026-09-19 - Ritual docs e Antigravity Agent]] — sessao
+- [[2026-09-18 - Armazem WH03 arquivo]] — diario
+- [[2026-09-18 - Recap Armazem arquivo WH03]]
+- [[2026-09-18 - Armazem WH03 e falhas SQL]] — sessao (nao repetir SQL do bau)
+- [[2026-09-17]] — diario (tentativa SQL)
 - [[2026-09-17 - Recap Armazem SQL 300 slots]]
 - [[2026-09-17 - Armazem SQL e capacidade]] — sessao
 - [[2026-09-16 - Painel Server.exe UX operador]] — diario
@@ -79,24 +100,26 @@ Mapa de artes: [[Inventario-de-Artes]].
   [[0005 - Distribuidor ImGui, armazem e inventario em pedra, artes no Cliente Full]],
   [[0006 - Armazem ImGui, paginas no mesmo transcode]],
   [[0007 - Distribuidor ImGui, PB02 e transcodes novos]],
-  [[0008 - Armazem SQL, 300 slots, 5 paginas 3 liberadas]]
+  [[0008 - Armazem SQL, 300 slots, 5 paginas 3 liberadas]] (substituida na persistencia),
+  [[0009 - Armazem arquivo WH03, SQL revertido]],
+  [[0010 - Mestre dos Clan ImGui, GuildWire e ClanDB]]
 
 ---
 
 ## Mundo (referencia)
 
 - [[Sobre-o-Projeto]] — o que e, regras de ouro
-- [[Arquitetura]] · [[Armazem]] · [[Distribuidor]] · [[Protocolo-de-Rede]] · [[Banco-de-Dados]] · [[Glossario-Tecnico]]
+- [[Arquitetura]] · [[Armazem]] · [[Armazem-como-funciona]] · [[Distribuidor]] · [[Clan]] · [[Login-e-intro]] · [[Protocolo-de-Rede]] · [[Banco-de-Dados]] · [[Glossario-Tecnico]]
 - [[SDD-Source-Priston]] — design completo
 - `Dados-SQL/README.md` · [[ListaItens_Drop]]
 - Guias: `09-Guias/index` · [[VPS-e-SQL-Server]]
-- IAs: [[Trabalhando-com-Multiplas-IAs]] (Cursor, Hermes, opencode, **Antigravity/Gemini** nas artes)
+- IAs: [[Trabalhando-com-Multiplas-IAs]] (Cursor, Hermes, opencode, **Antigravity** artes Gemini **e** kit de codigo na source)
 
 ## Caminho e processo
 
 - [[Fluxo-de-Trabalho]] · [[Processo-Spec-Driven]] · [[Workflow-Git]]
 - [[Melhorias-Sugeridas]] · [[Backlog-de-Ideias]]
-- Specs de UI: armazem e distribuidor **feitas**; falta organizar inventario (link na porta Caminho)
+- Specs de UI: armazem e distribuidor **feitas**; clan **em andamento** (codigo); falta organizar inventario (link na porta Caminho)
 
 ## Aprendizado (caderno ao lado)
 
